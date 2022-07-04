@@ -1,0 +1,17 @@
+{
+    "en": "English",
+    "de": "German",
+    "languageSelector": "Select Language",
+    "overview":"Overview",
+    "send":"Send Message",
+    "details":"Details",
+    "gallery":"Gallery",
+    "location":"Location",
+    "name":"Name",
+    "email":"E-Mail",
+    "message":"Message",
+    "address":"Adresse",
+    "phone":"Phone number",
+    "sozialNetworks":"Social networks"
+
+}
