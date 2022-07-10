@@ -3,6 +3,7 @@ import React from 'react';
 import '../assets/css/main.css'
 import { useTranslation } from "react-i18next";
 import i18n from '../i18n.js';
+import Map from './Map.js'
 
 function Location() {
   const { t } = useTranslation(["common"]);
@@ -28,6 +29,7 @@ function Location() {
           Finally, this is a <a href="#">link</a>.</p>
         <hr />
       </section>
+      <Map />
     </div>
   );
 }

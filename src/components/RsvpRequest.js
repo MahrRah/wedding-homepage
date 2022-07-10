@@ -1,18 +1,23 @@
-import React, { useEffect, useState, Component } from 'react'
+import React, { Component } from 'react'
 import '../assets/css/main.css'
-// import { useTranslation } from "react-i18next";
 import { withTranslation } from 'react-i18next';
-// import RsvpSubmit from "./RsvpSubmit.js"
 
 class RsvpRequest extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            rsvpCode: "",
+            submitted: false,
             firstname: '',
             lastname: '',
-            data: null,
-            submitted: false,
-            rsvpCode: ""
+            dinner: '',
+            allowedBrunch: false,
+            brunch: false,
+            plusOne: null,
+            hasPlusOne: false,
+            children: null,
+            hasChildren: false,
+            message: ""
         };
         localStorage.setItem('submitted', false);
         this.onChange = this.onChange.bind(this);
@@ -29,6 +34,7 @@ class RsvpRequest extends Component {
             });
             if (res.status === 200) {
                 let body = await res.json();
+                this.changeStateAPI(body);
                 this.isSubmitted()
                 console.log(body)
             } else {
@@ -47,7 +53,6 @@ class RsvpRequest extends Component {
             });
             if (res.status === 200) {
                 let body = await res.json();
-                this.changeStateAPI(body);
                 this.isSubmitted();
                 console.log(body);
             } else {
@@ -57,7 +62,14 @@ class RsvpRequest extends Component {
         }
     };
     changeStateAPI(data) {
-        this.setState({ lastname: data.name })
+        this.setState({ lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.dinner })
+        if (!data.plusOne.length) {
+            this.setState({ hasPlusOne: true, plusOne: data.plusOne })
+        }
+        if (!data.children.length) {
+            this.setState({ hasChildren: true, plusOne: data.children })
+        }
+        console.log(this.state);
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
@@ -87,27 +99,28 @@ class RsvpRequest extends Component {
                         <form method="post" action="#">
                             <div className="row gtr-uniform">
                                 <div className="col-6 col-12-xsmall">
-                                    <input type="text" name="firstname" id="firstname" placeholder="First Name" />
+                                    <input type="text" name="firstname" id="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.onChange} />
                                 </div>
                                 <div className="col-6 col-12-xsmall">
-                                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" value={this.state.lastname} />
+                                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.onChange} />
                                 </div>
-                                <h5>Brunch on Sunday</h5>
-                                <div className="col-4 col-12-small">
-                                    <input type="radio" id="demo-priority-low" name="demo-priority" defaultChecked={true} />
-                                    <label for="demo-priority-low">Yes</label>
-                                </div>
-                                <div className="col-4 col-12-small">
-                                    <input type="radio" id="demo-priority-normal" name="demo-priority" />
-                                    <label for="demo-priority-normal">No</label>
-                                </div>
+                                {this.state.allowedBrunch &&
+                                    <div>
+                                        <h5>Brunch on Sunday</h5>
+                                        <div className="col-4 col-12-small"  onChange={this.onChange}>
+                                            <input type="radio" id="brunch-yes" value={this.state.brunch} name="brunch" />
+                                            <label for="brunch-yes">Yes</label>
+                                            <input type="radio" id="brunch-no" value={this.state.brunch} name="brunch"/>
+                                            <label for="brunch-no">No</label>
+                                        </div>
+                                    </div>}
                                 <div className="col-12">
-                                    <select name="Food Options" id="food-options">
-                                        <option value="">- Meal options -</option>
+                                    <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                        <option value="0">- Meal options -</option>
                                         <option value="1">Vegarian</option>
-                                        <option value="1">Vegan</option>
-                                        <option value="1">Gluten free</option>
-                                        <option value="1">No Dietary restirctions</option>
+                                        <option value="2">Vegan</option>
+                                        <option value="3">Gluten free</option>
+                                        <option value="4">No Dietary restirctions</option>
                                     </select>
                                 </div>
                                 <div className="col-12">
