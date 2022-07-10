@@ -12,8 +12,8 @@ function Location() {
   }
   return (
     <div id="main">
-      <section class="post">
-        <header class="major">
+      <section className="post">
+        <header className="major">
           <h1>Location</h1>
         </header>
         <h2>Location</h2>

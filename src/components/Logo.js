@@ -19,7 +19,7 @@ function Logo() {
     }, [])
     return (
         <header id="header">
-            <a href="index.html" class="logo">The future Grosjeans</a>
+            <a href="index.html" className="logo">The future Grosjeans</a>
         </header>
 
     );

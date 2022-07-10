@@ -33,8 +33,8 @@ function App() {
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
       </head>
-      <body class="is-preload">
-        <div id="wrapper" class="fade-in">
+      <div className="is-preload">
+        <div id="wrapper" className="fade-in">
           <Intro />
           <Logo />
           <Router>
@@ -51,7 +51,7 @@ function App() {
           <Footer />
           <Copyright />
         </div>
-      </body>
+      </div>
     </Suspense>
 
 

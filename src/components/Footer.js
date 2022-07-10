@@ -13,27 +13,27 @@ function Footer() {
     <footer id="footer">
     <section>
       <form method="post" action="#">
-        <div class="fields">
-          <div class="field">
+        <div className="fields">
+          <div className="field">
             <label for="name">{t("common:name")}</label>
             <input type="text" name="name" id="name" />
           </div>
-          <div class="field">
+          <div className="field">
             <label for="email">{t("common:email")}</label>
             <input type="text" name="email" id="email" />
           </div>
-          <div class="field">
+          <div className="field">
             <label for="message">{t("common:message")}</label>
             <textarea name="message" id="message" rows="3"></textarea>
           </div>
         </div>
-        <ul class="actions">
+        <ul className="actions">
           <li><input type="submit" value={t('send')} /></li>
         </ul>
       </form>
     </section>
-    <section class="split contact">
-      <section class="alt">
+    <section className="split contact">
+      <section className="alt">
         <h3>{t('address')}</h3>
         <p>Steinerstrasse 501,<br />
         8253 Diessenhofen <br/>
@@ -45,18 +45,15 @@ function Footer() {
       </section>
       <section>
         <h3>{t('sozialNetworks')}</h3>
-        <ul class="icons alt">
-          <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="https://github.com/MahrRah/webapp-react-wedding" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <ul className="icons alt">
+          <li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
+          <li><a href="https://github.com/MahrRah/webapp-react-wedding" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
         </ul>
-      </section>
-      <section class="alt">
       </section>
     </section>
             <section>
               <h3>{t('common:languageSelector')}</h3>
               <button onClick={() => changeLanguage('de')}>{t('common:de')}</button>
-
               <button onClick={() => changeLanguage('en')}>{t('common:en')}</button>
               </section>
   </footer>

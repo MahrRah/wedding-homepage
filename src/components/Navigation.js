@@ -16,8 +16,8 @@ function Navigation() {
   return (
 
       <nav id="nav">
-        <ul class="links">
-          <li class="active"> <Link to="/">{t('overview')}</Link></li>
+        <ul className="links">
+          <li className="active"> <Link to="/">{t('overview')}</Link></li>
           <li> <Link to="/details">{t('details')}</Link></li>
           <li> <Link to="/location">{t('location')}</Link></li>
           <li> <Link to="/gallery">{t('gallery')}</Link></li>
