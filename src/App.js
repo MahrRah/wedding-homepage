@@ -1,6 +1,4 @@
 import React from 'react';
-import './assets/css/main.css'
-import './assets/css/noscript.css'
 import { Suspense } from 'react';
 import {
   BrowserRouter as Router,
@@ -26,13 +24,6 @@ function App() {
 
   return (
     <Suspense fallback={null}>
-      <head>
-        <title>Mahra & Valentin</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-      </head>
       <div className="is-preload">
         <div id="wrapper" className="fade-in">
           <Intro />

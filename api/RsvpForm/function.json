@@ -2,10 +2,11 @@
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "rsvp/{id}",
       "methods": [
         "get",
         "post"
