@@ -12,8 +12,7 @@ class Overview extends Component {
     }
 
     isStory() {
-
-        this.setState({ story: !this.story })
+        this.setState({ story: this.story? false:true })
 
     }
     render() {
@@ -22,7 +21,7 @@ class Overview extends Component {
                 <article className="post featured">
                     <header className="major">
                         <span className="date">{this.props.t("overview:date")}</span>
-                        <h2><a href="#">{this.props.t("overview:welcome")}</a></h2>
+                        <h2>{this.props.t("overview:welcome")}</h2>
                         <p> {this.props.t("story:storyText")}</p>
                     </header>
                     <a href="#" className="image main"><img src="images/pic01.jpg" alt="" /></a>

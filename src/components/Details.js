@@ -2,8 +2,6 @@
 import React from 'react';
 import '../assets/css/main.css'
 import { useTranslation } from "react-i18next";
-import i18n from '../i18n.js';
-import RsvpRequest from './RsvpRequest.js'
 
 function Details() {
   const { t } = useTranslation(["common"]);

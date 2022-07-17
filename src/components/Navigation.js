@@ -1,39 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../assets/css/main.css'
-import { useTranslation } from "react-i18next";
 import i18n from '../i18n.js';
-import Details from './Details.js'
-import Overview from './Overview';
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
-import { createMemoryHistory } from 'history';
-function Navigation() {
-  const { t } = useTranslation(["common"]);
-  const history = createMemoryHistory();
+  Link,
+  useLocation,
 
-  const changeLanguage = (lng) => {
+} from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.changeLocation = this.changeLocation.bind(this);
+  }
+  changeLocation = (route) => {
+    // let location = useLocation();
+    console.log(route);
+    console.log(this.props.location.pathname);
+    return this.props.location.pathname === route ? "active" : null
+
+  }
+
+  changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   }
-  return (
-
+  render() {
+    return (
       <nav id="nav">
         <ul className="links">
-          <li className="active"> <Link to="/">{t('overview')}</Link></li>
-          <li> <Link to="/details">{t('details')}</Link></li>
-          <li> <Link to="/location">{t('location')}</Link></li>
-          <li> <Link to="/gallery">{t('gallery')}</Link></li>
-          <li> <Link to="/rsvp">{t('rsvp')}</Link></li>
+          {/* {`banner ${changeLocation()==="/" ? "active" : ""}`} */}
+          <li className={this.changeLocation("/")}> <Link to="/" >{this.props.t('overview')}</Link></li>
+          <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('details')}</Link></li>
+          <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('location')}</Link></li>
+          <li className={this.changeLocation("/gallery")}> <Link to="/gallery">{this.props.t('gallery')}</Link></li>
+          <li className={this.changeLocation("/rsvp")}> <Link to="/rsvp">{this.props.t('rsvp')}</Link></li>
         </ul>
-        <ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter" onClick={() => changeLanguage('en')}><span class="label">{t('common:de')}</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f" onClick={() => changeLanguage('de')}><span class="label" >{t('common:en')}</span></a></li>
-						</ul>
+        <ul className="icons">
+          <li><a onClick={() => this.changeLanguage('en')}><span class="label">EN</span></a></li>
+          <li><a onClick={() => this.changeLanguage('de')}><span class="label" >DE</span></a></li>
+        </ul>
       </nav>
-  );
+    );
+  }
 }
 
-export default Navigation;
+export default () => {
+  const location = useLocation();
+  const { t } = useTranslation(["story", "common", "overview"]);
+  return (
+      <Navigation t={t} location={location} />
+  )
+}

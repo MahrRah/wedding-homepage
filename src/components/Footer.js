@@ -6,27 +6,27 @@ import i18n from '../i18n.js';
 function Footer() {
   const { t } = useTranslation(["common"]);
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  }
   return (
     <footer id="footer">
-      <section className="split contact">
-        <section className="alt">
-          <h3>{t('address')}</h3>
-          <p>Luegislandstrasse 78 ,<br />
-            8051 Zürich <br />
-            Schweiz </p>
-        </section>
-      </section>
       <section>
         <section>
           <h3>{t('email')}</h3>
-          <p><a href="#">     thegrosjeans.2023@gmail.com</a></p>
+          <p><a href="mailto:thegrosjeans.2023@gmail.com">thegrosjeans.2023@gmail.com</a></p>
         </section>
         <section>
           <h3>{t('phone')}</h3>
-          <p><a href="#">(000) 000-0000</a></p>
+          <p><a href="tel:0041794345509">Mahra: 079 434 55 09</a></p>
+          <p><a href="tel:0041767024612">Valentin: 076 702 46 12</a></p>
+        </section>
+      </section>
+      <section className="split contact">
+        <section className="alt">
+          <h3>{t('address')}</h3>
+          <p> Tamara Rahimi <br />
+          Valentin Grosjean, <br />
+            Luegislandstrasse 78 ,<br />
+            8051 Zürich <br />
+            Schweiz </p>
         </section>
       </section>
       <section className="split contact">
@@ -37,11 +37,6 @@ function Footer() {
             <li><a href="https://github.com/MahrRah/webapp-react-wedding" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
           </ul>
         </section>
-        {/* <section >
-          <h3>{t('common:languageSelector')}</h3>
-          <button onClick={() => changeLanguage('de')}>{t('common:de')}</button>
-          <button onClick={() => changeLanguage('en')}>{t('common:en')}</button>
-          </section> */}
       </section>
     </footer>
   );
