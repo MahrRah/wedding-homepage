@@ -15,11 +15,13 @@ import Logo from './components/Logo.js'
 import Location from './components/Location.js'
 import Intro from './components/Intro.js'
 import Overview from './components/Overview.js'
+import Story from './components/Story.js'
 
 import { useTranslation } from "react-i18next";
+import RsvpRequest from './components/RsvpRequest.js';
 
 function App() {
-  const { t } = useTranslation(["story", "common"]);
+  const { t } = useTranslation(["story", "common", "overview"]);
 
 
   return (
@@ -31,10 +33,11 @@ function App() {
           <Router>
             <Navigation />
             <Routes>
-              <Route path="/" element={<Overview />} />
+              <Route path="/" element={<Overview  t={t} />} />
               <Route path="/details" element={<Details />} />
               <Route path="/location" element={<Location />} />
               <Route path="/gallery" element={<Details />} />
+              <Route path="/rsvp" element={<RsvpRequest  t={t}/>} />
             </Routes>
           </Router>
 

@@ -1,11 +1,12 @@
 {
-    "en": "Englisch",
+    "en": "English",
     "de": "Deutsch",
     "languageSelector": "Sprache wählen",
     "send":"Nachricht Senden",
     "overview":"Überblick",
     "details":"Details",
     "gallery":"Bilder",
+    "stroy":"Geschichte",
     "location":"Ort",
     "name":"Name",
     "email":"E-Mail",

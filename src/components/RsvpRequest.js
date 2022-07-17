@@ -79,22 +79,21 @@ class RsvpRequest extends Component {
     }
     render() {
         return (
-            <>
-                <div>
-                    {!this.state.submitted &&
-                        <form method="post" onSubmit={this.handleSubmitCode}>
-                            <div className="fields">
-                                <div className="field">
-                                    <label for="rsvpCode">{this.props.t("common:rsvp-code")}</label>
-                                    <input type="text" name="rsvpCode" id="rsvpCode" placeholder={this.state.rsvpCode}
-                                        onChange={this.onChange} />
-                                </div>
+            <><div id="main">
+                {!this.state.submitted &&
+                    <form method="post" onSubmit={this.handleSubmitCode}>
+                        <div className="fields">
+                            <div className="field">
+                                <label for="rsvpCode">{this.props.t("common:rsvp-code")}</label>
+                                <input type="text" name="rsvpCode" id="rsvpCode" placeholder={this.state.rsvpCode}
+                                    onChange={this.onChange} />
                             </div>
-                            <ul className="actions">
-                                <li><input type="submit" value={this.props.t('send')} /></li>
-                            </ul>
-                        </form>}
-                </div><div>
+                        </div>
+                        <ul className="actions">
+                            <li><input type="submit" value={this.props.t('send')} /></li>
+                        </ul>
+                    </form>}
+            </div><div>
                     {this.state.submitted &&
                         <form method="post" action="#">
                             <div className="row gtr-uniform">
@@ -107,10 +106,10 @@ class RsvpRequest extends Component {
                                 {this.state.allowedBrunch &&
                                     <div>
                                         <h5>Brunch on Sunday</h5>
-                                        <div className="col-4 col-12-small"  onChange={this.onChange}>
+                                        <div className="col-4 col-12-small" onChange={this.onChange}>
                                             <input type="radio" id="brunch-yes" value={this.state.brunch} name="brunch" />
                                             <label for="brunch-yes">Yes</label>
-                                            <input type="radio" id="brunch-no" value={this.state.brunch} name="brunch"/>
+                                            <input type="radio" id="brunch-no" value={this.state.brunch} name="brunch" />
                                             <label for="brunch-no">No</label>
                                         </div>
                                     </div>}
@@ -133,8 +132,7 @@ class RsvpRequest extends Component {
                                     </ul>
                                 </div>
                             </div>
-                        </form>
-                    }
+                        </form>}
                 </div></>
         );
     }

@@ -1,11 +1,12 @@
 {
     "en": "English",
-    "de": "German",
+    "de": "Deutsch",
     "languageSelector": "Select Language",
     "overview":"Overview",
     "send":"Send Message",
     "details":"Details",
     "gallery":"Gallery",
+    "story":"Story",
     "location":"Location",
     "name":"Name",
     "email":"E-Mail",
