@@ -80,6 +80,10 @@ class RsvpRequest extends Component {
     render() {
         return (
             <><div id="main">
+                <div>
+                    <h2>RSVP</h2>
+                    <p>asdsd</p>
+                </div>
                 {!this.state.submitted &&
                     <form method="post" onSubmit={this.handleSubmitCode}>
                         <div className="fields">
