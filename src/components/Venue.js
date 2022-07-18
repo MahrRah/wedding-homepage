@@ -7,7 +7,7 @@ function Venue() {
       <h2>Venue</h2>
       <h3>Schupfen Rhyschüür</h3>
       <div><span className="image left"><img src={require("../images/schuur.jpg")} alt="" /></span>
-        <p>Wup wup hier heiraten wir</p>
+        <p>Wup wup hier heiraten wir. PARKING SPOT AWAILABLE</p>
         <p> <b>Adresse:</b> <br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /></p>
       </div>
       <h4>Map</h4>

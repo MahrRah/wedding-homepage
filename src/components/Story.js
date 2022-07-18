@@ -13,39 +13,31 @@ function Details() {
       <section className="posts">
         <article>
           <header>
-            <span className="date">April 24, 2017</span>
-            <h2><a href="#">Sed magna<br />
-              ipsum faucibus</a></h2>
+            <span className="date">November 17, 2021</span>
+            <h2><a href="#">The day off</a></h2>
           </header>
-          <a href="#" className="image fit"><img src="images/pic02.jpg" alt="" /></a>
-          <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-          <ul className="actions special">
-            <li><a href="#" className="button">Full Story</a></li>
-          </ul>
+          <a href="#" className="image fit"><img src={require("../images/dayoff.jpeg")} alt="" /></a>
         </article>
         <article>
           <header>
-            <span className="date">April 22, 2017</span>
-            <h2><a href="#">Primis eget<br />
-              imperdiet lorem</a></h2>
+            <span className="date">November 17, 2021</span>
+            <h2><a href="#">Proposal add on</a></h2>
           </header>
-          <a href="#" className="image fit"><img src="images/pic03.jpg" alt="" /></a>
-          <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-          <ul className="actions special">
-            <li><a className="#" className="button">Full Story</a></li>
-          </ul>
+          <a href="#" className="image fit"><img src={require("../images/proposal2.jpeg")} alt="" /></a>
         </article>
         <article>
           <header>
             <span className="date">April 18, 2017</span>
-            <h2><a href="#">Ante mattis<br />
-              interdum dolor</a></h2>
+            <h2><a href="#">Save the date </a> </h2>
           </header>
-          <a href="#" className="image fit"><img src="images/pic04.jpg" alt="" /></a>
-          <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-          <ul className="actions special">
-            <li><a href="#" className="button">Full Story</a></li>
-          </ul>
+          <a href="#" className="image fit"><img src={require("../images/savethedate.jpeg")} alt="" /></a>
+        </article>
+        <article>
+          <header>
+            <span className="date">April 18, 2017</span>
+            <h2><a href="#">Save the date </a> </h2>
+          </header>
+          <a href="#" className="image fit"><img src={require("../images/savethedate.jpeg")} alt="" /></a>
         </article>
       </section>
     </div>
