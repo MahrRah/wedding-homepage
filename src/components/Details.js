@@ -1,6 +1,7 @@
 
 import React from 'react';
 import '../assets/css/main.css'
+import Schedule from "./Schedule.js"
 import { useTranslation } from "react-i18next";
 
 function Details() {
@@ -18,6 +19,7 @@ function Details() {
           This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
           This is <u>underlined</u> and this is code:
           Finally, this is a <a href="#">link</a>.</p>
+          <Schedule />
         <hr />
         <h2>Gifts</h2>
         <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
