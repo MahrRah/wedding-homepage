@@ -24,7 +24,6 @@ class Navigation extends Component {
     return (
       <nav id="nav">
         <ul className="links">
-          {/* {`banner ${changeLocation()==="/" ? "active" : ""}`} */}
           <li className={this.changeLocation("/")}> <Link to="/" >{this.props.t('overview')}</Link></li>
           <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('details')}</Link></li>
           <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('location')}</Link></li>
