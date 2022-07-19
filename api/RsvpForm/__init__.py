@@ -1,84 +1,10 @@
 import json
 import logging
+import json
+import logging
+import os
 
 import azure.functions as func
-
-sample = {
-  "rsvpCode": "123",
-  "name": "Valentin",
-  "lastname": "Grosjean",
-  "dinner":"3",
-  "allowedBrunch":"false",
-  "brunch": "true",
-  "message":"sagjafshjal",
-  "plusOne": [
-    {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": ""
-    }
-  ],
-  "children": [
-    {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    },
-        {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    },
-        {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    }
-    ]
-}
-
-
-sampleEdit = {
-  "rsvpCode": "123",
-  "name": "Valentin",
-  "lastname": "Grosjean",
-  "dinner":"3",
-  "brunch": "true",
-  "message":"sagjafshjal",
-  "plusOne": [
-    {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": ""
-    }
-  ],
-  "children": [
-    {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    },
-        {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    },
-        {
-      "name": "valentin",
-      "lastname": "grosjean",
-      "food": "",
-      "age":""
-    }
-    ]
-}
-
-
-
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -90,20 +16,26 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         pass
     logging.info(req)
     if req.method == "GET":
-      logging.info('get')
+      logging.info(f'Get RSVP of {rsvp_id}')
+      resp = getRSVP(rsvp_id)
     elif req.method == 'POST':
-      logging.info('post')
-
+      try:
+        new_data = req.get_body()
+        logging.info(f'Update RSVP of {rsvp_id} with values {new_data}')
+        resp = updateRSVP(rsvp_id, new_data)
 
     
-    data = json.dumps(sample)
-    logging.info(data)
-    return func.HttpResponse(body=data, headers={"content-type": "application/json",
+    # logging.info(resp)
+    return func.HttpResponse(body=json.dumps(resp), headers={"content-type": "application/json",
         "Access-Control-Allow-Origin": "*",}, status_code=200)
 
 
+def getRSVP(id):
+    f = open('RsvpForm/data.json')
+    data =json.load(f)
+    return [t for t in data if t['rsvpCode'] == id ][0]
 
-def updateRSVP(data){
-    old_rsvp = getRSVP(data.id)
+def updateRSVP(id, data):
+    old_rsvp = getRSVP(id)
+    old_rsvp.update(data)
     
-}

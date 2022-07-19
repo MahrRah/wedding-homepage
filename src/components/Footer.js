@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/css/main.css'
 import { useTranslation } from "react-i18next";
-import i18n from '../i18n.js';
+
 
 function Footer() {
   const { t } = useTranslation(["common"]);
