@@ -13,9 +13,9 @@ class RsvpRequest extends Component {
             dinner: '',
             allowedBrunch: false,
             brunch: false,
-            plusOne: null,
+            plusOne: undefined,
             hasPlusOne: false,
-            children: null,
+            children: undefined,
             hasChildren: false,
             message: ""
         };
@@ -38,6 +38,7 @@ class RsvpRequest extends Component {
                 this.isSubmitted()
                 console.log(body)
             } else {
+                console.log(res.status)
             }
         } catch (err) {
             console.log(err);
@@ -56,6 +57,7 @@ class RsvpRequest extends Component {
                 this.isSubmitted();
                 console.log(body);
             } else {
+                console.log(res.status);
             }
         } catch (err) {
             console.log(err);
@@ -63,11 +65,11 @@ class RsvpRequest extends Component {
     };
     changeStateAPI(data) {
         this.setState({ lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.dinner })
-        if (!data.plusOne.length) {
-            this.setState({ hasPlusOne: true, plusOne: data.plusOne })
+        if (data.plusOne.length !== 0) {
+            this.setState({ hasPlusOne: true, plusOne: data.plusOne });
         }
-        if (!data.children.length) {
-            this.setState({ hasChildren: true, plusOne: data.children })
+        if (!data.children.length !== 0) {
+            this.setState({ hasChildren: true, children: data.children })
         }
         console.log(this.state);
     }
@@ -97,7 +99,7 @@ class RsvpRequest extends Component {
                             <li><input type="submit" value={this.props.t('send')} /></li>
                         </ul>
                     </form>}
-            </div><div>
+            </div><div id="main">
                     {this.state.submitted &&
                         <form method="post" action="#">
                             <div className="row gtr-uniform">
@@ -107,6 +109,70 @@ class RsvpRequest extends Component {
                                 <div className="col-6 col-12-xsmall">
                                     <input type="text" name="lastname" id="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.onChange} />
                                 </div>
+                                <div className="col-12">
+                                    <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                        <option value="0">- Meal options -</option>
+                                        <option value="1">Vegarian</option>
+                                        <option value="2">Vegan</option>
+                                        <option value="3">Gluten free</option>
+                                        <option value="4">No Dietary restirctions</option>
+                                    </select>
+                                </div>
+                                <hr />
+                                {this.state.hasPlusOne &&
+                                    <>
+                                        <div className="col-4 col-12-small">
+                                            <input type="radio" id="demo-priority-low" name="demo-priority" checked />
+                                            <label for="demo-priority-low">with Plus One</label>
+                                        </div>
+                                        <div className="col-4 col-12-small">
+                                            <input type="radio" id="demo-priority-normal" name="demo-priority" />
+                                            <label for="demo-priority-normal">without Plus One</label>
+                                        </div>
+                                        <div className="col-6 col-12-xsmall">
+                                            <input type="text" name="firstname-plusone" id="firstnameplusone" placeholder="First Name Plus One" value={this.state.plusOne[0].name} onChange={this.onChange} />
+                                        </div><div className="col-6 col-12-xsmall">
+                                            <input type="text" name="lastnameplusone" id="lastnameplusone" placeholder="Last Name Plus One" value={this.state.lastname[0].name} onChange={this.onChange} />
+                                        </div>
+                                        <div className="col-12">
+                                            <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                                <option value="0">- Meal options -</option>
+                                                <option value="1">Vegarian</option>
+                                                <option value="2">Vegan</option>
+                                                <option value="3">Gluten free</option>
+                                                <option value="4">No Dietary restirctions</option>
+                                            </select>
+                                        </div>
+                                        <hr />
+                                    </>
+                                }
+                                {this.state.hasChildren &&
+                                    <>
+                                        <div className="col-4 col-12-small">
+                                            <input type="radio" id="demo-priority-low" name="demo-priority" checked />
+                                            <label for="demo-priority-low">with Children</label>
+                                        </div>
+                                        <div className="col-4 col-12-small">
+                                            <input type="radio" id="demo-priority-normal" name="demo-priority" />
+                                            <label for="demo-priority-normal">without Children</label>
+                                        </div>
+                                        <div className="col-6 col-12-xsmall">
+                                            <input type="text" name="firstname-plusone" id="firstnameplusone" placeholder="First Name Plus One" value={this.state.plusOne[0].name} onChange={this.onChange} />
+                                        </div><div className="col-6 col-12-xsmall">
+                                            <input type="text" name="lastnameplusone" id="lastnameplusone" placeholder="Last Name Plus One" value={this.state.lastname[0].name} onChange={this.onChange} />
+                                        </div>
+                                        <div className="col-12">
+                                            <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                                <option value="0">- Meal options -</option>
+                                                <option value="1">Vegarian</option>
+                                                <option value="2">Vegan</option>
+                                                <option value="3">Gluten free</option>
+                                                <option value="4">No Dietary restirctions</option>
+                                            </select>
+                                        </div>
+                                    </>
+                                }
+                             
                                 {this.state.allowedBrunch &&
                                     <div>
                                         <h5>Brunch on Sunday</h5>
@@ -117,15 +183,6 @@ class RsvpRequest extends Component {
                                             <label for="brunch-no">No</label>
                                         </div>
                                     </div>}
-                                <div className="col-12">
-                                    <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
-                                        <option value="0">- Meal options -</option>
-                                        <option value="1">Vegarian</option>
-                                        <option value="2">Vegan</option>
-                                        <option value="3">Gluten free</option>
-                                        <option value="4">No Dietary restirctions</option>
-                                    </select>
-                                </div>
                                 <div className="col-12">
                                     <textarea name="demo-message" id="demo-message" placeholder="Additional Notes" rows="3"></textarea>
                                 </div>

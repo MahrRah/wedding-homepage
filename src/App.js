@@ -14,6 +14,7 @@ import Logo from './components/Logo.js'
 import Location from './components/Location.js'
 import Intro from './components/Intro.js'
 import Overview from './components/Overview.js'
+import Gallery from './components/Gallery.js'
 
 import { useTranslation } from "react-i18next";
 import RsvpRequest from './components/RsvpRequest.js';
@@ -33,7 +34,7 @@ function App() {
               <Route path="/" element={<Overview t={t} />} />
               <Route path="/details" element={<Details />} />
               <Route path="/location" element={<Location />} />
-              <Route path="/gallery" element={<Details />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
             </Routes>
           </Router>

@@ -5,7 +5,7 @@ import '../assets/css/main.css'
 
 import Story from './Story.js'
 function Overview (){
-    const { t } = useTranslation(["common"]);
+    const { t } = useTranslation(["common",""]);
     const [isShown, setIsShown] = useState(false);
 
     const handleClick = event => {
@@ -19,7 +19,7 @@ function Overview (){
                     <header className="major">
                         <span className="date">{t("overview:date")}</span>
                         <h2>{t("overview:welcome")}</h2>
-                        <p> {t("story:storyText")}</p>
+                        <p> {t("overview:introText")}</p>
                     </header>
                     <a href="#" className="image main"><img src="images/pic01.jpg" alt="" /></a>
                     <ul className="actions special">
