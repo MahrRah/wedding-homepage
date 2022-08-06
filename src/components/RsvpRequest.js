@@ -13,10 +13,12 @@ class RsvpRequest extends Component {
             dinner: '',
             allowedBrunch: false,
             brunch: false,
-            plusOne: undefined,
+            plusOne: null,
             hasPlusOne: false,
+            bringsPlusOne: "",
             children: undefined,
             hasChildren: false,
+            bringsChildren: false,
             message: ""
         };
         localStorage.setItem('submitted', false);
@@ -55,32 +57,35 @@ class RsvpRequest extends Component {
             if (res.status === 200) {
                 let body = await res.json();
                 this.isSubmitted();
-                console.log(body);
             } else {
                 console.log(res.status);
             }
         } catch (err) {
-            console.log(err);
+            console.log("Endpoint cant be reached");
         }
     };
+
     changeStateAPI(data) {
         this.setState({ lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.dinner })
-        console.log(data);
-        
-        if (data.plusOne.length !== 0) {
-            this.setState({ hasPlusOne: true, plusOne: data.plusOne });
+
+        if (data.plusOne.length > 0) {
+            this.setState({ hasPlusOne: true, bringsPlusOne: "yes", plusOne: data.plusOne });
         }
-        if (!data.child.length !== 0) {
-            this.setState({ hasChildren: true, children: data.child })
+        if (data.child.length > 0) {
+            this.setState({ hasChildren: true, bringsChildren: true, children: data.child })
         }
-        console.log(this.state);
+        console.log(`state after load ${JSON.stringify(this.state)}`);
     }
+
     onChange(e) {
+        console.log(e)
         this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
     }
+    
     isSubmitted = () => {
         this.setState({ submitted: true })
     }
+
     render() {
         return (
             <><div id="main">
@@ -124,27 +129,28 @@ class RsvpRequest extends Component {
                                 {this.state.hasPlusOne &&
                                     <>
                                         <div className="col-4 col-12-small">
-                                            <input type="radio" id="demo-priority-low" name="demo-priority" checked />
-                                            <label for="demo-priority-low">with Plus One</label>
+                                            <input type="radio" id="bringsPlusOne-true" name="bringsPlusOne" value="yes" checked={this.state.bringsPlusOne  ==="yes"} onChange={this.onChange}/>
+                                            <label for="bringsPlusOne-true">with Plus One</label>
                                         </div>
                                         <div className="col-4 col-12-small">
-                                            <input type="radio" id="demo-priority-normal" name="demo-priority" />
-                                            <label for="demo-priority-normal">without Plus One</label>
+                                            <input type="radio" id="bringsPlusOne-false" name="bringsPlusOne" value="no" checked={this.state.bringsPlusOne  ==="no"} onChange={this.onChange}/>
+                                            <label for="bringsPlusOne-false">without Plus One</label>
                                         </div>
-                                        <div className="col-6 col-12-xsmall">
+                                        {this.state.bringsPlusOne==="yes" &&
+                                        <><div className="col-6 col-12-xsmall">
                                             <input type="text" name="firstname-plusone" id="firstnameplusone" placeholder="First Name Plus One" value={this.state.plusOne[0].name} onChange={this.onChange} />
                                         </div><div className="col-6 col-12-xsmall">
-                                            <input type="text" name="lastnameplusone" id="lastnameplusone" placeholder="Last Name Plus One" value={this.state.lastname[0].name} onChange={this.onChange} />
-                                        </div>
-                                        <div className="col-12">
-                                            <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
-                                                <option value="0">- Meal options -</option>
-                                                <option value="1">Vegarian</option>
-                                                <option value="2">Vegan</option>
-                                                <option value="3">Gluten free</option>
-                                                <option value="4">No Dietary restirctions</option>
-                                            </select>
-                                        </div>
+                                                <input type="text" name="lastnameplusone" id="lastnameplusone" placeholder="Last Name Plus One" value={this.state.plusOne[0].lastname} onChange={this.onChange} />
+                                            </div><div className="col-12">
+                                                <select name="dinner" id="dinner" value={this.state.plusOne.dinner} onChange={this.onChange}>
+                                                    <option value="0">- Meal options -</option>
+                                                    <option value="1">Vegarian</option>
+                                                    <option value="2">Vegan</option>
+                                                    <option value="3">Gluten free</option>
+                                                    <option value="4">No Dietary restirctions</option>
+                                                </select>
+                                            </div></>
+                                        }
                                         <hr />
                                     </>
                                 }
@@ -159,12 +165,16 @@ class RsvpRequest extends Component {
                                             <label for="demo-priority-normal">without Children</label>
                                         </div>
                                         <div className="col-6 col-12-xsmall">
-                                            <input type="text" name="firstname-plusone" id="firstnameplusone" placeholder="First Name Plus One" value={this.state.plusOne[0].name} onChange={this.onChange} />
-                                        </div><div className="col-6 col-12-xsmall">
-                                            <input type="text" name="lastnameplusone" id="lastnameplusone" placeholder="Last Name Plus One" value={this.state.lastname[0].name} onChange={this.onChange} />
+                                            <input type="text" name="firstnamechild" id="firstnamechild" placeholder="First Name Child" value={this.state.children[0].name} onChange={this.onChange} />
+                                        </div>
+                                        <div className="col-6 col-12-xsmall">
+                                            <input type="text" name="lastnamechild" id="lastnamechild" placeholder="Last Name Child" value={this.state.children[0].lastname} onChange={this.onChange} />
+                                        </div>
+                                        <div className="col-6 col-12-xsmall">
+                                            <input type="text" name="agechild" id="agechild" placeholder="Age" value={this.state.children[0].age} onChange={this.onChange} />
                                         </div>
                                         <div className="col-12">
-                                            <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                            <select name="dinner" id="dinner" value={this.state.children[0].dinner} onChange={this.onChange}>
                                                 <option value="0">- Meal options -</option>
                                                 <option value="1">Vegarian</option>
                                                 <option value="2">Vegan</option>
@@ -174,7 +184,7 @@ class RsvpRequest extends Component {
                                         </div>
                                     </>
                                 }
-                             
+
                                 {this.state.allowedBrunch &&
                                     <div>
                                         <h5>Brunch on Sunday</h5>
