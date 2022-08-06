@@ -10,6 +10,7 @@ class RsvpRequest extends Component {
             submitted: false,
             firstname: '',
             lastname: '',
+            attending: false,
             dinner: '',
             allowedBrunch: false,
             brunch: false,
@@ -109,6 +110,14 @@ class RsvpRequest extends Component {
             </div><div id="main">
                     {this.state.submitted &&
                         <form method="post" action="#">
+                            <div className="col-4 col-12-small">
+                                            <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending  ==="yes"} onChange={this.onChange}/>
+                                            <label for="bringsPlusOne-true">Attending</label>
+                                        </div>
+                                        <div className="col-4 col-12-small">
+                                            <input type="radio" id="attending-false" name="attending" value="no" checked={this.state.attending  ==="no"} onChange={this.onChange}/>
+                                            <label for="attending-false">Not attending</label>
+                                        </div>
                             <div className="row gtr-uniform">
                                 <div className="col-6 col-12-xsmall">
                                     <input type="text" name="firstname" id="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.onChange} />

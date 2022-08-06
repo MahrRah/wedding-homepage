@@ -2,7 +2,7 @@ import csv
 import uuid
 import copy
 
-guest_template = { "_id":"","rsvpCode":"","name":"","lastname":"","food":None, "plusOne":[], "child":[]} 
+guest_template = { "_id":"","rsvpCode":"","name":"","lastname":"","attending":"","food":None, "plusOne":[], "child":[]} 
 plusOne_template = {"name":"","lastname":"","food":None}       
 child_template = {"name":"","lastname":"","food":None, "age":0}     
 
