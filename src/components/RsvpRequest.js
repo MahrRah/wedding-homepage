@@ -65,11 +65,13 @@ class RsvpRequest extends Component {
     };
     changeStateAPI(data) {
         this.setState({ lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.dinner })
+        console.log(data);
+        
         if (data.plusOne.length !== 0) {
             this.setState({ hasPlusOne: true, plusOne: data.plusOne });
         }
-        if (!data.children.length !== 0) {
-            this.setState({ hasChildren: true, children: data.children })
+        if (!data.child.length !== 0) {
+            this.setState({ hasChildren: true, children: data.child })
         }
         console.log(this.state);
     }

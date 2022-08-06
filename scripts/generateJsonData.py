@@ -24,7 +24,7 @@ with open('../data/guestlist.csv', newline='') as csvfile:
             plusOne = copy.deepcopy(plusOne_template)
             plusOne["name"] = row[2].split(" ")[0] if row[2]!="" else "" 
             plusOne["lastname"] = row[2].split(" ")[1] if row[2]!="" else "" 
-            guest["plusOne"] = plusOne
+            guest["plusOne"].append(plusOne)
 
         for  i in range(int(row[3])):
              guest["child"].append(copy.deepcopy(child_template))
