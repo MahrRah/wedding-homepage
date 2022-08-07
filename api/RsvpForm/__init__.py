@@ -27,8 +27,8 @@ def update_rsvp(id, data):
     old_rsvp = get_rsvp(id)
     result = merge(old_rsvp, data)
     logging.info(f'Updating with new value: {result}')
-    tt = db_client.guest.update_one({"rsvpCode":id}, {'$set':result})
-    logging.info(f'Usdfsdf: {tt}')
+    # tt = db_client.guest.update_one({"rsvpCode":id}, {'$set':result})
+    # logging.info(f'Usdfsdf: {tt}')
 
 
 

@@ -41,7 +41,7 @@ class Navigation extends Component {
 
 export default () => {
   const location = useLocation();
-  const { t } = useTranslation(["story", "common", "overview"]);
+  const { t } = useTranslation(["common"]);
   return (
       <Navigation t={t} location={location} />
   )

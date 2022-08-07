@@ -8,10 +8,10 @@ class RsvpRequest extends Component {
         this.state = {
             rsvpCode: "",
             submitted: false,
-            firstname: '',
-            lastname: '',
+            firstname: "",
+            lastname: "",
             attending: "yes",
-            dinner: '',
+            dinner: "",
             allowedBrunch: false,
             brunch: false,
             plusOne: { name: "", lastname: "", food: "" },
@@ -28,7 +28,9 @@ class RsvpRequest extends Component {
         this.isSubmitted = this.isSubmitted.bind(this);
         this.changeStateAPI = this.changeStateAPI.bind(this);
         this.onChangePlusOne = this.onChangePlusOne.bind(this);
+        this.updateRsvp = this.updateRsvp.bind(this);
     }
+
 
     handleSubmitCode = async (e) => {
         e.preventDefault();
@@ -68,7 +70,7 @@ class RsvpRequest extends Component {
     };
 
     changeStateAPI(data) {
-        this.setState({ lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.food })
+        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.food })
 
         if (data.plusOne.length > 0) {
 
@@ -95,6 +97,58 @@ class RsvpRequest extends Component {
         this.setState({ submitted: true })
     }
 
+    updateRsvp = async (e) => {
+        e.preventDefault();
+        console.log(this.state.rsvpCode);
+        try {
+            let updateBody = {
+                "food": this.state.dinner,
+                "plusOne": [
+                ],
+                "child": []
+            }
+
+            if (this.state.hasPlusOne && this.state.bringsPlusOne) {
+                let plusOneBody = {
+                    "name": this.state.plusOne.name,
+                    "lastname": this.state.plusOne.lastname,
+                    "food": this.state.plusOne.dinner
+                }
+                updateBody.plusOne.push(plusOneBody)
+            }
+
+            // if (hasChildren && bringsChildren){
+
+            //     // for (let i = 0; i < his.state.children; i++){
+            //     //     bodyTmp.plusOne.name = this.state.plusOne.name
+            //     //     bodyTmp.plusOne.lastname = this.state.plusOne.lastname
+            //     //     bodyTmp.plusOne.food = this.state.plusOne.dinner
+            //     // }
+            // }
+
+            const res = await fetch(`http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    // // "Access-Control-Allow-Credentials": true,
+                    // 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    // 'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updateBody)
+            });
+            if (res.status === 200) {
+                let body = await res.json();
+                // this.isSubmitted();
+            } else {
+                console.log(res.status);
+            }
+        } catch (err) {
+            console.log(`Endpoint cant be reached: ${err}`);
+        }
+    }
+
     render() {
         return (
             <div id="main">
@@ -116,7 +170,7 @@ class RsvpRequest extends Component {
                         </ul>
                     </form>}
                 {this.state.submitted &&
-                    <form method="post" action="#">
+                    <form method="post" onSubmit={this.updateRsvp}>
                         <div className="col-4 col-12-small">
                             <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
                             <label htmlFor="attending-true">Attending</label>
@@ -127,10 +181,10 @@ class RsvpRequest extends Component {
                         </div>
                         <div className="row gtr-uniform">
                             <div className="col-6 col-12-xsmall">
-                                <input readonly type="text" name="firstname" id="firstname" value={this.state.firstname} />
+                                <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input readonly type="text" name="lastname" id="lastname" value={this.state.lastname} />
+                                <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
                             </div>
                             <div className="col-12">
                                 <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
