@@ -24,11 +24,11 @@ class Navigation extends Component {
     return (
       <nav id="nav">
         <ul className="links">
-          <li className={this.changeLocation("/")}> <Link to="/" >{this.props.t('overview')}</Link></li>
-          <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('details')}</Link></li>
-          <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('location')}</Link></li>
-          <li className={this.changeLocation("/rsvp")}> <Link to="/rsvp">{this.props.t('rsvp')}</Link></li>
-          <li className={this.changeLocation("/gallery")}> <Link to="/gallery">{this.props.t('gallery')}</Link></li>
+          <li className={this.changeLocation("/")}> <Link to="/" >{this.props.t('common:overview')}</Link></li>
+          <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('common:details')}</Link></li>
+          <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('common:location')}</Link></li>
+          <li className={this.changeLocation("/rsvp")}> <Link to="/rsvp">{this.props.t('common:rsvp')}</Link></li>
+          <li className={this.changeLocation("/gallery")}> <Link to="/gallery">{this.props.t('common:gallery')}</Link></li>
         </ul>
         <ul className="icons">
           <li><a onClick={() => this.changeLanguage('en')}><span className="label">EN</span></a></li>
