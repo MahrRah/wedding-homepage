@@ -3,8 +3,8 @@ import uuid
 import copy
 
 guest_template = { "_id":"","rsvpCode":"","name":"","lastname":"","attending":"","food":None, "plusOne":[], "child":[]} 
-plusOne_template = {"name":"","lastname":"","food":None}       
-child_template = {"name":"","lastname":"","food":None, "age":0}     
+plusOne_template = {"name":"","lastname":"","food":None,"attending":"" }       
+child_template = {"name":"","lastname":"","food":None, "age":0,"attending":""}     
 
 rsvp_codes = []
 guest_list = []

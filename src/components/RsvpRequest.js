@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../assets/css/main.css'
 import { withTranslation } from 'react-i18next';
+import RsvpSubmission from './RsvpSubmission';
 
 class RsvpRequest extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class RsvpRequest extends Component {
         this.state = {
             rsvpCode: "",
             submitted: false,
+            updated: false,
             firstname: "",
             lastname: "",
             attending: "yes",
@@ -29,13 +31,14 @@ class RsvpRequest extends Component {
         this.changeStateAPI = this.changeStateAPI.bind(this);
         this.onChangePlusOne = this.onChangePlusOne.bind(this);
         this.updateRsvp = this.updateRsvp.bind(this);
+        this.isUpdated = this.isUpdated.bind(this);
     }
 
 
     handleSubmitCode = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`/api/rsvp/${this.state.rsvpCode}`, {
+            const res = await fetch(`http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
                 method: "GET",
             });
             if (res.status === 200) {
@@ -48,24 +51,6 @@ class RsvpRequest extends Component {
             }
         } catch (err) {
             console.log(err);
-        }
-    };
-
-    handleSubmitChanges = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await fetch(`/api/rsvp/${this.state.rsvpCode}`, {
-                method: "POST",
-                body: {}
-            });
-            if (res.status === 200) {
-                let body = await res.json();
-                this.isSubmitted();
-            } else {
-                console.log(res.status);
-            }
-        } catch (err) {
-            console.log("Endpoint cant be reached");
         }
     };
 
@@ -95,6 +80,9 @@ class RsvpRequest extends Component {
     }
     isSubmitted = () => {
         this.setState({ submitted: true })
+    }
+    isUpdated = () => {
+        this.setState({ updated: true })
     }
 
     updateRsvp = async (e) => {
@@ -128,21 +116,18 @@ class RsvpRequest extends Component {
 
             const res = await fetch(`http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
                 method: "POST",
-                mode: "no-cors",
+                // mode: "no-cors",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
-                    // // "Access-Control-Allow-Credentials": true,
-                    // 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                    // 'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(updateBody)
             });
+            console.log(res);
             if (res.status === 200) {
-                let body = await res.json();
-                // this.isSubmitted();
+                this.isUpdated();
             } else {
-                console.log(res.status);
+                console.log(`this state ${res.status}`);
             }
         } catch (err) {
             console.log(`Endpoint cant be reached: ${err}`);
@@ -156,7 +141,7 @@ class RsvpRequest extends Component {
                     <h2>RSVP</h2>
                     <p>asdsd</p>
                 </div>
-                {!this.state.submitted &&
+                {!this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.handleSubmitCode}>
                         <div className="fields">
                             <div className="field">
@@ -169,7 +154,7 @@ class RsvpRequest extends Component {
                             <li><input type="submit" value={this.props.t('send')} /></li>
                         </ul>
                     </form>}
-                {this.state.submitted &&
+                {this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.updateRsvp}>
                         <div className="col-4 col-12-small">
                             <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
@@ -267,6 +252,9 @@ class RsvpRequest extends Component {
                             </ul>
                         </div>
                     </form>
+                }
+                {this.state.submitted && this.state.updated &&
+                    <RsvpSubmission />
                 }
             </div>);
 
