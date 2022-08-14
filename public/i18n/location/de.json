@@ -1,3 +1,15 @@
 {
-    "welcome": "Wir heiraten"
+    "titel": "Ort",
+    "venue":"Festlokal",
+    "venueTest":"Wir haben uns am Rhein verlobt und nun heireten wir auch da, im der wunderschönen Rhyschüür vom Gasthaus Schupfen. Anfahre mit Auto ist möglich bei bedarf sogar bis zur Schüür, welches am Ufersteht. Es hat aber begränzte anzahl Parkplätze",
+    "map":"Karte",
+    "accomodation":"Unterkunft",
+    "mainHotel":"Unser Hotel",
+    "otherHotels":"Ander Hotels in der Nähe",
+    "hotel1":"adasd",
+    "city":"Ort",
+    "distancVenue":"Distanze zum Festlokal",
+    "distanceHotel":"Distanze zu unserem Hotel",
+    "price":"Preis"
+
 }

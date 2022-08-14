@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../assets/css/main.css'
+import '../../assets/css/main.css'
 import { withTranslation } from 'react-i18next';
 import RsvpSubmission from './RsvpSubmission';
 
@@ -13,10 +13,10 @@ class RsvpRequest extends Component {
             firstname: "",
             lastname: "",
             attending: "yes",
-            dinner: "",
+            dinner: "0",
             allowedBrunch: false,
             brunch: false,
-            plusOne: { name: "", lastname: "", food: "" },
+            plusOne: { name: "", lastname: "", food: "0" },
             hasPlusOne: false,
             bringsPlusOne: "",
             children: undefined,

@@ -6,7 +6,7 @@
 
 (function($) {
 
-	var	$window = $(window),
+	let	$window = $(window),
 		$body = $('body'),
 		$wrapper = $('#wrapper'),
 		$header = $('#header'),
@@ -51,7 +51,7 @@
 
 		$this.each(function() {
 
-			var $t = $(this),
+			let $t = $(this),
 				$bg = $('<div class="bg"></div>').appendTo($t),
 				on, off;
 
@@ -197,7 +197,7 @@
 						.css('transition', 'none');
 
 	// Intro.
-		var $intro = $('#intro');
+		let $intro = $('#intro');
 
 		if ($intro.length > 0) {
 
@@ -205,7 +205,7 @@
 				if (browser.name == 'ie') {
 					$window.on('resize.ie-intro-fix', function() {
 
-						var h = $intro.height();
+						let h = $intro.height();
 
 						if (h > $window.height())
 							$intro.css('height', 'auto');

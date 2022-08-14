@@ -1,3 +1,13 @@
 {
-    "welcome": "We are marring"
+    "titel": "Locations",
+    "venue":"Venue",
+    "venueTest":"LOREM Ipsum",
+    "map":"Map",
+    "accomodation":"Accomodation",
+    "mainHotel":"Main Hotel",
+    "otherHotels":"Other Hotels close by ",
+    "hotel1":"adasd",
+    "city":"city",
+    "distanceVenue":"Disance to the venue",
+    "distanceHotel":"Disance to our hotel"
 }

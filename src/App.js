@@ -1,5 +1,4 @@
-import React from 'react';
-import { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,20 +7,32 @@ import {
 // COMPONENTS
 import Footer from './components/Footer.js'
 import Navigation from './components/Navigation.js'
-import Details from './components/Details.js'
+import Details from './components/details/Details.js'
 import Copyright from './components/Copyright.js'
 import Logo from './components/Logo.js'
-import Location from './components/Location.js'
+import Location from './components/location/Location.js'
 import Intro from './components/Intro.js'
-import Overview from './components/Overview.js'
-import Gallery from './components/Gallery.js'
-
+import Overview from './components/overview/Overview.js'
+import Gallery from './components/gallery/Gallery.js'
+import Contacts from './components/contacts/Contacts.js'
+import RsvpRequest from './components/rsvp/RsvpRequest.js';
 import { useTranslation } from "react-i18next";
-import RsvpRequest from './components/RsvpRequest.js';
+
 
 function App() {
+
   const { t } = useTranslation(["story", "common", "overview"]);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "assets/js/main.js";
+    script.async = true;
+    script.type = "text/jsx"
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
   return (
     <Suspense fallback={null}>
       <div className="is-preload">
@@ -36,6 +47,7 @@ function App() {
               <Route path="/location" element={<Location />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
+              <Route path="/contacts" element={<Contacts />} />
             </Routes>
           </Router>
           <Footer />
