@@ -41,7 +41,7 @@ function Overview() {
                     </dd>
                     <dt>Eltern</dt>
                     <dd>
-                    <p>Meldet euch bei unseren Eltern bei Fragen zu: Transport fragen, Hilfe bei Anlieferung</p>
+                        <p>Meldet euch bei unseren Eltern bei Fragen zu: Transport fragen, Hilfe bei Anlieferung</p>
                     </dd>
                     <dt>Brautpaar</dt>
                     <dd>

@@ -18,21 +18,20 @@ class Navigation extends Component {
 
   }
 
-  useEffect= () => {
+  useEffect = () => {
     const script = document.createElement('script');
     script.src = "../assets/js/main.js";
     script.async = true;
-    script.type ="text/jsx"
+    script.type = "text/jsx"
     document.body.appendChild(script);
-  return () => {
+    return () => {
       document.body.removeChild(script);
     }
   }
+
   changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   }
-
-
 
   render() {
     return (

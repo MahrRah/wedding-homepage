@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import '../assets/css/main.css'
 
 function Logo() {
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
+
     const controlLogo = () => {
-        if (window.scrollY < 300) {
-            setShow(false)
-        } else {
+        if (window.scrollY > 300) {
             setShow(true)
+        } else {
+            setShow(false)
         }
     }
 
@@ -18,7 +19,7 @@ function Logo() {
         }
     }, [])
     return (
-        <header id="header">
+        <header id="header" className={`${show && 'hidden'}`}>
             <a href="/" className="logo">The future Grosjeans</a>
         </header>
 

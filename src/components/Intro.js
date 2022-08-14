@@ -3,7 +3,8 @@ import '../assets/css/main.css'
 
 function Intro() {
     const [show, setShow] = useState(true)
-    const controlIntro= () => {
+    
+    const controlIntro = () => {
         if (window.scrollY < 400) {
             setShow(false)
         } else {

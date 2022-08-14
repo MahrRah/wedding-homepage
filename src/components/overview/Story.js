@@ -11,7 +11,7 @@ function Details() {
     <div id="main">
 
       <section className="posts">
-      <article>
+        <article>
           <header>
             <span className="date">TBD TBD, 1996</span>
             <h2><a href="#">Small Mahra</a></h2>
@@ -52,7 +52,7 @@ function Details() {
           </header>
           <a href="#" className="image fit"><img src={require("../../images/savethedate.jpeg")} alt="" /></a>
         </article>
-        
+
       </section>
     </div>
   );
