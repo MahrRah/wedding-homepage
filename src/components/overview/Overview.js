@@ -4,14 +4,18 @@ import { useTranslation } from "react-i18next";
 import '../../assets/css/main.css'
 
 import Story from './Story.js'
+import CountdownTimer from '../countdown/CountdownTimer.js'
 function Overview() {
     const { t } = useTranslation(["common", ""]);
     const [isShown, setIsShown] = useState(false);
 
-    const handleClick = event => {
+    const handleClick = () => {
         setIsShown(current => !current);
 
     };
+
+    // const target = new Date("August 14, 2002 16:50:00").getTime()
+    const target = new Date("September 30, 2023 00:00:00").getTime()
 
     return (
         <div id="main">
@@ -28,6 +32,10 @@ function Overview() {
             </article>
             {isShown &&
                 <Story t={t} />}
+            <section className="post featured">
+                <h3>Countdown to the big day</h3>
+                <CountdownTimer targetDate={target} />
+                </section>
             <section className="post">
                 <h2>Infos</h2>
                 <p>Hier werden wir euch so gut es geht auf dem laufenden halten über den zeitplan, Bilder oder mehr dinge die ihr wissen müsst.</p>

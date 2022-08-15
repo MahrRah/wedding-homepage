@@ -6,9 +6,7 @@ import i18n from '../../i18n.js';
 function Contact() {
   const { t } = useTranslation(["common"]);
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  }
+
   return (
     <div id="main">
       <section className="post">
