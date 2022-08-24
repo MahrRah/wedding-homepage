@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../assets/css/main.css'
 import { withTranslation } from 'react-i18next';
 import RsvpSubmission from './RsvpSubmission';
+import { t } from 'i18next';
 
 class RsvpRequest extends Component {
     constructor(props) {
@@ -138,31 +139,32 @@ class RsvpRequest extends Component {
         return (
             <div id="main">
                 <div>
-                    <h2>RSVP</h2>
-                    <p>asdsd</p>
+                    <h2>{t("rsvp:rsvpTitel")}</h2>
+                    <p>{t("rsvp:rsvpText")}</p>
                 </div>
                 {!this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.handleSubmitCode}>
                         <div className="fields">
                             <div className="field">
-                                <label htmlFor="rsvpCode">{this.props.t("common:rsvp-code")}</label>
+                                <label htmlFor="rsvpCode">{t("rsvp:rsvpCode")}</label>
                                 <input type="text" name="rsvpCode" id="rsvpCode" placeholder={this.state.rsvpCode}
                                     onChange={this.onChange} />
                             </div>
                         </div>
                         <ul className="actions">
-                            <li><input type="submit" value={this.props.t('send')} /></li>
+                            <li><input type="submit" value={t('send')} /></li>
                         </ul>
                     </form>}
-                {this.state.submitted && !this.state.updated &&
+                {/* {this.state.submitted && !this.state.updated && */}
+                {true &&
                     <form method="post" onSubmit={this.updateRsvp}>
                         <div className="col-4 col-12-small">
                             <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
-                            <label htmlFor="attending-true">Attending</label>
+                            <label htmlFor="attending-true">{t("rsvp:attending")}</label>
                         </div>
                         <div className="col-4 col-12-small">
                             <input type="radio" id="attending-false" name="attending" value="no" checked={this.state.attending == "no"} onChange={this.onChange} />
-                            <label htmlFor="attending-false">Not attending</label>
+                            <label htmlFor="attending-false">{t("rsvp:notAttending")}</label>
                         </div>
                         <div className="row gtr-uniform">
                             <div className="col-6 col-12-xsmall">
@@ -173,26 +175,26 @@ class RsvpRequest extends Component {
                             </div>
                             <div className="col-12">
                                 <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
-                                    <option value="0">- Meal options -</option>
-                                    <option value="1">Vegarian</option>
-                                    <option value="2">Vegan</option>
-                                    <option value="3">Gluten free</option>
-                                    <option value="4">No Dietary restirctions</option>
+                                    <option value="0">{t("rsvp:mealOptions")}</option>
+                                    <option value="1">{t("rsvp:noRestictions")}</option>
+                                    <option value="2">{t("rsvp:vegetarian")}</option>
+                                    <option value="3">{t("rsvp:glutenfree")}</option>
                                 </select>
                             </div>
                         </div>
                         <hr />
 
-                        {this.state.hasPlusOne &&
+                        {/* {this.state.hasPlusOne && */}
+                        {true &&
 
                             <><div className="row gtr-uniform">
                                 <div className="col-6 col-12-small">
                                     <input type="radio" id="bringsPlusOne-true" name="bringsPlusOne" value="yes" checked={this.state.bringsPlusOne === "yes"} onChange={this.onChange} />
-                                    <label htmlFor="bringsPlusOne-true">with Plus One</label>
+                                    <label htmlFor="bringsPlusOne-true">{t("rsvp:withPlusOne")}</label>
                                 </div>
                                 <div className="col-6 col-12-small">
                                     <input type="radio" id="bringsPlusOne-false" name="bringsPlusOne" value="no" checked={this.state.bringsPlusOne === "no"} onChange={this.onChange} />
-                                    <label htmlFor="bringsPlusOne-false">without Plus One</label>
+                                    <label htmlFor="bringsPlusOne-false">{t("rsvp:withoutPlusOne")}</label>
                                 </div>
                                 {this.state.bringsPlusOne === "yes" &&
                                     <>
@@ -204,11 +206,10 @@ class RsvpRequest extends Component {
                                         </div>
                                         <div className="col-12">
                                             <select name="dinner" id="food" value={this.state.plusOne.dinner} onChange={this.onChangePlusOne}>
-                                                <option value="0">- Meal options -</option>
-                                                <option value="1">Vegarian</option>
-                                                <option value="2">Vegan</option>
-                                                <option value="3">Gluten free</option>
-                                                <option value="4">No Dietary restirctions</option>
+                                                <option value="0">{t("rsvp:mealOptions")}</option>
+                                                <option value="1">{t("rsvp:noRestictions")}</option>
+                                                <option value="2">{t("rsvp:vegetarian")}</option>
+                                                <option value="3">{t("rsvp:glutenfree")}</option>
                                             </select>
                                         </div></>}
                             </div><hr /></>
@@ -245,10 +246,11 @@ class RsvpRequest extends Component {
                         <div className="col-12">
                             <textarea name="demo-message" id="demo-message" placeholder="Additional Notes" rows="3"></textarea>
                         </div>
+                        <br/>
                         <div className="col-12">
                             <ul className="actions">
-                                <li><input type="submit" value="Send Message" className="primary" /></li>
-                                <li><input type="reset" value="Reset" /></li>
+                                <li><input type="submit" value={t("common:sendMessage")} className="primary" /></li>
+                                <li><input type="reset" value={t("common:reset")} /></li>
                             </ul>
                         </div>
                     </form>

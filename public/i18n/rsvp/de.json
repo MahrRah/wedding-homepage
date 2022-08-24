@@ -1,0 +1,13 @@
+{
+    "rsvpTitel": "Anmeldung",
+    "rsvpText": "Wir würden euch darum bitten uns spätestens bis zum 30. April 2023/31. Mai 2023 wissen zu lassen ob Ihr bei unserer Hochzeit dabei sein werdet. Gebt dafür einfach Euren personalisierten RSVP-Code, welchen Ihr in Eurer Einladung erhalten habt, unten ein und füllt das Formular entsprechend aus.",
+    "rsvpCode": "Persönlicher RSVP-Code",
+    "attending": "Ich komme",
+    "notAttending": "Ich komme nicht",
+    "mealOptions": "- Menü Optionen -",
+    "noRestictions": "Alles",
+    "vegetarian": "Vegetarisch",
+    "glutenfree": "Glutenfrei",
+    "withPlusOne": "mit Angehängsel",
+    "withoutPlusOne": "ohne Angehängsel"
+}
