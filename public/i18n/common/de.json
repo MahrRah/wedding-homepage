@@ -13,5 +13,10 @@
     "message":"Nachricht",
     "address":"Adresse",
     "phone":"Telefonnummer",
-    "sozialNetworks":"Soziale Netzwerke"
+    "sozialNetworks":"Soziale Netzwerke",
+    "days":"Tage",
+    "hours":"Stunden",
+    "minutes":"Minuten",
+    "seconds":"Sekunden"
+    
 }

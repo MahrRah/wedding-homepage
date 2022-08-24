@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
 import '../../assets/css/main.css'
 
 import Story from './Story.js'
 import CountdownTimer from '../countdown/CountdownTimer.js'
+
+
 function Overview() {
-    const { t } = useTranslation(["common", ""]);
+    const { t } = useTranslation(["common", "overview"]);
     const [isShown, setIsShown] = useState(false);
 
     const handleClick = () => {
@@ -14,8 +15,7 @@ function Overview() {
 
     };
 
-    // const target = new Date("August 14, 2002 16:50:00").getTime()
-    const target = new Date("September 30, 2023 00:00:00").getTime()
+    const target = new Date("September 30, 2020 00:00:00").getTime()
 
     return (
         <div id="main">
@@ -25,7 +25,7 @@ function Overview() {
                     <h2>{t("overview:welcome")}</h2>
                     <p> {t("overview:introText")}</p>
                 </header>
-                <a href="#" className="image main"><img src="../images/pic01.jpg" alt="" /></a>
+                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" alt="" /></a> */}
                 <ul className="actions special">
                     <li><a className="button large" onClick={handleClick}>{t("story:ourStory")}</a></li>
                 </ul>
@@ -33,16 +33,13 @@ function Overview() {
             {isShown &&
                 <Story t={t} />}
             <section className="post featured">
-                <h3>Countdown to the big day</h3>
-                <CountdownTimer targetDate={target} />
-                </section>
+                <h3>{t("overview:countdownTitel")}</h3>
+                <CountdownTimer targetDate={target} targetMessage={t("overview:countdownFinalMessage")} />
+            </section>
             <section className="post">
-                <h2>Infos</h2>
-                <p>Hier werden wir euch so gut es geht auf dem laufenden halten über den zeitplan, Bilder oder mehr dinge die ihr wissen müsst.</p>
-                <hr />
-                <h2>Kontakte</h2>
-                <p>Wir bitten euch am Tag der hochzeit bei fragen auch nur noch an die Trauzeugen oder unsere Eltern zu wenden. Die Kontakt personen für fragen am tag vor und and er hochzeit sind unten gelisted</p>
-                <dl>
+                <h2>{t("overview:contact")}</h2>
+                <p>{t("overview:contactText")}</p>
+                {/* <dl>
                     <dt>Trauzeugen</dt>
                     <dd>
                         <p>Meldet euch bei unseren Trauzeugen bei Fragen zu: Program, Abendprogram, Gastgeschenk oder Vendor notfällen</p>
@@ -56,7 +53,7 @@ function Overview() {
                         <p>Meldet euch nicht beim Brautpaar!</p>
                     </dd>
                 </dl>
-                <hr />
+                <hr /> */}
             </section>
         </div>
     );

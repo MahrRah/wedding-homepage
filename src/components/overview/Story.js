@@ -4,7 +4,7 @@ import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
 
 
-function Details() {
+function Story() {
   const { t } = useTranslation(["common"]);
 
   return (
@@ -58,4 +58,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default Story;

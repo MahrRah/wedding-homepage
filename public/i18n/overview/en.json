@@ -2,5 +2,9 @@
     "date": "30th September 2023", 
     "welcome": "We are marrying",
     "ourStory": "Our Story",
-    "introText":"Welcome to our wedding homepage! here you can find all the important information for our big day. We are very excited to share this experience with you and are looking forward to seeing you soon at the beautiful river Rhine."
+    "introText":"Welcome to our wedding homepage! Here you can find all the important information for our big day. We are very excited to share this experience with you and are looking forward to seeing you soon at the beautiful river Rhine.",
+    "contact":"Contact",
+    "contactText":"If you have any questions regarding the wedding, which this homepage cannot answer, please do not hesitate to contact us, the best man or the maid of honor directly.\n\n We would politely ask you to not contact us directly on the day of our wedding. Our best man and the maid of honor however will be happy to help you out even then.",
+    "countdownTitel":"Countdown 'till the big day",
+    "countdownFinalMessage":"Today is the day!"
 }

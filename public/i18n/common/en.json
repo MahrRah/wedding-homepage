@@ -13,6 +13,9 @@
     "message":"Message",
     "address":"Adress",
     "phone":"Phone number",
-    "sozialNetworks":"Social networks"
-
+    "sozialNetworks":"Social networks",
+    "days":"days",
+    "hours":"hours",
+    "minutes":"minutes",
+    "seconds":"seconds"
 }

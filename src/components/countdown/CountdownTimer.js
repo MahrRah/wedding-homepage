@@ -1,17 +1,18 @@
 import React from 'react';
 import { useCountdown } from './useCountdown';
+import { useTranslation } from "react-i18next";
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate, targetMessage }) => {
 
-
+  const { t } = useTranslation(["common"]);
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   const ExpiredNotice = () => {
     return (
-   
-        <header className="major">
-          <h1 >Today is the day!</h1>
-        </header>
+
+      <header className="major">
+        <h1 >{targetMessage}</h1>
+      </header>
 
     );
   };
@@ -29,13 +30,13 @@ const CountdownTimer = ({ targetDate }) => {
   const ShowCounter = ({ days, hours, minutes, seconds }) => {
     return (
       <div className="show-counter">
-          <DateTimeDisplay value={days} type={'Days'} isDanger={days==0} />
-          <p>:</p>
-          <DateTimeDisplay value={hours} type={'Hours'} isDanger={hours==0} />
-          <p>:</p>
-          <DateTimeDisplay value={minutes} type={'Mins'} isDanger={minutes==0} />
-          <p>:</p>
-          <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={seconds==0 && minutes==0} />
+        <DateTimeDisplay value={days} type={t("common:days")} isDanger={days == 0} />
+        <p>:</p>
+        <DateTimeDisplay value={hours} type={t("common:hours")} isDanger={hours == 0} />
+        <p>:</p>
+        <DateTimeDisplay value={minutes} type={t("common:minutes")} isDanger={minutes == 0} />
+        <p>:</p>
+        <DateTimeDisplay value={seconds} type={t("common:seconds")} isDanger={seconds == 0 && minutes == 0} />
       </div>
     );
   };
