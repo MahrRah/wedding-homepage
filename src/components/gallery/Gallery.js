@@ -2,16 +2,17 @@ import React from 'react';
 import '../../assets/css/main.css'
 
 
+import { useTranslation } from "react-i18next";
+
 
 function Gallery() {
-
+    const { t } = useTranslation(["gallery"]);
 
     return (
         <div id="main">
             <section className="post">
-                <h2>Image</h2>
-                <span>Sneak Peak of some of the pictures. For more follow the link <a>here</a></span>
-                <h3>Fit</h3>
+                <h2>{t("gallery:galleryTitel")}</h2>
+                <span>{t("gallery:galleryText")} <a>{t("gallery:hereLink")}</a></span>
                 <span className="image fit"><img src="images/pic01.jpg" alt="" /></span>
                 <div className="box alt">
                     <div className="row gtr-50 gtr-uniform">

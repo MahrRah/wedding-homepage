@@ -16,7 +16,7 @@ i18n
 		fallbackLng: "en",
 		// disabled in production
 		debug: false,
-		ns: ["common", "story", "details", "location", "overview", "rsvp"],
+		ns: ["common", "story", "details", "location", "overview", "rsvp", "gallery"],
 		interpolation: {
 			espaceValue: false,
 			formatSeparator: ",",
