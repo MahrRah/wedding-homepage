@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 
 
 function RsvpSubmission() {
-  const { t } = useTranslation(["common"]);
+  const { t } = useTranslation(["rsvp"]);
 
   return (
     <div className="row gtr-uniform"> 
-    <p>You submitted great wup wup</p>
+    <p>{t("rsvp:submittedRsvpText")}</p>
     <div className="col-4"><span className="image fit"><img src={require("../../images/sumbitted.png")} alt="" /></span></div>
                        
     </div>
