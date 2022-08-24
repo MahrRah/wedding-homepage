@@ -10,9 +10,9 @@ function Venue() {
   return (
     <div>
       <h2>{t('location:venue')}</h2>
-      <h3>Schupfen Rhyschüür</h3>
+      <h3>{t('location:venueName')}</h3>
       <div><span className="image left"><img src={require("../../images/schupfen-see.jpeg")} alt="" /></span>
-        <p>{t('location:venueTest')}</p>
+        <p>{t('location:venueText')}</p>
         <p> <b>{t('common:address')}:</b> <a href="https://g.page/GasthausSchupfen?share" target="_blank"><br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /> </a></p>
       </div>
       <h4>{t('location:map')}</h4>

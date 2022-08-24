@@ -1,12 +1,14 @@
 {
     "titel": "Locations",
     "venue":"Venue",
-    "venueTest":"LOREM Ipsum",
+    "venueName":"Rhyschüür at the Gasthaus Schupfen",
+    "venueText":"This will be the location of our wedding ceremony and reception. This newly renovated barn is over 200 years old and located directly on the river bank. Please see below for directions.",
     "map":"Map",
     "accomodation":"Accomodation",
     "mainHotel":"Main Hotel",
     "otherHotels":"Other Hotels close by ",
-    "hotel1":"adasd",
+    "mainHotelName":"adasd",
+    "mainHotelText":"This is the largest of our proposed hotels and it is located in central Schaffhausen. Rooms are available from 190.- CHF per night. The wedding venue is reachable from this location by a 15 minute car ride. Parking is available directly next to the hotel. This hotel is also accessible for wheel-chair users.",
     "city":"city",
     "distanceVenue":"Disance to the venue",
     "distanceHotel":"Disance to our hotel"

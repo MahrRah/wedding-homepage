@@ -11,17 +11,18 @@ function Accommodation() {
       <h2>{t('location:accomodation')}</h2>
       <h3>{t('location:mainHotel')}</h3>
       <div><span className="image left"><img src={require("../../images/vienna-house.jpg")} alt="" /></span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>{t('location:mainHotelText')}</p>
+        <br />
         <div className="row gtr-uniform">
-
           <ul>
             <li><a href='https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html' target="_blank">Vienna House zur Bleiche Schaffhausen </a></li>
             <li><b>{t('location:city')}:</b> Schaffhausen</li>
-            <li><b>{t('location:price')}:</b> 150 CHF</li>
-            <li><b>{t('location:distanceVenue')}:</b> 10 min</li>
+            <li><b>{t('location:price')}:</b> 190 CHF</li>
+            <li><b>{t('location:distanceVenue')}:</b> 15 min</li>
           </ul>
         </div>
       </div>
+      {/* 
       <hr />
       <h4>{t('location:otherHotels')}</h4>
       <div><span className="image right"><img src={require("../../images/rheingold.jpeg")} alt="" /></span>
@@ -47,7 +48,8 @@ function Accommodation() {
             <li><b>{t('location:distanceHotel')}:</b> XXmin</li>
           </ul>
         </div>
-      </div>
+      </div> 
+      */}
     </div>
 
   );
