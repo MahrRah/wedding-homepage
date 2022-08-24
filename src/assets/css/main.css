@@ -169,11 +169,18 @@ ol, ul {
     font-weight: bold;
 }
 
+.timeline-item-content location {
+    color: #212931;
+    font-size: 12px;
+    font-weight: bold;
+	font-style: italic;
+}
+
 .timeline-item-content p {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     margin: 15px 0;
-    max-width: 250px;
+    max-width: 400px;
 }
 
 .timeline-item-content a {

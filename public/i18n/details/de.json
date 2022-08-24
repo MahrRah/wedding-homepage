@@ -1,7 +1,26 @@
 {
     "detailsTitel":"Details zur Zeremonie",
+    "scheduleTitel":"Ablauf",
+    "scheduleText":"Hier findet Ihr den detaillierten Tagesablauf mit allen notwendigen Informationen welche Ihr braucht um euch mental und physisch optimal auf das Erlebnis eures Lebens vorzubereiten.",
+    "programWhen1":"Ab 14:00 Uhr",
+    "programWhere1":"Gasthaus Schupfen in Diessenhofen",
+    "programWhat1":"Ankunft der Gäste",
+    "programWhen2":" 14:15 Uhr",
+    "programWhere2":"Bahnhof Diessenhofen",
+    "programWhat2":"Gästetransfer zur Hochzeitslokalität",
+    "programWhen3":"15.00 Uhr",
+    "programWhere3":"Rhyschüür beim Gasthaus Schupfen",
+    "programWhat3":"Hochzeitszeremonie mit anschliessendem Apéro",
+    "programWhen4":"Ab 17.00 Uhr",
+    "programWhere4":"Ab Rhyschüür beim Gasthaus Schupfen",
+    "programWhat4":"Schifffahrt auf dem Rhein",
+    "programWhen5":"Ab 18.00 Uhr",
+    "programWhere5":"Rhyschüür beim Gasthaus Schupfen",
+    "programWhat5":"Abendprogramm und Dinner",
     "gift":"Geschenke",
     "giftsText":"Falls Ihr uns zu unserer Hochzeit gerne etwas schenken wollen würdet, zerbrecht euch bitte nicht den Kopf über das perfekte Geschenk! Wir würden uns am meisten über eine kleine finanzielle Unterstützung für die Feierlichkeiten selbst oder unserer Hochzeitsreise freuen.\n Falls ihr uns doch gerne etwas physisches schenken wollt, möchten wir euch darum bitten von Haushaltsgegenständen abzusehen, da wie zum Glück schon sehr gut ausgerüstet sind. ",
     "eveningContribution":"Beitrag zum Abendprogramm",
-    "eveningContributionText":"Falls Ihr gerne etwas zu unserem Abendprogramm beitragen wollen würdet, wendet euch bitte an unseren Trauzeugen oder unsere Trauzeugin (Kontakt unten). Sie helfen euch gerne bei der Organisation und werden das Abendprogramm nach unseren Wünschen organisieren."
+    "eveningContributionText":"Falls Ihr gerne etwas zu unserem Abendprogramm beitragen wollen würdet, wendet euch bitte an unseren Trauzeugen oder unsere Trauzeugin (Kontakt unten). Sie helfen euch gerne bei der Organisation und werden das Abendprogramm nach unseren Wünschen organisieren.",
+    "dresscode":"Dresscode",
+    "dresscodeText":""
 }

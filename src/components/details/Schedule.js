@@ -1,65 +1,43 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import '../../assets/css/main.css'
 
 function Schedule() {
+  const { t } = useTranslation(["common", "details"]);
   let schedule = [
     {
-      text: 'Start',
-      date: '12:00 Uhr',
-      category: {
-        tag: 'Social',
-        color: '#C7D5CF'
-      }
+      text: t("details:programWhat1"),
+      date: t("details:programWhen1"),
+      location: t("details:programWhere1"),
+
     },
     {
-      text: 'Zeremonie',
-      date: '13:00 Uhr',
-      category: {
-        tag: 'medium',
-        color: '#018f69'
-      }
+      text: t("details:programWhat2"),
+      date: t("details:programWhen2"),
+      location: t("details:programWhere2"),
     },
     {
-      text: 'Apero',
-      date: '14:00 Uhr',
-      category: {
-        tag: 'medium',
-        color: '#018f69'
-      }
+      text: t("details:programWhat3"),
+      date: t("details:programWhen3"),
+      location: t("details:programWhere3"),
     },
     {
-      text: 'Boot tour',
-      date: '15:00 Uhr',
-      category: {
-        tag: 'medium',
-        color: '#018f69'
-      }
+      text: t("details:programWhat4"),
+      date: t("details:programWhen4"),
+      location: t("details:programWhere4"),
     },
     {
-      text: 'Start Abend programm',
-      date: '16:00 Uhr',
-      category: {
-        tag: 'medium',
-        color: '#018f69'
-      }
-    },
-    {
-      text: 'Dinner',
-      date: '16:00 Uhr',
-      category: {
-        tag: 'medium',
-        color: '#018f69'
-      }
+      text: t("details:programWhat5"),
+      date: t("details:programWhen5"),
+      location: t("details:programWhere5"),
     }
   ];
 
   const TimelineItem = ({ data }) => (
     <div className="timeline-item">
       <div className="timeline-item-content">
-        {/* <span className="tag" style={{ background: data.category.color }}>
-          {data.category.tag}
-        </span> */}
         <time>{data.date}</time>
+        <location>{data.location}</location>
         <p>{data.text}</p>
         <span className="circle" />
       </div>
