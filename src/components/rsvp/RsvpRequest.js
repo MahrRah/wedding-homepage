@@ -59,7 +59,7 @@ class RsvpRequest extends Component {
         }
     };
 
-    changeStateAPI(data) {
+    changeStateAPI = (data) => {
         this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.food })
 
         if (data.plusOne.length > 0) {
@@ -72,17 +72,17 @@ class RsvpRequest extends Component {
         console.log(`state after load ${JSON.stringify(this.state)}`);
     }
 
-    onChange(e) {
+    onChange = (e) => {
         console.log(e)
         this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
     }
-    onChangePlusOne(e) {
+    onChangePlusOne = (e) => {
         let state = this.state.plusOne
         state[e.target.name] = e.target.value
         this.setState({ plusOne: state });
     }
 
-    onChangeChild(e, idx) {
+    onChangeChild = (e, idx) => {
         let children = this.state.children
         let child = children[idx];
         child[e.target.name] = e.target.value;

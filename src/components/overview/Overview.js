@@ -39,21 +39,6 @@ function Overview() {
             <section className="post">
                 <h2>{t("overview:contact")}</h2>
                 <p>{t("overview:contactText")}</p>
-                {/* <dl>
-                    <dt>Trauzeugen</dt>
-                    <dd>
-                        <p>Meldet euch bei unseren Trauzeugen bei Fragen zu: Program, Abendprogram, Gastgeschenk oder Vendor notfällen</p>
-                    </dd>
-                    <dt>Eltern</dt>
-                    <dd>
-                        <p>Meldet euch bei unseren Eltern bei Fragen zu: Transport fragen, Hilfe bei Anlieferung</p>
-                    </dd>
-                    <dt>Brautpaar</dt>
-                    <dd>
-                        <p>Meldet euch nicht beim Brautpaar!</p>
-                    </dd>
-                </dl>
-                <hr /> */}
             </section>
         </div>
     );
