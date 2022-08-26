@@ -10,19 +10,20 @@ class RsvpRequest extends Component {
         this.state = {
             rsvpCode: "",
             submitted: false,
+            error: false,
             updated: false,
             firstname: "",
             lastname: "",
             email: "",
             phone: "",
             attending: "yes",
-            dinner: "0",
-            allowedBrunch: false,
-            brunch: false,
-            plusOne: { firstname: "", lastname: "", food: "0" },
+            booking: "yes",
+            hotel: { rooms: 0, guests: 0, nights: 0, booking: "" },
+            food: "0",
+            language: "",
+            plusOne: { firstname: "", lastname: "", food: "0", attending: "" },
             hasPlusOne: false,
             bringsPlusOne: "",
-            // children: [{ firstname: "chiild1", lastname: "chiild1", age: "x" }, {firstname: "chiild2", lastname: "chiild2", age: "x" }, {firstname: "chiild3", lastname: "chiild3", age: "x" }],
             children: [],
             hasChildren: false,
             bringsChildren: false,
@@ -32,54 +33,29 @@ class RsvpRequest extends Component {
         this.onChange = this.onChange.bind(this);
         this.handleSubmitCode = this.handleSubmitCode.bind(this);
         this.isSubmitted = this.isSubmitted.bind(this);
-        this.changeStateAPI = this.changeStateAPI.bind(this);
+        this.loadRsvpDataToState = this.loadRsvpDataToState.bind(this);
         this.onChangePlusOne = this.onChangePlusOne.bind(this);
         this.updateRsvp = this.updateRsvp.bind(this);
         this.isUpdated = this.isUpdated.bind(this);
         this.onChangeChild = this.onChangeChild.bind(this);
-    }
-
-
-    handleSubmitCode = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
-                method: "GET",
-            });
-            if (res.status === 200) {
-                let body = await res.json();
-                this.changeStateAPI(body);
-                this.isSubmitted()
-                console.log(body)
-            } else {
-                console.log(res.status)
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    changeStateAPI = (data) => {
-        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.name, brunch: data.brunch, allowedBrunch: data.allowedBrunch, dinner: data.food })
-
-        if (data.plusOne.length > 0) {
-
-            this.setState({ hasPlusOne: true, bringsPlusOne: "yes", plusOne: data.plusOne[0] });
-        }
-        if (data.child.length > 0) {
-            this.setState({ hasChildren: true, bringsChildren: "yes", children: data.child })
-        }
-        console.log(`state after load ${JSON.stringify(this.state)}`);
+        this.onChangeHotel = this.onChangeHotel.bind(this);
     }
 
     onChange = (e) => {
         console.log(e)
         this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
     }
+
     onChangePlusOne = (e) => {
         let state = this.state.plusOne
         state[e.target.name] = e.target.value
         this.setState({ plusOne: state });
+    }
+
+    onChangeHotel = (e) => {
+        let state = this.state.hotel
+        state[e.target.name] = e.target.value
+        this.setState({ hotel: state });
     }
 
     onChangeChild = (e, idx) => {
@@ -96,37 +72,75 @@ class RsvpRequest extends Component {
         this.setState({ updated: true })
     }
 
+    loadRsvpDataToState = (data) => {
+        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.firstname, email: data.email, phone: data.phone, attending: data.attending, language: data.language, food: data.food, hotel: data.hotel, booking: data.hotel.booking, message: data.message })
+
+        if (data.plusOne.length > 0) {
+
+            this.setState({ hasPlusOne: true, bringsPlusOne: data.plusOne[0].attending, plusOne: data.plusOne[0] });
+        }
+        if (data.child.length > 0) {
+            this.setState({ hasChildren: true, bringsChildren: data.child[0].attending, children: data.child })
+        }
+    }
+
+    handleSubmitCode = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
+                method: "GET",
+            });
+            if (res.status === 200) {
+                let body = await res.json();
+                this.loadRsvpDataToState(body);
+                this.isSubmitted()
+                console.log(body)
+            } else {
+                console.log(res.status)
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     updateRsvp = async (e) => {
         e.preventDefault();
-        console.log(this.state.rsvpCode);
         try {
             let updateBody = {
-                "food": this.state.dinner,
+                "attending": this.state.attending,
+                "food": this.state.food,
                 "email": this.state.email,
                 "phone": this.state.phone,
                 "plusOne": [
                 ],
                 "child": [],
+                "hotel": this.state.hotel,
+                "language": this.state.language,
                 "message": this.state.message,
             }
+            console.log(this.state.booking)
+            console.log(this.state.booking)
+            updateBody.hotel.booking = this.state.booking;
 
             if (this.state.hasPlusOne && this.state.bringsPlusOne) {
                 let plusOneBody = {
                     "firstname": this.state.plusOne.name,
                     "lastname": this.state.plusOne.lastname,
-                    "food": this.state.plusOne.dinner
+                    "food": this.state.plusOne.food,
+                    "attending": this.state.bringsPlusOne
                 }
                 updateBody.plusOne.push(plusOneBody)
             }
 
-            if (hasChildren && bringsChildren) {
+            if (this.state.hasChildren && this.state.bringsChildren) {
 
                 for (let i = 0; i < his.state.children; i++) {
+
                     updateBody.child.concat(this.state.children)
                 }
             }
 
-            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
+            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
                 method: "POST",
                 // mode: "no-cors",
                 headers: {
@@ -138,6 +152,7 @@ class RsvpRequest extends Component {
             console.log(res);
             if (res.status === 200) {
                 this.isUpdated();
+
             } else {
                 console.log(`this state ${res.status}`);
             }
@@ -186,7 +201,7 @@ class RsvpRequest extends Component {
                                 <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
                             </div>
                             <div className="col-12">
-                                <select name="dinner" id="dinner" value={this.state.dinner} onChange={this.onChange}>
+                                <select name="food" id="food" value={this.state.food} onChange={this.onChange}>
                                     <option value="0">{t("rsvp:mealOptions")}</option>
                                     <option value="1">{t("rsvp:noRestictions")}</option>
                                     <option value="2">{t("rsvp:vegetarian")}</option>
@@ -195,7 +210,36 @@ class RsvpRequest extends Component {
                             </div>
                         </div>
                         <hr />
-
+                        <div className="col-4 col-12-small">
+                            <input type="radio" id="booking-true" name="booking" value="yes" checked={this.state.booking == "yes"} onChange={this.onChange} />
+                            <label htmlFor="booking-true">{t("rsvp:attending")}</label>
+                        </div>
+                        <div className="col-4 col-12-small">
+                            <input type="radio" id="booking-false" name="booking" value="no" checked={this.state.booking == "no"} onChange={this.onChange} />
+                            <label htmlFor="booking-false">{t("rsvp:notAttending")}</label>
+                        </div>
+                        <div className="row gtr-uniform">
+                            <div className="col-6 col-12-xsmall">
+                                <input type="text" name="rooms" id="hotel-rooms" placeholder="rooms" value={this.state.hotel.rooms} onChange={this.onChangeHotel} />
+                            </div>
+                            <div className="col-6 col-12-xsmall">
+                                <input type="text" name="guests" id="hotel-guests" placeholder="guests" value={this.state.hotel.guests} onChange={this.onChangeHotel} />
+                            </div>
+                            <div className="col-6 col-12-xsmall">
+                                <input type="text" name="nights" id="hotel-nights" placeholder="nights" value={this.state.hotel.nights} onChange={this.onChangeHotel} />
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="row gtr-uniform">
+                            <div className="col-12">
+                                <select name="language" id="language" value={this.state.language} onChange={this.onChange}>
+                                    <option value="null">{t("common:languageSelector")}</option>
+                                    <option value="en">{t("common:en")}</option>
+                                    <option value="de">{t("common:de")}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
                         {this.state.hasPlusOne &&
                             <><div className="row gtr-uniform">
                                 <div className="col-6 col-12-small">
@@ -209,13 +253,13 @@ class RsvpRequest extends Component {
                                 {this.state.bringsPlusOne === "yes" &&
                                     <>
                                         <div className="col-6 col-12-xsmall">
-                                            <input type="text" name="firstname" id="firstname-plusone" placeholder={t("common:firstName")} value={this.state.plusOne.name} onChange={this.onChangePlusOne} />
+                                            <input type="text" name="firstname" id="firstname-plusone" placeholder={t("common:firstName")} value={this.state.plusOne.firstname} onChange={this.onChangePlusOne} />
                                         </div>
                                         <div className="col-6 col-12-xsmall">
                                             <input type="text" name="lastname" id="firstname-plusone" placeholder={t("common:lastName")} value={this.state.plusOne.lastname} onChange={this.onChangePlusOne} />
                                         </div>
                                         <div className="col-12">
-                                            <select name="dinner" id="food" value={this.state.plusOne.dinner} onChange={this.onChangePlusOne}>
+                                            <select name="food" id="food" value={this.state.plusOne.food} onChange={this.onChangePlusOne}>
                                                 <option value="0">{t("rsvp:mealOptions")}</option>
                                                 <option value="1">{t("rsvp:noRestictions")}</option>
                                                 <option value="2">{t("rsvp:vegetarian")}</option>
@@ -244,7 +288,7 @@ class RsvpRequest extends Component {
                                                 </div><div className="col-6 col-12-xsmall">
                                                     <input type="text" name="lastname" id="lastname" placeholder={t("common:lastName")} value={data.lastname} onChange={(e) => this.onChangeChild(e, idx)} />
                                                 </div><div className="col-6 col-12-xsmall">
-                                                    <input type="text" name="agechild" id="agechild" placeholder="Age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
+                                                    <input type="text" name="age" id="age" placeholder="Age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
                                                 </div></div>
                                         ))}
                                     </div>

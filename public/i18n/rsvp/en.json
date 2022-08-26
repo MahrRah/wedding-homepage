@@ -5,6 +5,7 @@
     "rsvpCode": "Personal RSVP-Code",
     "submitCode":"submit Code",
     "attending": "Attending",
+    "notAttending": "Not attending",
     "mealOptions": "- Meal Options -",
     "noRestictions": "No restiction",
     "vegetarian": "Vegetarian",

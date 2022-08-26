@@ -5,7 +5,7 @@ import copy
 guest_template = { "_id":"","rsvpCode":"","firstname":"","lastname":"","attending":"","food":None,"email":"","phone":"","language":"", "hotel":{},"plusOne":[], "child":[], "message":""} 
 plusOne_template = {"firstname":"","lastname":"","food":None,"attending":"" }       
 child_template = {"firstname":"","lastname":"","food":None, "age":0,"attending":""} 
-hotel = {"rooms":0,"guets":0,"nights":0}    
+hotel = {"rooms":"","guests":"","nights":"","booking":""}    
 
 rsvp_codes = []
 guest_list = []

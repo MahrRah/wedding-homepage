@@ -32,25 +32,36 @@ def get_database():
 db_client = get_database()
 
 def get_rsvp(id):
-    value = db_client.guest.find_one({"rsvpCode":id})
+    logging.info(id)
+    value = db_client.guests.find_one({"rsvpCode":id})
     return value
 
 def update_rsvp(id, data):
     rsvp = get_rsvp(id)
     rsvp['food'] = data['food']
-
-
+    rsvp['attending'] = data['attending']
+    rsvp['email'] = data['email']
+    rsvp['phone'] = data['phone']
+    rsvp['hotel'] = data['hotel']
+    rsvp['language'] = data['language']
+    rsvp['message'] = data['message']
 
     if len(rsvp['plusOne']) != 0:
 
         rsvp['plusOne'][0]['firstname'] = data['plusOne'][0]['firstname'] if  'firstname' in data['plusOne'][0] else rsvp['plusOne'][0]['firstname']
         rsvp['plusOne'][0]['lastname'] = data['plusOne'][0]['lastname'] if  'lastname' in data['plusOne'][0] else rsvp['plusOne'][0]['lastname']
         rsvp['plusOne'][0]['food'] = data['plusOne'][0]['food'] if  'food' in data['plusOne'][0] else rsvp['plusOne'][0]['food']
-        rsvp['plusOne'][0]['attending'] = data['plusOne']['attending'] 
-
-
+        rsvp['plusOne'][0]['attending'] = data['plusOne'][0]['attending'] 
  
-    result = db_client.guest.update_one({"rsvpCode":id}, {'$set':rsvp})
+    if len(rsvp['child']) != 0:
+
+        for i in range(len(rsvp['child'])):
+            rsvp['child'][i]['firstname'] = data['child'][i]['firstname']
+            rsvp['child'][i]['lastname'] = data['child'][i]['lastname']
+            rsvp['child'][i]['age'] = data['child'][i]['age']
+            # rsvp['child'][i]['age'] = data['child'][i]['age']
+
+    result = db_client.guests.update_one({"rsvpCode":id}, {'$set':rsvp})
    
     logging.info(f'{ id } got Updated to: {result}')
 
