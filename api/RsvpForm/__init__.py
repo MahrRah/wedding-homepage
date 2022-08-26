@@ -56,10 +56,12 @@ def update_rsvp(id, data):
     if len(rsvp['child']) != 0:
 
         for i in range(len(rsvp['child'])):
+            print( rsvp['child'])
+            print( data['child'])
             rsvp['child'][i]['firstname'] = data['child'][i]['firstname']
             rsvp['child'][i]['lastname'] = data['child'][i]['lastname']
             rsvp['child'][i]['age'] = data['child'][i]['age']
-            # rsvp['child'][i]['age'] = data['child'][i]['age']
+            rsvp['child'][i]['attending'] = data['child'][i]['attending']
 
     result = db_client.guests.update_one({"rsvpCode":id}, {'$set':rsvp})
    

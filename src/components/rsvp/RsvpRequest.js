@@ -77,16 +77,17 @@ class RsvpRequest extends Component {
 
         if (data.plusOne.length > 0) {
 
-            this.setState({ hasPlusOne: true, bringsPlusOne: data.plusOne[0].attending, plusOne: data.plusOne[0] });
+            this.setState({ hasPlusOne: true, bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending, plusOne: data.plusOne[0] });
         }
         if (data.child.length > 0) {
-            this.setState({ hasChildren: true, bringsChildren: data.child[0].attending, children: data.child })
+            this.setState({ hasChildren: true, bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending, children: data.child })
         }
     }
 
     handleSubmitCode = async (e) => {
         e.preventDefault();
         try {
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
                 method: "GET",
             });
             if (res.status === 200) {
@@ -132,11 +133,18 @@ class RsvpRequest extends Component {
             }
 
             if (this.state.hasChildren && this.state.bringsChildren) {
+                console.log()
+                this.state.children.forEach((x) => {
+                    let child = {
+                        "firstname": x.firstname,
+                        "lastname": x.lastname,
+                        "age": x.age,
+                        "attending": this.state.bringsChildren
+                    }
+                    updateBody.child.push(child)
+                    console.log(x)
+                });
 
-                for (let i = 0; i < his.state.children; i++) {
-
-                    updateBody.child.concat(this.state.children)
-                }
             }
 
             const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
