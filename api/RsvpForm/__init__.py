@@ -9,9 +9,11 @@ import os
 import azure.functions as func
 
 
-guest_template = { "_id":"","rsvpCode":"","name":"","lastname":"","attending":"","food":None, "plusOne":[], "child":[]} 
-plusOne_template = {"name":"","lastname":"","food":None}       
-child_template = {"name":"","lastname":"","food":None, "age":0}     
+
+guest_template = { "_id":"","rsvpCode":"","firstname":"","lastname":"","attending":"","food":None,"email":"","phone":"","language":"", "hotel":{},"plusOne":[], "child":[], "message":""} 
+plusOne_template = {"firstname":"","lastname":"","food":None,"attending":"" }       
+child_template = {"firstname":"","lastname":"","food":None, "age":0,"attending":""} 
+hotel = {"rooms":0,"guets":0,"nights":0}    
 
 
 guest_update_template = {
@@ -36,19 +38,17 @@ def get_rsvp(id):
 def update_rsvp(id, data):
     rsvp = get_rsvp(id)
     rsvp['food'] = data['food']
-    # old_rsvp['attending'] = data['attending']
+
 
 
     if len(rsvp['plusOne']) != 0:
 
-        # old_rsvp['plusOne'][0]['attending'] = data['plusOne']['attending'] 
-        rsvp['plusOne'][0]['name'] = data['plusOne'][0]['name'] if  'name' in data['plusOne'][0] else rsvp['plusOne'][0]['name']
+        rsvp['plusOne'][0]['firstname'] = data['plusOne'][0]['firstname'] if  'firstname' in data['plusOne'][0] else rsvp['plusOne'][0]['firstname']
         rsvp['plusOne'][0]['lastname'] = data['plusOne'][0]['lastname'] if  'lastname' in data['plusOne'][0] else rsvp['plusOne'][0]['lastname']
         rsvp['plusOne'][0]['food'] = data['plusOne'][0]['food'] if  'food' in data['plusOne'][0] else rsvp['plusOne'][0]['food']
+        rsvp['plusOne'][0]['attending'] = data['plusOne']['attending'] 
 
 
-    # check child lenths array
-    # check plus one number
  
     result = db_client.guest.update_one({"rsvpCode":id}, {'$set':rsvp})
    

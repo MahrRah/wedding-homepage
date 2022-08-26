@@ -22,4 +22,4 @@ def upload_data(collection,data):
 
 db_client = get_database()
 data = get_data()
-upload_data(db_client.guest,data)
+upload_data(db_client.guests,data)
