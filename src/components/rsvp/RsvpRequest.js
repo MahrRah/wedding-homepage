@@ -207,6 +207,12 @@ class RsvpRequest extends Component {
                             <div className="col-6 col-12-xsmall">
                                 <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
                             </div>
+                            <div className="col-6 col-12-xsmall">
+                                <input  type="text" name="email" id="email"  placeholder="email" value={this.state.email} onChange={this.onChange} />
+                            </div>
+                            <div className="col-6 col-12-xsmall">
+                                <input  type="text" name="phone" id="phone"  placeholder="phone" value={this.state.phone} onChange={this.onChange}  />
+                            </div>
                             <div className="col-12">
                                 <select name="food" id="food" value={this.state.food} onChange={this.onChange}>
                                     <option value="0">{t("rsvp:mealOptions")}</option>
