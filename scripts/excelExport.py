@@ -3,7 +3,7 @@ import uuid
 import copy
 import json
 
-guest_template = {
+guests_template = {
     "_id": "",
     "rsvpCode": "",
     "firstname": "",
@@ -25,10 +25,10 @@ child_template = {
     "age": 0,
     "attending": "",
 }
-hotel = {"rooms": 0, "guets": 0, "nights": 0}
+hotel = {"rooms": 0, "guests": 0, "nights": 0}
 
 rsvp_codes = []
-guest_list = []
+guests_list = []
 import csv
 
 
@@ -60,7 +60,7 @@ with open("../data/excelExport.csv", "w") as csvfile:
         "ch3:lastname",
         "ch3:age",
         "h:rooms",
-        "h:guets",
+        "h:guests",
         "h:nights",
     ]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -71,26 +71,44 @@ with open("../data/excelExport.csv", "w") as csvfile:
             "rsvpCode": line["rsvpCode"],
             "firstname": line["firstname"],
             "lastname": line["lastname"],
-            "email":  line["email"],
+            "email": line["email"],
             "phone": line["phone"],
             "attending": line["attending"],
             "food": line["food"],
             "language": line["language"],
-            "po:attending": line["plusOne"][0]["attending"] if len(line["plusOne"])> 0 else "" ,
-            "po:firstname": line["plusOne"][0]["firstname"] if len(line["plusOne"])> 0  else "" ,
-            "po:lastname":line["plusOne"][0]["lastname"] if len(line["plusOne"])> 0  else "" ,
-            "po:food": line["plusOne"][0]["food"] if len(line["plusOne"])>0  else "" ,
-            "ch1:firstname": line["child"][0]["firstname"] if len(line["child"])>0 else "",
-            "ch1:lastname": line["child"][0]["lastname"] if len(line["child"])>0 else "",
-            "ch1:age":line["child"][0]["age"] if len(line["child"])>0 else "",
-            "ch2:firstname": line["child"][1]["firstname"] if len(line["child"])>1 else "",
-            "ch2:lastname": line["child"][1]["lastname"] if len(line["child"])>1 else "",
-            "ch2:age":line["child"][1]["age"] if len(line["child"])>1 else "",
-            "ch3:firstname":line["child"][2]["firstname"] if len(line["child"])>2 else "",
-            "ch3:lastname": line["child"][2]["lastname"] if len(line["child"])>2 else "",
-            "ch3:age": line["child"][2]["age"] if len(line["child"])>2 else "",
+            "po:attending": line["plusOne"][0]["attending"]
+            if len(line["plusOne"]) > 0
+            else "",
+            "po:firstname": line["plusOne"][0]["firstname"]
+            if len(line["plusOne"]) > 0
+            else "",
+            "po:lastname": line["plusOne"][0]["lastname"]
+            if len(line["plusOne"]) > 0
+            else "",
+            "po:food": line["plusOne"][0]["food"] if len(line["plusOne"]) > 0 else "",
+            "ch1:firstname": line["child"][0]["firstname"]
+            if len(line["child"]) > 0
+            else "",
+            "ch1:lastname": line["child"][0]["lastname"]
+            if len(line["child"]) > 0
+            else "",
+            "ch1:age": line["child"][0]["age"] if len(line["child"]) > 0 else "",
+            "ch2:firstname": line["child"][1]["firstname"]
+            if len(line["child"]) > 1
+            else "",
+            "ch2:lastname": line["child"][1]["lastname"]
+            if len(line["child"]) > 1
+            else "",
+            "ch2:age": line["child"][1]["age"] if len(line["child"]) > 1 else "",
+            "ch3:firstname": line["child"][2]["firstname"]
+            if len(line["child"]) > 2
+            else "",
+            "ch3:lastname": line["child"][2]["lastname"]
+            if len(line["child"]) > 2
+            else "",
+            "ch3:age": line["child"][2]["age"] if len(line["child"]) > 2 else "",
             "h:rooms": line["hotel"]["rooms"],
-            "h:guets": line["hotel"]["guets"],
+            "h:guests": line["hotel"]["guests"],
             "h:nights": line["hotel"]["nights"],
         }
         print(tt)

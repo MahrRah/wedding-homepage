@@ -1,8 +1,9 @@
 import json
 import os
 
+
 def get_data():
-    with open('../data/guestDB.json') as f:
+    with open("../data/guestDB.json") as f:
         data = json.load(f)
     return data
 
@@ -16,10 +17,10 @@ def get_database():
     return client.weddingdb
 
 
-def upload_data(collection,data):
+def upload_data(collection, data):
     collection.insert_many(data)
 
 
 db_client = get_database()
 data = get_data()
-upload_data(db_client.guests,data)
+upload_data(db_client.guests, data)
