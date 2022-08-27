@@ -129,20 +129,36 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
             logging.info(f"Update RSVP of {rsvp_id} with values {new_data}")
             new_data = update_rsvp(rsvp_id, new_data)
             if new_data["email"]:
-                print(new_data["email"])
-                message = {
-                    "from": {"email": "thegrosjeans.2023@gmail.com"},
-                    "personalizations": [
-                        {
-                            "to": [{"email": new_data["email"]}],
-                            "dynamic_template_data": {
-                                "first_name": new_data["firstname"],
-                                "attending": "attending",
-                            },
-                        }
-                    ],
-                    "template_id": "d-f92adcb1cfcc40049ff5e126a238dc85",
-                }
+                print(new_data)
+                if len(new_data["plusOne"]) > 0:
+                    message = {
+                        "from": {"email": "thegrosjeans.2023@gmail.com"},
+                        "personalizations": [
+                            {
+                                "to": [{"email": new_data["email"]}],
+                                "dynamic_template_data": {
+                                    "first_name": new_data["firstname"],
+                                    "email": new_data["email"],
+                                    "phone": new_data["phone"],
+                                    "food": new_data["food"],
+                                    "language": new_data["language"],
+                                    "po_name": " ".join(
+                                        [
+                                            new_data["plusOne"][0]["firstname"],
+                                            new_data["plusOne"][0]["lastname"],
+                                        ]
+                                    ),
+                                    "po_food": new_data["food"],
+                                    "h_booking": "do"
+                                    if new_data["booking"] == "yes"
+                                    else "do not",
+                                    "children_list": "child 1 (8), child 2 (12)",
+                                    "message": new_data["message"],
+                                },
+                            }
+                        ],
+                        "template_id": "d-f92adcb1cfcc40049ff5e126a238dc85",
+                    }
 
                 sendGridMessage.set(json.dumps(message))
                 sendGridMessage
