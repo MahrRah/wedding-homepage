@@ -22,17 +22,17 @@ guest_template = {
     "hotel": {},
     "plusOne": [],
     "child": [],
-    "message": "",
+    "message": ""
 }
 plusOne_template = {"firstname": "", "lastname": "", "food": None, "attending": ""}
 child_template = {
     "firstname": "",
     "lastname": "",
     "food": None,
-    "age": 0,
+    "age": None,
     "attending": "",
 }
-hotel = {"rooms": 0, "guets": 0, "nights": 0}
+hotel = {"rooms": None, "guets": None, "nights": None}
 
 
 guest_update_template = {"attending": "", "food": None, "plusOne": [], "child": []}
@@ -150,7 +150,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
                                     ),
                                     "po_food": new_data["food"],
                                     "h_booking": "do"
-                                    if new_data["booking"] == "yes"
+                                    if new_data["hotel"]["rooms"] != 0
                                     else "do not",
                                     "children_list": "child 1 (8), child 2 (12)",
                                     "message": new_data["message"],
