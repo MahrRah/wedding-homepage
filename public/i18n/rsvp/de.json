@@ -10,9 +10,18 @@
     "noRestictions": "Alles",
     "vegetarian": "Vegetarisch",
     "glutenfree": "Glutenfrei",
-    "withPlusOne": "mit Angehängsel",
-    "withoutPlusOne": "ohne Angehängsel",
+    "withPlusOne": "mit Begleitung",
+    "withoutPlusOne": "ohne Begleitung",
     "withChildren": "mit Kindern",
     "withoutChildren": "ohne Kindern",
-    "submittedRsvpText":"TBD"
+    "withHotel": "Hotel soll blockiert werden",
+    "withoutHotel": "Hotel soll nicht blockiert werden",
+    "rooms":"Anzahl Zimmer",
+    "nights":"Anzahl Nächte",
+    "submittedRsvpText":"TBD",
+    "personal":"Persönliche Angaben",
+    "plusOne":"Begleitung",
+    "children":"Kinder",
+    "language":"Sprache",
+    "hotel":"Hotel"
 }

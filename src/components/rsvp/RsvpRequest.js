@@ -27,7 +27,8 @@ class RsvpRequest extends Component {
             children: [],
             hasChildren: false,
             bringsChildren: false,
-            message: ""
+            message: "",
+            data: {}
         };
         localStorage.setItem('submitted', false);
         this.onChange = this.onChange.bind(this);
@@ -39,6 +40,7 @@ class RsvpRequest extends Component {
         this.isUpdated = this.isUpdated.bind(this);
         this.onChangeChild = this.onChangeChild.bind(this);
         this.onChangeHotel = this.onChangeHotel.bind(this);
+        this.resetData = this.resetData.bind(this);
     }
 
     onChange = (e) => {
@@ -73,15 +75,19 @@ class RsvpRequest extends Component {
     }
 
     loadRsvpDataToState = (data) => {
-        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.firstname, email: data.email, phone: data.phone, attending: data.attending, language: data.language, food: data.food, hotel: data.hotel, booking: data.hotel.booking, message: data.message })
+        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.firstname, email: data.email, phone: data.phone, attending: data.attending, language: data.language, food: data.food, hotel: data.hotel, booking: data.hotel.booking, message: data.message, data: data })
 
         if (data.plusOne.length > 0) {
 
-            this.setState({ hasPlusOne: true, bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending, plusOne: data.plusOne[0] });
+            this.setState({ hasPlusOne: true, bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending, plusOne: structuredClone(data.plusOne[0])});
         }
         if (data.child.length > 0) {
-            this.setState({ hasChildren: true, bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending, children: data.child })
+            this.setState({ hasChildren: true, bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending, children: structuredClone(data.child)})
         }
+    }
+    resetData = () => {
+        console.log(this.state.data)
+        this.loadRsvpDataToState(this.state.data);
     }
 
     handleSubmitCode = async (e) => {
@@ -192,16 +198,16 @@ class RsvpRequest extends Component {
                     </form>}
                 {this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.updateRsvp}>
-                        <h3>Personal</h3>
+                        <h3>{t("rsvp:personal")}</h3>
                         <div className="row gtr-uniform">
-                        <div className="col-4 col-12-small">
-                            <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
-                            <label htmlFor="attending-true">{t("rsvp:attending")}</label>
-                        </div>
-                        <div className="col-4 col-12-small">
-                            <input type="radio" id="attending-false" name="attending" value="no" checked={this.state.attending == "no"} onChange={this.onChange} />
-                            <label htmlFor="attending-false">{t("rsvp:notAttending")}</label>
-                        </div>
+                            <div className="col-4 col-12-small">
+                                <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
+                                <label htmlFor="attending-true">{t("rsvp:attending")}</label>
+                            </div>
+                            <div className="col-4 col-12-small">
+                                <input type="radio" id="attending-false" name="attending" value="no" checked={this.state.attending == "no"} onChange={this.onChange} />
+                                <label htmlFor="attending-false">{t("rsvp:notAttending")}</label>
+                            </div>
                             <div className="col-6 col-12-xsmall">
                                 <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
                                 <label className="input-label">{t("common:firstName")}</label>
@@ -228,32 +234,32 @@ class RsvpRequest extends Component {
                             </div>
                         </div>
                         <hr />
-                        <h3>Hotel Blocker</h3>
+                        <h3>{t("rsvp:hotel")}</h3>
                         <p><i>Would you want us to block you a room?!</i></p>
                         <div className="row gtr-uniform">
-                        <div className="col-4 col-12-small">
-                            <input type="radio" id="booking-true" name="booking" value="yes" checked={this.state.booking == "yes"} onChange={this.onChange} />
-                            <label htmlFor="booking-true">{t("rsvp:attending")}</label>
-                        </div>
-                        <div className="col-4 col-12-small">
-                            <input type="radio" id="booking-false" name="booking" value="no" checked={this.state.booking == "no"} onChange={this.onChange} />
-                            <label htmlFor="booking-false">{t("rsvp:notAttending")}</label>
-                        </div>
+                            <div className="col-4 col-12-small">
+                                <input type="radio" id="booking-true" name="booking" value="yes" checked={this.state.booking == "yes"} onChange={this.onChange} />
+                                <label htmlFor="booking-true">{t("rsvp:withHotel")}</label>
+                            </div>
+                            <div className="col-4 col-12-small">
+                                <input type="radio" id="booking-false" name="booking" value="no" checked={this.state.booking == "no"} onChange={this.onChange} />
+                                <label htmlFor="booking-false">{t("rsvp:withoutHotel")}</label>
+                            </div>
                             <div className="col-6 col-12-xsmall">
                                 <input type="number" name="rooms" id="hotel-rooms" value={this.state.hotel.rooms} onChange={this.onChangeHotel} />
-                                <label className="input-label">Number of room to block</label>
+                                <label className="input-label">{t("rsvp:rooms")}</label>
                             </div>
-                            <div className="col-6 col-12-xsmall">
+                            {/* <div className="col-6 col-12-xsmall">
                                 <input type="number" name="guests" id="hotel-guests" value={this.state.hotel.guests} onChange={this.onChangeHotel} />
                                 <label className="input-label">Number of guests to block for</label>
-                            </div>
+                            </div> */}
                             <div className="col-6 col-12-xsmall">
                                 <input type="number" name="nights" id="hotel-nights" value={this.state.hotel.nights} onChange={this.onChangeHotel} />
-                                <label className="input-label">Number of nights to block</label>
+                                <label className="input-label">{t("rsvp:nights")}</label>
                             </div>
                         </div>
                         <hr />
-                        <h3>Language</h3>
+                        <h3>{t("rsvp:language")}</h3>
                         <p><i>Please let us know what your prefered languge is so we know for how many people we woudl need translation.</i></p>
                         <div className="row gtr-uniform">
                             <div className="col-12">
@@ -267,7 +273,7 @@ class RsvpRequest extends Component {
                         <hr />
                         {this.state.hasPlusOne &&
                             <>
-                                <h3>Plus One</h3>
+                                <h3>{t("rsvp:plusOne")}</h3>
                                 <div className="row gtr-uniform">
                                     <div className="col-6 col-12-small">
                                         <input type="radio" id="bringsPlusOne-true" name="bringsPlusOne" value="yes" checked={this.state.bringsPlusOne === "yes"} onChange={this.onChange} />
@@ -281,11 +287,11 @@ class RsvpRequest extends Component {
                                         <>
                                             <div className="col-6 col-12-xsmall">
                                                 <input type="text" name="firstname" id="firstname-plusone" value={this.state.plusOne.firstname} onChange={this.onChangePlusOne} />
-                                            <label className="input-label">{t("common:firstName")}</label>
+                                                <label className="input-label">{t("common:firstName")}</label>
                                             </div>
                                             <div className="col-6 col-12-xsmall">
                                                 <input type="text" name="lastname" id="lastname-plusone" value={this.state.plusOne.lastname} onChange={this.onChangePlusOne} />
-                                            <label className="input-label">{t("common:lastName")}</label>
+                                                <label className="input-label">{t("common:lastName")}</label>
                                             </div>
                                             <div className="col-12">
                                                 <select name="food" id="food" value={this.state.plusOne.food} onChange={this.onChangePlusOne}>
@@ -299,50 +305,50 @@ class RsvpRequest extends Component {
                         }
                         {this.state.hasChildren &&
                             <>
-                            <h3>Children</h3>
-                            <div className="row gtr-uniform">
-                                <div className="col-6 col-12-small">
-                                    <input type="radio" id="bringsChild-true" name="bringsChildren" value="yes" checked={this.state.bringsChildren === "yes"} onChange={this.onChange} />
-                                    <label htmlFor="bringsChild-true">{t("rsvp:withChildren")}</label>
-                                </div>
-                                <div className="col-6 col-12-small">
-                                    <input type="radio" id="bringsChild-false" name="bringsChildren" value="no" checked={this.state.bringsChildren === "no"} onChange={this.onChange} />
-                                    <label htmlFor="bringsChild-false">{t("rsvp:withoutChildren")}</label>
-                                </div>
+                                <h3>{t("rsvp:children")}</h3>
+                                <div className="row gtr-uniform">
+                                    <div className="col-6 col-12-small">
+                                        <input type="radio" id="bringsChild-true" name="bringsChildren" value="yes" checked={this.state.bringsChildren === "yes"} onChange={this.onChange} />
+                                        <label htmlFor="bringsChild-true">{t("rsvp:withChildren")}</label>
+                                    </div>
+                                    <div className="col-6 col-12-small">
+                                        <input type="radio" id="bringsChild-false" name="bringsChildren" value="no" checked={this.state.bringsChildren === "no"} onChange={this.onChange} />
+                                        <label htmlFor="bringsChild-false">{t("rsvp:withoutChildren")}</label>
+                                    </div>
 
-                                {this.state.bringsChildren === "yes" &&
-                                <>
-                                        {this.state.children.map((data, idx) => (
-                                            <div>
-                                                <div className="col-6 col-12-small">
-                                                    <input type="text" name="firstname" id="firstname" placeholder={t("common:firstName")} value={data.firstname} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                    <label className="input-label">{t("common:firstName")}</label>
-                                                </div>
-                                                <div className="col-6 col-12-small">
-                                                    <input type="text" name="lastname" id="lastname" placeholder={t("common:lastName")} value={data.lastname} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                    <label className="input-label">{t("common:LastName")}</label>
-                                                </div>
-                                                <div className="col-6 col-12-small">
-                                                    <input type="text" name="age" id="age" placeholder="Age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                    <label className="input-label">{t("common:Age")}</label>
-                                                </div></div>
-                                        ))}
+                                    {this.state.bringsChildren === "yes" &&
+                                        <>
+                                            {this.state.children.map((data, idx) => (
+                                                <div key={idx}>
+                                                    <div className="col-6 col-12-small">
+                                                        <input type="text" name="firstname" id="firstname" value={data.firstname} onChange={(e) => this.onChangeChild(e, idx)} />
+                                                        <label className="input-label">{t("common:firstName")}</label>
+                                                    </div>
+                                                    <div className="col-6 col-12-small">
+                                                        <input type="text" name="lastname" id="lastname" value={data.lastname} onChange={(e) => this.onChangeChild(e, idx)} />
+                                                        <label className="input-label">{t("common:lastName")}</label>
+                                                    </div>
+                                                    <div className="col-6 col-12-small">
+                                                        <input type="text" name="age" id="age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
+                                                        <label className="input-label">{t("common:age")}</label>
+                                                    </div></div>
+                                            ))}
                                         </>
-                                }
-                            </div>
+                                    }
+                                </div>
                                 <hr />
                             </>
 
                         }
                         <div className="col-12">
-                            <label className="input-label"> Message</label>
+                            <label className="input-label"> {t("common:message")}</label>
                             <textarea name="message" id="demo-message" placeholder={t("common:additionalNotes")} value={this.state.message} rows="3" onChange={this.onChange}></textarea>
                         </div>
                         <br />
                         <div className="col-12">
                             <ul className="actions">
                                 <li><input type="submit" value={t("common:sendMessage")} className="primary" /></li>
-                                <li><input type="reset" value={t("common:reset")} /></li>
+                                <li><input type="reset" value={t("common:reset")} onClick={this.resetData} /></li>
                             </ul>
                         </div>
                     </form>

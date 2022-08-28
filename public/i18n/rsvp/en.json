@@ -14,5 +14,14 @@
     "withoutPlusOne": "without plus-one",
     "withChildren": "with kids",
     "withoutChildren": "without kids",
-    "submittedRsvpText":"TBD"
+    "withHotel": "Block hotel",
+    "withoutHotel": "Do not block hotel",
+    "rooms":"Number of rooms",
+    "nights":"Number of nights",
+    "submittedRsvpText":"TBD",
+    "personal":"Personal data",
+    "plusOne":"Plus-One",
+    "children":"Children",
+    "language":"Language",
+    "hotel":"Hotel"
 }
