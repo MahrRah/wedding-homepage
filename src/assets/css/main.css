@@ -29,6 +29,7 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
@@ -278,6 +279,11 @@ input, select, textarea {
 	appearance: none;
 }
 
+/*  */
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+  }
 /* Basic */
 
 	@-ms-viewport {
@@ -2537,6 +2543,7 @@ input, select, textarea {
 		}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select,
@@ -2557,6 +2564,7 @@ input, select, textarea {
 	}
 
 		input[type="text"]:invalid,
+		input[type="number"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		select:invalid,
@@ -2582,6 +2590,7 @@ input, select, textarea {
 		}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select {
@@ -2682,9 +2691,11 @@ input, select, textarea {
 
 	label {
 		color: #212931;
+		color: rgba(0, 0, 0, 0.5);
 	}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select,
@@ -2693,6 +2704,7 @@ input, select, textarea {
 	}
 
 		input[type="text"]:focus,
+		input[type="number"]:focus,
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		select:focus,
@@ -4252,6 +4264,7 @@ input, select, textarea {
 		}
 
 		#footer input[type="text"],
+		#footer input[type="number"],
 		#footer input[type="password"],
 		#footer input[type="email"],
 		#footer select,
@@ -4260,6 +4273,7 @@ input, select, textarea {
 		}
 
 			#footer input[type="text"]:focus,
+			#footer input[type="number"]:focus,
 			#footer input[type="password"]:focus,
 			#footer input[type="email"]:focus,
 			#footer select:focus,

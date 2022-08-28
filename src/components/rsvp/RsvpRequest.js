@@ -192,6 +192,8 @@ class RsvpRequest extends Component {
                     </form>}
                 {this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.updateRsvp}>
+                        <h3>Personal</h3>
+                        <div className="row gtr-uniform">
                         <div className="col-4 col-12-small">
                             <input type="radio" id="attending-true" name="attending" value="yes" checked={this.state.attending == "yes"} onChange={this.onChange} />
                             <label htmlFor="attending-true">{t("rsvp:attending")}</label>
@@ -200,18 +202,21 @@ class RsvpRequest extends Component {
                             <input type="radio" id="attending-false" name="attending" value="no" checked={this.state.attending == "no"} onChange={this.onChange} />
                             <label htmlFor="attending-false">{t("rsvp:notAttending")}</label>
                         </div>
-                        <div className="row gtr-uniform">
                             <div className="col-6 col-12-xsmall">
                                 <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
+                                <label className="input-label">{t("common:firstName")}</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
                                 <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
+                                <label className="input-label">{t("common:lastName")}</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input  type="text" name="email" id="email"  placeholder="email" value={this.state.email} onChange={this.onChange} />
+                                <input type="text" name="email" id="email" value={this.state.email} onChange={this.onChange} />
+                                <label className="input-label">{t("common:email")}</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input  type="text" name="phone" id="phone"  placeholder="phone" value={this.state.phone} onChange={this.onChange}  />
+                                <input type="text" name="phone" id="phone" value={this.state.phone} onChange={this.onChange} />
+                                <label className="input-label">{t("common:phone")}</label>
                             </div>
                             <div className="col-12">
                                 <select name="food" id="food" value={this.state.food} onChange={this.onChange}>
@@ -223,6 +228,9 @@ class RsvpRequest extends Component {
                             </div>
                         </div>
                         <hr />
+                        <h3>Hotel Blocker</h3>
+                        <p><i>Would you want us to block you a room?!</i></p>
+                        <div className="row gtr-uniform">
                         <div className="col-4 col-12-small">
                             <input type="radio" id="booking-true" name="booking" value="yes" checked={this.state.booking == "yes"} onChange={this.onChange} />
                             <label htmlFor="booking-true">{t("rsvp:attending")}</label>
@@ -231,18 +239,22 @@ class RsvpRequest extends Component {
                             <input type="radio" id="booking-false" name="booking" value="no" checked={this.state.booking == "no"} onChange={this.onChange} />
                             <label htmlFor="booking-false">{t("rsvp:notAttending")}</label>
                         </div>
-                        <div className="row gtr-uniform">
                             <div className="col-6 col-12-xsmall">
-                                <input type="text" name="rooms" id="hotel-rooms" placeholder="rooms" value={this.state.hotel.rooms} onChange={this.onChangeHotel} />
+                                <input type="number" name="rooms" id="hotel-rooms" value={this.state.hotel.rooms} onChange={this.onChangeHotel} />
+                                <label className="input-label">Number of room to block</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input type="text" name="guests" id="hotel-guests" placeholder="guests" value={this.state.hotel.guests} onChange={this.onChangeHotel} />
+                                <input type="number" name="guests" id="hotel-guests" value={this.state.hotel.guests} onChange={this.onChangeHotel} />
+                                <label className="input-label">Number of guests to block for</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input type="text" name="nights" id="hotel-nights" placeholder="nights" value={this.state.hotel.nights} onChange={this.onChangeHotel} />
+                                <input type="number" name="nights" id="hotel-nights" value={this.state.hotel.nights} onChange={this.onChangeHotel} />
+                                <label className="input-label">Number of nights to block</label>
                             </div>
                         </div>
                         <hr />
+                        <h3>Language</h3>
+                        <p><i>Please let us know what your prefered languge is so we know for how many people we woudl need translation.</i></p>
                         <div className="row gtr-uniform">
                             <div className="col-12">
                                 <select name="language" id="language" value={this.state.language} onChange={this.onChange}>
@@ -254,35 +266,41 @@ class RsvpRequest extends Component {
                         </div>
                         <hr />
                         {this.state.hasPlusOne &&
-                            <><div className="row gtr-uniform">
-                                <div className="col-6 col-12-small">
-                                    <input type="radio" id="bringsPlusOne-true" name="bringsPlusOne" value="yes" checked={this.state.bringsPlusOne === "yes"} onChange={this.onChange} />
-                                    <label htmlFor="bringsPlusOne-true">{t("rsvp:withPlusOne")}</label>
-                                </div>
-                                <div className="col-6 col-12-small">
-                                    <input type="radio" id="bringsPlusOne-false" name="bringsPlusOne" value="no" checked={this.state.bringsPlusOne === "no"} onChange={this.onChange} />
-                                    <label htmlFor="bringsPlusOne-false">{t("rsvp:withoutPlusOne")}</label>
-                                </div>
-                                {this.state.bringsPlusOne === "yes" &&
-                                    <>
-                                        <div className="col-6 col-12-xsmall">
-                                            <input type="text" name="firstname" id="firstname-plusone" placeholder={t("common:firstName")} value={this.state.plusOne.firstname} onChange={this.onChangePlusOne} />
-                                        </div>
-                                        <div className="col-6 col-12-xsmall">
-                                            <input type="text" name="lastname" id="firstname-plusone" placeholder={t("common:lastName")} value={this.state.plusOne.lastname} onChange={this.onChangePlusOne} />
-                                        </div>
-                                        <div className="col-12">
-                                            <select name="food" id="food" value={this.state.plusOne.food} onChange={this.onChangePlusOne}>
-                                                <option value="0">{t("rsvp:mealOptions")}</option>
-                                                <option value="1">{t("rsvp:noRestictions")}</option>
-                                                <option value="2">{t("rsvp:vegetarian")}</option>
-                                                <option value="3">{t("rsvp:glutenfree")}</option>
-                                            </select>
-                                        </div></>}
-                            </div><hr /></>
+                            <>
+                                <h3>Plus One</h3>
+                                <div className="row gtr-uniform">
+                                    <div className="col-6 col-12-small">
+                                        <input type="radio" id="bringsPlusOne-true" name="bringsPlusOne" value="yes" checked={this.state.bringsPlusOne === "yes"} onChange={this.onChange} />
+                                        <label htmlFor="bringsPlusOne-true">{t("rsvp:withPlusOne")}</label>
+                                    </div>
+                                    <div className="col-6 col-12-small">
+                                        <input type="radio" id="bringsPlusOne-false" name="bringsPlusOne" value="no" checked={this.state.bringsPlusOne === "no"} onChange={this.onChange} />
+                                        <label htmlFor="bringsPlusOne-false">{t("rsvp:withoutPlusOne")}</label>
+                                    </div>
+                                    {this.state.bringsPlusOne === "yes" &&
+                                        <>
+                                            <div className="col-6 col-12-xsmall">
+                                                <input type="text" name="firstname" id="firstname-plusone" value={this.state.plusOne.firstname} onChange={this.onChangePlusOne} />
+                                            <label className="input-label">{t("common:firstName")}</label>
+                                            </div>
+                                            <div className="col-6 col-12-xsmall">
+                                                <input type="text" name="lastname" id="lastname-plusone" value={this.state.plusOne.lastname} onChange={this.onChangePlusOne} />
+                                            <label className="input-label">{t("common:lastName")}</label>
+                                            </div>
+                                            <div className="col-12">
+                                                <select name="food" id="food" value={this.state.plusOne.food} onChange={this.onChangePlusOne}>
+                                                    <option value="0">{t("rsvp:mealOptions")}</option>
+                                                    <option value="1">{t("rsvp:noRestictions")}</option>
+                                                    <option value="2">{t("rsvp:vegetarian")}</option>
+                                                    <option value="3">{t("rsvp:glutenfree")}</option>
+                                                </select>
+                                            </div></>}
+                                </div><hr /></>
                         }
                         {this.state.hasChildren &&
-                            <><div className="row gtr-uniform">
+                            <>
+                            <h3>Children</h3>
+                            <div className="row gtr-uniform">
                                 <div className="col-6 col-12-small">
                                     <input type="radio" id="bringsChild-true" name="bringsChildren" value="yes" checked={this.state.bringsChildren === "yes"} onChange={this.onChange} />
                                     <label htmlFor="bringsChild-true">{t("rsvp:withChildren")}</label>
@@ -293,18 +311,23 @@ class RsvpRequest extends Component {
                                 </div>
 
                                 {this.state.bringsChildren === "yes" &&
-                                    <div className="row gtr-uniform">
+                                <>
                                         {this.state.children.map((data, idx) => (
-                                            <div className="col-6 col-12-small">
-                                                <div className="col-6 col-12-xsmall">
+                                            <div>
+                                                <div className="col-6 col-12-small">
                                                     <input type="text" name="firstname" id="firstname" placeholder={t("common:firstName")} value={data.firstname} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                </div><div className="col-6 col-12-xsmall">
+                                                    <label className="input-label">{t("common:firstName")}</label>
+                                                </div>
+                                                <div className="col-6 col-12-small">
                                                     <input type="text" name="lastname" id="lastname" placeholder={t("common:lastName")} value={data.lastname} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                </div><div className="col-6 col-12-xsmall">
+                                                    <label className="input-label">{t("common:LastName")}</label>
+                                                </div>
+                                                <div className="col-6 col-12-small">
                                                     <input type="text" name="age" id="age" placeholder="Age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
+                                                    <label className="input-label">{t("common:Age")}</label>
                                                 </div></div>
                                         ))}
-                                    </div>
+                                        </>
                                 }
                             </div>
                                 <hr />
@@ -312,6 +335,7 @@ class RsvpRequest extends Component {
 
                         }
                         <div className="col-12">
+                            <label className="input-label"> Message</label>
                             <textarea name="message" id="demo-message" placeholder={t("common:additionalNotes")} value={this.state.message} rows="3" onChange={this.onChange}></textarea>
                         </div>
                         <br />
