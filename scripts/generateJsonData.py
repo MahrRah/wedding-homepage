@@ -17,7 +17,13 @@ guest_template = {
     "child": [],
     "message": "",
 }
-plusOne_template = {"firstname": "", "lastname": "", "food": None, "attending": ""}
+plusOne_template = {
+    "firstname": "",
+    "lastname": "",
+    "food": None,
+    "attending": "",
+    "invited": "",
+}
 child_template = {
     "firstname": "",
     "lastname": "",

@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 
-def update_values(spreadsheet_id, range_name, value_input_option, _values):
+def update_values(spreadsheet_id, sheet_id,range_name, value_input_option, _values):
     """
     Creates the batch_update the user has access to.
     Load pre-authorized user credentials from the environment.
@@ -39,11 +39,20 @@ def update_values(spreadsheet_id, range_name, value_input_option, _values):
 
 
 if __name__ == "__main__":
-    with open("../data/excelExport.csv", newline="") as f:
-        reader = csv.reader(f)
-        data = list(reader)
-    print(data)
+    with open("../data/excelExportGuests.csv", newline="") as fg:
+        reader_guests = csv.reader(fg)
+        data_guests = list(reader_guests)
+    print(data_guests)
     # Pass: spreadsheet_id,  range_name, value_input_option and  _values
     update_values(
-        "1o31QItnO8joV5JNEVbmqcbhqEUgDjqEhzr7fXb8BVcU", "A1:X49", "USER_ENTERED", data
+        "1o31QItnO8joV5JNEVbmqcbhqEUgDjqEhzr7fXb8BVcU","1208178651", "guests_db!A1:X120", "USER_ENTERED", data_guests
+    )
+
+    with open("../data/excelExportHotel.csv", newline="") as fh:
+        reader_hotel = csv.reader(fh)
+        data_hotel = list(reader_hotel)
+    print(data_hotel)
+    # Pass: spreadsheet_id,  range_name, value_input_option and  _values
+    update_values(
+        "1o31QItnO8joV5JNEVbmqcbhqEUgDjqEhzr7fXb8BVcU","1596043312" ,"hotel_db!A1:X49", "USER_ENTERED", data_hotel
     )

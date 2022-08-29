@@ -6,54 +6,27 @@ import { useTranslation } from "react-i18next";
 
 function Story() {
   const { t } = useTranslation(["common"]);
-
+  const Article = ({ date, titel, image }) => {
+    return (
+      <article>
+        <header>
+          <span className="date">{date}</span>
+          <h2><a href="#">{titel}</a></h2>
+        </header>
+        <a href="#" className="image fit"><img src={image} alt="" /></a>
+      </article>
+    );
+  };
   return (
     <div id="main">
-
       <section className="posts">
-        <article>
-          <header>
-            <span className="date">TBD TBD, 1996</span>
-            <h2><a href="#">Small Mahra</a></h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/smallTamara.jpg")} alt="" /></a>
-        </article><article>
-          <header>
-            <span className="date">November 17, 2021</span>
-            <h2><a href="#">Smol Valentin</a></h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/smallTamara.jpg")} alt="" /></a>
-        </article>
-        <article>
-          <header>
-            <span className="date">November 17, 2021</span>
-            <h2><a href="#">The day off</a></h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/dayoff.jpeg")} alt="" /></a>
-        </article>
-        <article>
-          <header>
-            <span className="date">November 17, 2021</span>
-            <h2><a href="#">Proposal add on</a></h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/proposal2.jpeg")} alt="" /></a>
-        </article>
-        <article>
-          <header>
-            <span className="date">April 18, 2017</span>
-            <h2><a href="#">Save the date </a> </h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/savethedate.jpeg")} alt="" /></a>
-        </article>
-        <article>
-          <header>
-            <span className="date">April 18, 2017</span>
-            <h2><a href="#">Save the date </a> </h2>
-          </header>
-          <a href="#" className="image fit"><img src={require("../../images/savethedate.jpeg")} alt="" /></a>
-        </article>
-
+      <Article date={"TBD TBD, 1996"} titel={"Small Mahra"} image={require("../../images/smallTamara.jpg")} />
+      <Article date={"November 17, 2021"} titel={"Smol Valentin"} image={require("../../images/smolVale.png")} />
+      <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolMahra.jpg")} />
+      <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolVale.png")} />
       </section>
+      <Article date={"November 17, 2021"} titel={"The day off"}image={require("../../images/dayoff.jpeg")} />
+      <Article date={"November 17, 2021"} titel={"Proposal add on"}image={require("../../images/proposal2.jpeg")} />
     </div>
   );
 }

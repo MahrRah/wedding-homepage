@@ -1,42 +1,15 @@
-import csv
-import uuid
-import copy
 import json
 
-guests_template = {
-    "_id": "",
-    "rsvpCode": "",
-    "firstname": "",
-    "lastname": "",
-    "attending": "",
-    "food": None,
-    "email": "",
-    "phone": "",
-    "hotel": {},
-    "plusOne": [],
-    "child": [],
-    "message": "",
-}
-plusOne_template = {"firstname": "", "lastname": "", "food": None, "attending": ""}
-child_template = {
-    "firstname": "",
-    "lastname": "",
-    "food": None,
-    "age": 0,
-    "attending": "",
-}
-hotel = {"rooms": 0, "guests": 0, "nights": 0}
-
-rsvp_codes = []
-guests_list = []
 import csv
 
 
 with open("../data/guestDB.json", newline="") as jsonfile:
     comosbd = json.load(jsonfile)
 
+with open("../data/excelExportGuests.csv", "w") as csvfile:
+    fieldnames = ["rsvpCode", "hotel", "rooms", "guests", "nights"]
 
-with open("../data/excelExport.csv", "w") as csvfile:
+with open("../data/excelExportGuests.csv", "w") as csvfile:
     fieldnames = [
         "rsvpCode",
         "firstname",
@@ -46,22 +19,24 @@ with open("../data/excelExport.csv", "w") as csvfile:
         "attending",
         "food",
         "language",
-        "po:attending",
-        "po:firstname",
-        "po:lastname",
-        "po:food",
-        "ch1:firstname",
-        "ch1:lastname",
-        "ch1:age",
-        "ch2:firstname",
-        "ch2:lastname",
-        "ch2:age",
-        "ch3:firstname",
-        "ch3:lastname",
-        "ch3:age",
-        "h:rooms",
-        "h:guests",
-        "h:nights",
+        "plusOne" "child",
+        "age"
+        # "po:attending",
+        # "po:firstname",
+        # "po:lastname",
+        # "po:food",
+        # "ch1:firstname",
+        # "ch1:lastname",
+        # "ch1:age",
+        # "ch2:firstname",
+        # "ch2:lastname",
+        # "ch2:age",
+        # "ch3:firstname",
+        # "ch3:lastname",
+        # "ch3:age",
+        # "h:rooms",
+        # "h:guests",
+        # "h:nights",
     ]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
