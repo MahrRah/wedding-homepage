@@ -260,14 +260,15 @@ class RsvpRequest extends Component {
                         </div>
                         <hr />
                         <h3>{t("rsvp:language")}</h3>
-                        <p><i>Please let us know what your prefered languge is so we know for how many people we woudl need translation.</i></p>
+                        <p><i>The ceremony will be held in German (not Swiss-German). Do you need translation?</i></p>
                         <div className="row gtr-uniform">
-                            <div className="col-12">
-                                <select name="language" id="language" value={this.state.language} onChange={this.onChange}>
-                                    <option value="null">{t("common:languageSelector")}</option>
-                                    <option value="en">{t("common:en")}</option>
-                                    <option value="de">{t("common:de")}</option>
-                                </select>
+                        <div className="col-4 col-12-small">
+                                <input type="radio" id="language-true" name="language" value="de" checked={this.state.language == "de"} onChange={this.onChange} />
+                                <label htmlFor="language-true">{t("common:no")}</label>
+                            </div>
+                            <div className="col-4 col-12-small">
+                                <input type="radio" id="language-false" name="language" value="en" checked={this.state.language == "en"} onChange={this.onChange} />
+                                <label htmlFor="language-false">{t("common:yes")}</label>
                             </div>
                         </div>
                         <hr />

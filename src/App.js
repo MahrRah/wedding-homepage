@@ -17,23 +17,24 @@ import Gallery from './components/gallery/Gallery.js'
 import Contacts from './components/contacts/Contacts.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
 import { useTranslation } from "react-i18next";
-
+import { ParallaxProvider } from "react-scroll-parallax";
 
 function App() {
 
   const { t } = useTranslation(["story", "common", "overview"]);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "assets/js/main.js";
-    script.async = true;
-    script.type = "text/jsx"
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = "assets/js/main.js";
+  //   script.async = true;
+  //   script.type = "text/jsx"
+  //   document.body.appendChild(script);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   }
+  // }, []);
   return (
+    <ParallaxProvider>
     <Suspense fallback={null}>
       <div className="is-preload">
         <div id="wrapper" className="fade-in">
@@ -55,6 +56,7 @@ function App() {
         </div>
       </div>
     </Suspense>
+    </ParallaxProvider>
   )
 }
 

@@ -43,7 +43,7 @@ function Schedule() {
       </div>
     </div>
   );
-  
+
   const Timeline = () =>
     schedule.length > 0 && (
       <div className="timeline-container">

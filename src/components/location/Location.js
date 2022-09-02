@@ -3,7 +3,7 @@ import React from 'react';
 import '../../assets/css/main.css'
 
 //Components
-import Map from './Map.js'
+// import Map from './Map.js'
 import Accommodation from './Accommodation';
 import Venue from './Venue';
 
@@ -19,9 +19,7 @@ function Location() {
           <h1>{t('location:titel')}</h1>
         </header>
         <Venue />
-        <hr />
         <Accommodation />
-        <hr />
       </section>
       {/* <Map /> */}
     </div>

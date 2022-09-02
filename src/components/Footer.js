@@ -34,7 +34,7 @@ function Footer() {
           <h3>{t('sozialNetworks')}</h3>
           <ul className="icons alt">
             <li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
-            <li><a href="https://github.com/MahrRah/webapp-react-wedding" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
+            <li><a href="https://github.com/MahrRah/wedding-homepage" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
           </ul>
         </section>
       </section>

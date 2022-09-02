@@ -6,22 +6,35 @@ function Accommodation() {
 
   const { t } = useTranslation(["location"]);
 
+  const Hotel = ({ image, text, link, linkText, location, price, distance }) => {
+    return (
+      <div>
+        <span className="image left"><img src={image} alt="" /></span>
+        <p>{text}</p>
+        <br />
+        <div className="row gtr-uniform">
+          <ul>
+            <li><a href={link} target="_blank">{linkText}</a></li>
+            <li><b>{t('location:city')}:</b> {location}</li>
+            <li><b>{t('location:price')}:</b> {price}</li>
+            <li><b>{t('location:distanceVenue')}:</b> {distance}</li>
+          </ul>
+        </div>
+        <hr />
+      </div>
+    );
+  }
   return (
     <div>
       <h2>{t('location:accomodation')}</h2>
       <h3>{t('location:mainHotel')}</h3>
-      <div><span className="image left"><img src={require("../../images/vienna-house.jpg")} alt="" /></span>
-        <p>{t('location:mainHotelText')}</p>
-        <br />
-        <div className="row gtr-uniform">
-          <ul>
-            <li><a href='https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html' target="_blank">Vienna House zur Bleiche Schaffhausen </a></li>
-            <li><b>{t('location:city')}:</b> Schaffhausen</li>
-            <li><b>{t('location:price')}:</b> 190 CHF</li>
-            <li><b>{t('location:distanceVenue')}:</b> 15 min</li>
-          </ul>
-        </div>
-      </div>
+      <Hotel image={require("../../images/vienna-house.jpg")} 
+             text={t('location:mainHotelText')} 
+             link={'https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html'} 
+             linkText={"Vienna House zur Bleiche Schaffhausen"} 
+             location={""} 
+             price={""} 
+             distance={""} />
       {/* 
       <hr />
       <h4>{t('location:otherHotels')}</h4>

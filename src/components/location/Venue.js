@@ -17,6 +17,7 @@ function Venue() {
       </div>
       <h4>{t('location:map')}</h4>
       <span className="image fit"><img src={require("../../images/schupfen-map.png")} alt="" /></span>
+      <hr />
     </div>
   );
 }
