@@ -9,13 +9,13 @@ class RsvpRequest extends Component {
         super(props);
         this.state = {
             rsvpCode: "",
+            // rsvpCode: {value:"",error:false},
             submitted: false,
-            error: false,
             updated: false,
             firstname: "",
             lastname: "",
-            email: "",
-            phone: "",
+            email: { value: "", error: false },
+            phone: { value: "", error: false },
             attending: "yes",
             booking: "yes",
             hotel: { rooms: 0, guests: 0, nights: 0, booking: "" },
@@ -41,12 +41,34 @@ class RsvpRequest extends Component {
         this.onChangeChild = this.onChangeChild.bind(this);
         this.onChangeHotel = this.onChangeHotel.bind(this);
         this.resetData = this.resetData.bind(this);
+        this.onChangeValidate = this.onChangeValidate.bind(this);
     }
-
+    InputWithError = ({ data, lables, onChange }) => {
+        return (<div className="col-6 col-12-xsmall">
+            <input type="text" name={data.name} id={data.name} value={data.state.value} onChange={onChange} style={{ "border-color": data.state.error ? '#8a0204' : '#eeeeee' }} />
+            <label className="input-label">{lables.name}</label>
+            {data.state.error && <label className="input-label"> <p style={{ color: "#8a0204" }}>{lables.error}</p></label>}
+        </div>)
+    }
     onChange = (e) => {
         console.log(e)
         this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
     }
+    onChangeValidate = (e) => {
+        console.log(e)
+        let error = false
+        switch (e.target.name) {
+
+            case "phone":
+                const regex = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$');
+                error = !regex.test(e.target.value.replace(/\s/g, ''))
+                console.log("erro phone files" + error)
+            // '(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?: [\x01 -\x08\x0b\x0c\x0e -\x1f\x21\x23 -\x5b\x5d -\x7f] |\\[\x01 -\x09\x0b\x0c\x0e -\x7f]) * ")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])'
+
+        }
+        this.setState({ [e.target.name]: { value: e.target.value, error: error } });  // Getting access to entered values
+    }
+
 
     onChangePlusOne = (e) => {
         let state = this.state.plusOne
@@ -75,14 +97,35 @@ class RsvpRequest extends Component {
     }
 
     loadRsvpDataToState = (data) => {
-        this.setState({ rsvpCode: data.rsvpCode, lastname: data.lastname, firstname: data.firstname, email: data.email, phone: data.phone, attending: data.attending, language: data.language, food: data.food, hotel: data.hotel, booking: data.hotel.booking, message: data.message, data: data })
+        //  {...rsvpCode, value:data.rsvpCode}
+        this.setState({
+            rsvpCode: data.rsvpCode,
+            lastname: data.lastname,
+            firstname: data.firstname,
+            email: { ...email, value: data.email },
+            phone: data.phone,
+            attending: data.attending,
+            language: data.language,
+            food: data.food,
+            hotel: data.hotel,
+            booking: data.hotel.booking,
+            message: data.message, data: data
+        })
 
         if (data.plusOne.length > 0) {
 
-            this.setState({ hasPlusOne: true, bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending, plusOne: structuredClone(data.plusOne[0])});
+            this.setState({
+                hasPlusOne: true,
+                bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending,
+                plusOne: structuredClone(data.plusOne[0])
+            });
         }
         if (data.child.length > 0) {
-            this.setState({ hasChildren: true, bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending, children: structuredClone(data.child)})
+            this.setState({
+                hasChildren: true,
+                bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending,
+                children: structuredClone(data.child)
+            })
         }
     }
     resetData = () => {
@@ -115,8 +158,8 @@ class RsvpRequest extends Component {
             let updateBody = {
                 "attending": this.state.attending,
                 "food": this.state.food,
-                "email": this.state.email,
-                "phone": this.state.phone,
+                "email": this.state.email.value,
+                "phone": this.state.phone.value,
                 "plusOne": [
                 ],
                 "child": [],
@@ -124,8 +167,7 @@ class RsvpRequest extends Component {
                 "language": this.state.language,
                 "message": this.state.message,
             }
-            console.log(this.state.booking)
-            console.log(this.state.booking)
+
             updateBody.hotel.booking = this.state.booking;
 
             if (this.state.hasPlusOne && this.state.bringsPlusOne) {
@@ -148,7 +190,6 @@ class RsvpRequest extends Component {
                         "attending": this.state.bringsChildren
                     }
                     updateBody.child.push(child)
-                    console.log(x)
                 });
 
             }
@@ -196,7 +237,8 @@ class RsvpRequest extends Component {
                             <li><input type="submit" value={t('rsvp:submitCode')} /></li>
                         </ul>
                     </form>}
-                {this.state.submitted && !this.state.updated &&
+                {true &&
+                    // {this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.updateRsvp}>
                         <h3>{t("rsvp:personal")}</h3>
                         <div className="row gtr-uniform">
@@ -217,13 +259,10 @@ class RsvpRequest extends Component {
                                 <label className="input-label">{t("common:lastName")}</label>
                             </div>
                             <div className="col-6 col-12-xsmall">
-                                <input type="text" name="email" id="email" value={this.state.email} onChange={this.onChange} />
+                                <input type="email" name="email" id="email" value={this.state.email.value} onChange={this.onChangeValidate} />
                                 <label className="input-label">{t("common:email")}</label>
                             </div>
-                            <div className="col-6 col-12-xsmall">
-                                <input type="text" name="phone" id="phone" value={this.state.phone} onChange={this.onChange} />
-                                <label className="input-label">{t("common:phone")}</label>
-                            </div>
+                            <this.InputWithError data={{ "name": "phone", "type": "text", state: this.state.phone }} lables={{ "error": "error", "name": t("common:phone") }} onChange={this.onChangeValidate} />
                             <div className="col-12">
                                 <select name="food" id="food" value={this.state.food} onChange={this.onChange}>
                                     <option value="0">{t("rsvp:mealOptions")}</option>
@@ -256,13 +295,14 @@ class RsvpRequest extends Component {
                             <div className="col-6 col-12-xsmall">
                                 <input type="number" name="nights" id="hotel-nights" value={this.state.hotel.nights} onChange={this.onChangeHotel} />
                                 <label className="input-label">{t("rsvp:nights")}</label>
+                                <label className="input-label"> <p style={{ color: "#8a0204" }}>error</p></label>
                             </div>
                         </div>
                         <hr />
                         <h3>{t("rsvp:language")}</h3>
                         <p><i>The ceremony will be held in German (not Swiss-German). Do you need translation?</i></p>
                         <div className="row gtr-uniform">
-                        <div className="col-4 col-12-small">
+                            <div className="col-4 col-12-small">
                                 <input type="radio" id="language-true" name="language" value="de" checked={this.state.language == "de"} onChange={this.onChange} />
                                 <label htmlFor="language-true">{t("common:no")}</label>
                             </div>
