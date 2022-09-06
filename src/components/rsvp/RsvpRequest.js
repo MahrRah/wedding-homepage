@@ -194,7 +194,7 @@ class RsvpRequest extends Component {
     handleSubmitCode = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
                 method: "GET",
             });
             if (res.status === 200) {
@@ -260,7 +260,7 @@ class RsvpRequest extends Component {
 
             }
 
-            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
                 method: "POST",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
