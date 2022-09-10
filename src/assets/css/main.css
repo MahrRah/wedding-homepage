@@ -7,6 +7,14 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+:root {
+--smoky-black: #12100eff;
+--pine-tree: #30321cff;
+--gold-fusion: #6b654bff;
+--artichoke: #a0a275ff;
+--gold-metallic: #e0bc58ff;
+}
+
 #root {
 	white-space: pre-line;
   }
@@ -64,7 +72,7 @@ ol, ul {
   }
   
   .show-counter .countdown.danger {
-	color:  #777;
+	color: var(--artichoke);
   }
   
   .show-counter .countdown > p {
@@ -86,7 +94,7 @@ ol, ul {
 }
 
 .timeline-container::after {
-    background-color: #212931;
+    background-color: var(--pine-tree);
     content: '';
     position: absolute;
     left: calc(50% - 2px);
@@ -165,13 +173,13 @@ ol, ul {
 }
 
 .timeline-item-content time {
-    color: #777;
+    color:var(--artichoke);
     font-size: 12px;
     font-weight: bold;
 }
 
 .timeline-item-content location {
-    color: #212931;
+    color: var(--pine-tree);
     font-size: 12px;
     font-weight: bold;
 	font-style: italic;
@@ -196,7 +204,7 @@ ol, ul {
 
 .timeline-item-content .circle {
     background-color: #fff;
-    border: 3px solid #293d2f;
+    border: 3px solid var(--gold-fusion);
     border-radius: 50%;
     position: absolute;
     top: calc(50% - 10px);
@@ -311,7 +319,7 @@ input::-webkit-inner-spin-button {
 	}
 
 	body {
-		background-color: #1e252d;
+		background-color: var(--smoky-black);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -356,7 +364,7 @@ input::-webkit-inner-spin-button {
 		}
 
 	body {
-		color: #212931;
+		color: var(--pine-tree);
 	}
 
 	body, input, select, textarea {
@@ -500,25 +508,25 @@ input::-webkit-inner-spin-button {
 	}
 
 	input, select, textarea {
-		color: #212931;
+		color: #000000;
 	}
 
 	a {
-		color: #212931;
-		border-bottom-color: rgba(33, 41, 49, 0.5);
+		color: var(--pine-tree);
+		border-bottom-color:var(--pine-tree);
 	}
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #18bfef !important;
+			color: var(--gold-metallic) !important;
 		}
 
 	strong, b {
-		color: #212931;
+		color: var(--pine-tree);
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #212931;
+		color: var(--pine-tree);
 	}
 
 	blockquote {
@@ -2418,8 +2426,8 @@ input::-webkit-inner-spin-button {
 	button,
 	.button {
 		background-color: transparent;
-		box-shadow: inset 0 0 0 2px #212931;
-		color: #212931 !important;
+		box-shadow: inset 0 0 0 2px var(--pine-tree);
+		color: var(--pine-tree) !important;
 	}
 
 		input[type="submit"]:hover,
@@ -2427,8 +2435,8 @@ input::-webkit-inner-spin-button {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 2px #18bfef;
-			color: #18bfef !important;
+			box-shadow: inset 0 0 0 2px var(--gold-metallic);
+			color: var(--gold-metallic) !important;
 		}
 
 		input[type="submit"].primary,
@@ -2436,7 +2444,7 @@ input::-webkit-inner-spin-button {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #212931;
+			background-color: var(--pine-tree);
 			box-shadow: none;
 			color: #ffffff !important;
 		}
@@ -2446,7 +2454,7 @@ input::-webkit-inner-spin-button {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #18bfef;
+				background-color: var(--gold-metallic);
 			}
 
 /* Form */
@@ -2690,7 +2698,7 @@ input::-webkit-inner-spin-button {
 	}
 
 	label {
-		color: #212931;
+		color: var(--pine-tree);
 		color: rgba(0, 0, 0, 0.5);
 	}
 
@@ -2709,7 +2717,7 @@ input::-webkit-inner-spin-button {
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #18bfef;
+			border-color: var(--gold-metallic);
 		}
 
 	select {
@@ -2718,7 +2726,7 @@ input::-webkit-inner-spin-button {
 
 		select option {
 			background-color: #ffffff;
-			color: #212931;
+			color: var(--pine-tree);
 		}
 
 	.select-wrapper:before {
@@ -2727,7 +2735,7 @@ input::-webkit-inner-spin-button {
 
 	input[type="checkbox"] + label,
 	input[type="radio"] + label {
-		color: #212931;
+		color: var(--pine-tree);
 	}
 
 		input[type="checkbox"] + label:before,
@@ -2737,14 +2745,14 @@ input::-webkit-inner-spin-button {
 
 	input[type="checkbox"]:checked + label:before,
 	input[type="radio"]:checked + label:before {
-		background-color: #212931;
-		border-color: #212931;
+		background-color: var(--pine-tree);
+		border-color: var(--pine-tree);
 		color: #ffffff;
 	}
 
 	input[type="checkbox"]:focus + label:before,
 	input[type="radio"]:focus + label:before {
-		border-color: #18bfef;
+		border-color: var(--gold-metallic);
 	}
 
 	::-webkit-input-placeholder {
@@ -3108,7 +3116,7 @@ input::-webkit-inner-spin-button {
 	}
 
 	ul.icons li a.icon:hover:before {
-		color: #18bfef;
+		color: var(--gold-metallic);
 	}
 
 	ul.icons.alt li .icon:before {
@@ -3116,7 +3124,7 @@ input::-webkit-inner-spin-button {
 	}
 
 	ul.icons.alt li a.icon:hover:before {
-		box-shadow: inset 0 0 0 2px #18bfef;
+		box-shadow: inset 0 0 0 2px var(--gold-metallic);
 	}
 
 /* Section/Article */
@@ -3302,7 +3310,7 @@ input::-webkit-inner-spin-button {
 		}
 
 	table th {
-		color: #212931;
+		color: var(--pine-tree);
 	}
 
 	table thead {
@@ -3411,18 +3419,18 @@ input::-webkit-inner-spin-button {
 	}
 
 	.pagination a {
-		color: #212931 !important;
+		color: var(--pine-tree) !important;
 	}
 
 		.pagination a:hover {
-			color: #18bfef !important;
-			border-color: #18bfef;
+			color: var(--gold-metallic) !important;
+			border-color: var(--gold-metallic);
 			z-index: 1;
 		}
 
 			.pagination a:hover + a,
 			.pagination a:hover + span {
-				border-left-color: #18bfef;
+				border-left-color: var(--gold-metallic);
 			}
 
 		.pagination a.active {
@@ -3451,7 +3459,7 @@ input::-webkit-inner-spin-button {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: #212931;
+			background-color: var(--pine-tree);
 			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
@@ -3476,7 +3484,7 @@ input::-webkit-inner-spin-button {
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
-			background: #1e252d;
+			background: var(--smoky-black);
 			content: '';
 			display: block;
 			height: 100%;
@@ -3542,7 +3550,7 @@ input::-webkit-inner-spin-button {
 
 			#intro a:hover {
 				border-bottom-color: transparent;
-				color: #18bfef !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		#intro strong, #intro b {
@@ -3581,8 +3589,8 @@ input::-webkit-inner-spin-button {
 			#intro input[type="button"]:hover,
 			#intro button:hover,
 			#intro .button:hover {
-				box-shadow: inset 0 0 0 2px #18bfef;
-				color: #18bfef !important;
+				box-shadow: inset 0 0 0 2px var(--gold-metallic);
+				color: var(--gold-metallic) !important;
 			}
 
 			#intro input[type="submit"].primary,
@@ -3592,7 +3600,7 @@ input::-webkit-inner-spin-button {
 			#intro .button.primary {
 				background-color: #ffffff;
 				box-shadow: none;
-				color: #1e252d !important;
+				color: var(--smoky-black) !important;
 			}
 
 				#intro input[type="submit"].primary:hover,
@@ -3600,7 +3608,7 @@ input::-webkit-inner-spin-button {
 				#intro input[type="button"].primary:hover,
 				#intro button.primary:hover,
 				#intro .button.primary:hover {
-					background-color: #18bfef;
+					background-color: var(--gold-metallic);
 				}
 
 		#intro h1 {
@@ -3751,7 +3759,7 @@ input::-webkit-inner-spin-button {
 
 			#header a:hover {
 				border-bottom-color: transparent;
-				color: #18bfef !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		#header strong, #header b {
@@ -3795,8 +3803,8 @@ input::-webkit-inner-spin-button {
 		}
 
 			#header .logo:hover {
-				border-color: #18bfef !important;
-				color: #18bfef !important;
+				border-color: var(--gold-metallic) !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		@media screen and (max-width: 980px) {
@@ -3850,7 +3858,7 @@ input::-webkit-inner-spin-button {
 		}
 
 		#nav ul.icons li a.icon:hover:before {
-			color: #18bfef;
+			color: var(--gold-metallic);
 		}
 
 		#nav ul.icons.alt li .icon:before {
@@ -3858,7 +3866,7 @@ input::-webkit-inner-spin-button {
 		}
 
 		#nav ul.icons.alt li a.icon:hover:before {
-			box-shadow: inset 0 0 0 2px #18bfef;
+			box-shadow: inset 0 0 0 2px var(--gold-metallic);
 		}
 
 		#nav input, #nav select, #nav textarea {
@@ -3872,7 +3880,7 @@ input::-webkit-inner-spin-button {
 
 			#nav a:hover {
 				border-bottom-color: transparent;
-				color: #18bfef !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		#nav strong, #nav b {
@@ -3944,11 +3952,11 @@ input::-webkit-inner-spin-button {
 				}
 
 					#nav ul.links li.active a {
-						color: #1e252d;
+						color: var(--smoky-black);
 					}
 
 						#nav ul.links li.active a:hover {
-							color: #18bfef !important;
+							color: var(--gold-metallic) !important;
 						}
 
 		#nav ul.icons {
@@ -4194,7 +4202,7 @@ input::-webkit-inner-spin-button {
 
 			#footer a:hover {
 				border-bottom-color: transparent;
-				color: #18bfef !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		#footer strong, #footer b {
@@ -4237,8 +4245,8 @@ input::-webkit-inner-spin-button {
 			#footer input[type="button"]:hover,
 			#footer button:hover,
 			#footer .button:hover {
-				box-shadow: inset 0 0 0 2px #18bfef;
-				color: #18bfef !important;
+				box-shadow: inset 0 0 0 2px var(--gold-metallic);
+				color: var(--gold-metallic) !important;
 			}
 
 			#footer input[type="submit"].primary,
@@ -4256,7 +4264,7 @@ input::-webkit-inner-spin-button {
 				#footer input[type="button"].primary:hover,
 				#footer button.primary:hover,
 				#footer .button.primary:hover {
-					background-color: #18bfef;
+					background-color: var(--gold-metallic);
 				}
 
 		#footer label {
@@ -4278,7 +4286,7 @@ input::-webkit-inner-spin-button {
 			#footer input[type="email"]:focus,
 			#footer select:focus,
 			#footer textarea:focus {
-				border-color: #18bfef;
+				border-color: var(--gold-metallic);
 			}
 
 		#footer select {
@@ -4313,7 +4321,7 @@ input::-webkit-inner-spin-button {
 
 		#footer input[type="checkbox"]:focus + label:before,
 		#footer input[type="radio"]:focus + label:before {
-			border-color: #18bfef;
+			border-color: var(--gold-metallic);
 		}
 
 		#footer ::-webkit-input-placeholder {
@@ -4341,7 +4349,7 @@ input::-webkit-inner-spin-button {
 		}
 
 		#footer ul.icons li a.icon:hover:before {
-			color: #18bfef;
+			color: var(--gold-metallic);
 		}
 
 		#footer ul.icons.alt li .icon:before {
@@ -4349,7 +4357,7 @@ input::-webkit-inner-spin-button {
 		}
 
 		#footer ul.icons.alt li a.icon:hover:before {
-			box-shadow: inset 0 0 0 2px #18bfef;
+			box-shadow: inset 0 0 0 2px var(--gold-metallic);
 		}
 
 		#footer header.major .date:before, #footer header.major .date:after {
@@ -4389,14 +4397,14 @@ input::-webkit-inner-spin-button {
 		}
 
 			#footer .pagination a:hover {
-				color: #18bfef !important;
-				border-color: #18bfef;
+				color: var(--gold-metallic) !important;
+				border-color: var(--gold-metallic);
 				z-index: 1;
 			}
 
 				#footer .pagination a:hover + a,
 				#footer .pagination a:hover + span {
-					border-left-color: #18bfef;
+					border-left-color: var(--gold-metallic);
 				}
 
 			#footer .pagination a.active {
@@ -4633,7 +4641,7 @@ input::-webkit-inner-spin-button {
 
 			#copyright a:hover {
 				border-bottom-color: transparent;
-				color: #18bfef !important;
+				color: var(--gold-metallic) !important;
 			}
 
 		#copyright strong, #copyright b {
@@ -4749,7 +4757,7 @@ input::-webkit-inner-spin-button {
 		#navPanelToggle.alt {
 			background-color: rgba(255, 255, 255, 0.875);
 			box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-			color: #212931;
+			color: var(--pine-tree);
 		}
 
 			#navPanelToggle.alt:hover {
@@ -4786,7 +4794,7 @@ input::-webkit-inner-spin-button {
 		-webkit-overflow-scrolling: touch;
 		background: #ffffff;
 		box-shadow: none;
-		color: #212931;
+		color: var(--pine-tree);
 		height: 100%;
 		max-width: 80%;
 		overflow-y: auto;
@@ -4865,7 +4873,7 @@ input::-webkit-inner-spin-button {
 			}
 
 			#navPanel .close:hover {
-				color: #212931;
+				color: var(--pine-tree);
 			}
 
 			@media screen and (max-width: 736px) {

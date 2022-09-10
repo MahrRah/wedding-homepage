@@ -9,6 +9,7 @@ class RsvpRequest extends Component {
         super(props);
         this.state = {
             rsvpCode: { value: "", error: false },
+            error: false,
             submitted: false,
             updated: false,
             firstname: "",
@@ -29,7 +30,7 @@ class RsvpRequest extends Component {
             message: "",
             data: {}
         };
-        localStorage.setItem('submitted', false);
+        // localStorage.setItem('submitted', false);
         this.onChange = this.onChange.bind(this);
         this.handleSubmitCode = this.handleSubmitCode.bind(this);
         this.isSubmitted = this.isSubmitted.bind(this);
@@ -41,6 +42,7 @@ class RsvpRequest extends Component {
         this.onChangeHotel = this.onChangeHotel.bind(this);
         this.resetData = this.resetData.bind(this);
         this.onChangeValidate = this.onChangeValidate.bind(this);
+        this.hasError = this.hasError.bind(this);
     }
 
     Input = ({ data, lable, onChange }) => {
@@ -87,12 +89,23 @@ class RsvpRequest extends Component {
             </>
         )
     }
-    onChange = (e) => {
-        console.log(e)
-        this.setState({ [e.target.name]: e.target.value });  // Getting access to entered values
+
+    hasError = () => {
+
+        const personalError = this.state.email.error  || this.state.phone.error 
+        const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
+        // TODO remove error when booking state is set to wrong
+        this.setState({ ["error"]: personalError || hotelError})
+        console.log("error state " + this.state.error + " error values " +  this.state.email.error )
     }
+
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+        this.hasError()
+    }
+
     onChangeValidate = (e) => {
-        console.log(e)
+
         let error = false
         switch (e.target.name) {
             case "phone":
@@ -104,7 +117,10 @@ class RsvpRequest extends Component {
                 error = !regexEmail.test(e.target.value.replace(/\s/g, ''))
                 break;
         }
-        this.setState({ [e.target.name]: { value: e.target.value, error: error } });  // Getting access to entered values
+        this.setState({ [e.target.name]: { value: e.target.value, error: error } },() => {
+            this.hasError()
+          }); 
+        
     }
 
     onChangePlusOne = (e) => {
@@ -116,25 +132,39 @@ class RsvpRequest extends Component {
     onChangeHotel = (e) => {
         let state = this.state.hotel
         let error = false
-        console.log(state)
         if (e.target.name == "nights" || e.target.name == "rooms") {
 
             error = (e.target.value > 0) ? false : true;
             state[e.target.name] = { "value": e.target.value, error: error }
-            this.setState({ hotel: state });
+            this.setState({ hotel: state },() => {
+                this.hasError()
+              });
         }
         else {
             state[e.target.name] = e.target.value
-            this.setState({ hotel: state });
+            this.setState({ hotel: state },() => {
+                this.hasError()
+              });
         }
+        this.hasError()
     }
 
     onChangeChild = (e, idx) => {
         let children = this.state.children
         let child = children[idx];
-        child[e.target.name] = e.target.value;
+        if (e.target.name == "age") {
+            let error = (((e.target.value > 0) && (e.target.value < 18)) || Number.isInteger(e.target.value)) ? false : true;
+
+            console.log(error, e.target.value)
+            child[e.target.name] = { "age": e.target.value, error: error }
+        }
+        else {
+            child[e.target.name] = e.target.value;
+        }
         children[idx] = child;
-        this.setState({ children: children });
+        this.setState({ children: children },() => {
+            this.hasError()
+          });
     }
 
     isSubmitted = () => {
@@ -252,7 +282,7 @@ class RsvpRequest extends Component {
                     let child = {
                         "firstname": x.firstname,
                         "lastname": x.lastname,
-                        "age": x.age,
+                        "age": x.age.value,
                         "attending": this.state.bringsChildren
                     }
                     updateBody.child.push(child)
@@ -311,7 +341,8 @@ class RsvpRequest extends Component {
                                 <><div className="col-6 col-12-xsmall">
                                     <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
                                     <label className="input-label">{t("common:firstName")}</label>
-                                </div><div className="col-6 col-12-xsmall">
+                                </div>
+                                    <div className="col-6 col-12-xsmall">
                                         <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
                                         <label className="input-label">{t("common:lastName")}</label>
                                     </div><this.InputWithError data={{ "name": "email", "type": "email", state: this.state.email }} lables={{ "error": "error", "name": t("common:email") }} onChange={this.onChangeValidate} /><this.InputWithError data={{ "name": "phone", "type": "text", state: this.state.phone }} lables={{ "error": "error", "name": t("common:phone") }} onChange={this.onChangeValidate} /><this.FoodChoices value={this.state.food} onChange={this.onChange} /></>
@@ -328,11 +359,14 @@ class RsvpRequest extends Component {
                                         lable={[t("rsvp:withHotel"), t("rsvp:withoutHotel")]}
                                         onChange={this.onChange} />
                                     {this.state.booking == "yes" &&
-                                        <><this.InputWithError data={{ "name": "rooms", "type": "number", state: this.state.hotel.rooms }}
-                                            lables={{ "error": "error", "name": t("rsvp:rooms") }}
-                                            onChange={this.onChangeHotel} /><this.InputWithError data={{ "name": "nights", "type": "number", state: this.state.hotel.nights }}
+                                        <>
+                                            <this.InputWithError data={{ "name": "rooms", "type": "number", state: this.state.hotel.rooms }}
+                                                lables={{ "error": "error", "name": t("rsvp:rooms") }}
+                                                onChange={this.onChangeHotel} />
+                                            <this.InputWithError data={{ "name": "nights", "type": "number", state: this.state.hotel.nights }}
                                                 lables={{ "error": "error", "name": t("rsvp:nights") }}
-                                                onChange={this.onChangeHotel} /></>
+                                                onChange={this.onChangeHotel} />
+                                        </>
                                     }
                                 </div>
                                 <hr />
@@ -373,7 +407,7 @@ class RsvpRequest extends Component {
                                                 lable={[t("rsvp:withChildren"), t("rsvp:withoutChildren")]}
                                                 onChange={this.onChange} />
                                             {this.state.bringsChildren === "yes" &&
-                                                <>
+                                                <div className="row gtr-uniform">
                                                     {this.state.children.map((data, idx) => (
                                                         <div key={idx}>
                                                             <div className="col-6 col-12-small">
@@ -384,12 +418,17 @@ class RsvpRequest extends Component {
                                                                 <input type="text" name="lastname" id="lastname" value={data.lastname} onChange={(e) => this.onChangeChild(e, idx)} />
                                                                 <label className="input-label">{t("common:lastName")}</label>
                                                             </div>
-                                                            <div className="col-6 col-12-small">
+
+                                                            <this.InputWithError data={{ "name": "age", "type": "number", state: data.age }}
+                                                                lables={{ "error": "error", "name": t("common:age") }}
+                                                                onChange={(e) => this.onChangeChild(e, idx)} />
+                                                            {/* <div className="col-6 col-12-small">
                                                                 <input type="text" name="age" id="age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
                                                                 <label className="input-label">{t("common:age")}</label>
-                                                            </div></div>
+                                                            </div> */}
+                                                        </div>
                                                     ))}
-                                                </>
+                                                </div>
                                             }
                                         </div>
                                     </>
@@ -404,7 +443,7 @@ class RsvpRequest extends Component {
                         <br />
                         <div className="col-12">
                             <ul className="actions">
-                                <li><input type="submit" value={t("common:sendMessage")} className="primary" /></li>
+                                <li><input type="submit" value={t("common:sendMessage")} className="primary" disabled={this.state.error} /></li>
                                 <li><input type="reset" value={t("common:reset")} onClick={this.resetData} /></li>
                             </ul>
                         </div>

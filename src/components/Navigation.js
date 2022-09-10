@@ -48,7 +48,9 @@ class Navigation extends Component {
       </nav>
         <a id='navPanelToggle' onClick={this.showNavbarMenu} >Menu</a>
         {this.state.menuOn &&
-          <body class="is-navPanel-visible">
+        <div>
+
+          <body className="is-navPanel-visible">
             <div id="navPanel">
               <nav>
                 <ul className="links">
@@ -66,6 +68,7 @@ class Navigation extends Component {
               <a href="#navPanel" class="close" onClick={this.closeNavbarMenu} />
             </div>
           </body>
+        </div>
         }
       </>
 
