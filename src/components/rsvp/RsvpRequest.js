@@ -146,7 +146,9 @@ class RsvpRequest extends Component {
         let children = this.state.children
         let child = children[idx];
         if (e.target.name == "age") {
-            error = (e.target.value > 0) ? false : true;
+            let error = (((e.target.value > 0) && (e.target.value < 18)) || Number.isInteger(e.target.value)) ? false : true;
+
+            console.log(error, e.target.value)
             child[e.target.name] = { "age": e.target.value, error: error }
         }
         else {
@@ -411,10 +413,11 @@ class RsvpRequest extends Component {
                                                             <this.InputWithError data={{ "name": "age", "type": "number", state: data.age }}
                                                                 lables={{ "error": "error", "name": t("common:age") }}
                                                                 onChange={(e) => this.onChangeChild(e, idx)} />
-                                                            <div className="col-6 col-12-small">
+                                                            {/* <div className="col-6 col-12-small">
                                                                 <input type="text" name="age" id="age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
                                                                 <label className="input-label">{t("common:age")}</label>
-                                                            </div></div>
+                                                            </div> */}
+                                                        </div>
                                                     ))}
                                                 </div>
                                             }
