@@ -92,10 +92,11 @@ class RsvpRequest extends Component {
 
     hasError = () => {
 
-        const personalError = this.state.phone.error  //this.state.email.error  ||
+        const personalError = this.state.email.error  || this.state.phone.error 
         const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
-        this.setState({ ["error"]: this.state.phone.error })
-        console.log("error state " + this.state.error + " value " + this.state.phone.error)
+        // TODO remove error when booking state is set to wrong
+        this.setState({ ["error"]: personalError || hotelError})
+        console.log("error state " + this.state.error + " error values " +  this.state.email.error )
     }
 
     onChange = (e) => {
@@ -116,8 +117,10 @@ class RsvpRequest extends Component {
                 error = !regexEmail.test(e.target.value.replace(/\s/g, ''))
                 break;
         }
-        this.setState({ [e.target.name]: { value: e.target.value, error: error } });  // Getting access to entered values
-        this.hasError()
+        this.setState({ [e.target.name]: { value: e.target.value, error: error } },() => {
+            this.hasError()
+          }); 
+        
     }
 
     onChangePlusOne = (e) => {
@@ -133,11 +136,15 @@ class RsvpRequest extends Component {
 
             error = (e.target.value > 0) ? false : true;
             state[e.target.name] = { "value": e.target.value, error: error }
-            this.setState({ hotel: state });
+            this.setState({ hotel: state },() => {
+                this.hasError()
+              });
         }
         else {
             state[e.target.name] = e.target.value
-            this.setState({ hotel: state });
+            this.setState({ hotel: state },() => {
+                this.hasError()
+              });
         }
         this.hasError()
     }
@@ -155,7 +162,9 @@ class RsvpRequest extends Component {
             child[e.target.name] = e.target.value;
         }
         children[idx] = child;
-        this.setState({ children: children });
+        this.setState({ children: children },() => {
+            this.hasError()
+          });
     }
 
     isSubmitted = () => {
@@ -215,7 +224,7 @@ class RsvpRequest extends Component {
     handleSubmitCode = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
                 method: "GET",
             });
             if (res.status === 200) {
@@ -281,7 +290,7 @@ class RsvpRequest extends Component {
 
             }
 
-            const res = await fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode}`, {
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
                 method: "POST",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
