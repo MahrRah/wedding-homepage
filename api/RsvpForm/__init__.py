@@ -134,7 +134,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
             logging.info(f"Update RSVP of {rsvp_id} with values {new_data}")
             new_data = update_rsvp(rsvp_id, new_data)
             if new_data["email"]:
-                print(new_data)
+                # print(new_data)
                 if len(new_data["plusOne"]) > 0:
                     message = {
                         "from": {"email": "thegrosjeans.2023@gmail.com"},
