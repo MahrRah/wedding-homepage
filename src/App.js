@@ -18,44 +18,52 @@ import Contacts from './components/contacts/Contacts.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
 import { useTranslation } from "react-i18next";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { getAppInsights } from './TelemetryService';
+import TelemetryProvider from './telemetry-provider';
+
 
 function App() {
+  
+  let appInsights = null;
+  
+  function trackException() {
+      appInsights.trackException({ error: new Error('some error'), severityLevel: SeverityLevel.Error });
+  }
 
+  function trackTrace() {
+      appInsights.trackTrace({ message: 'some trace', severityLevel: SeverityLevel.Information });
+  }
+
+  function trackEvent() {
+      appInsights.trackEvent({ name: 'some event' });
+  }
   const { t } = useTranslation(["story", "common", "overview"]);
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = "assets/js/main.js";
-  //   script.async = true;
-  //   script.type = "text/jsx"
-  //   document.body.appendChild(script);
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   }
-  // }, []);
   return (
     <ParallaxProvider>
-    <Suspense fallback={null}>
-      <div className="is-preload">
-        <div id="wrapper" className="fade-in">
-          <Intro />
-          <Logo />
-          <Router>
-            <Navigation />
-            <Routes>
-              <Route path="/" element={<Overview t={t} />} />
-              <Route path="/details" element={<Details />} />
-              <Route path="/location" element={<Location />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/rsvp" element={<RsvpRequest t={t} />} />
-              <Route path="/contacts" element={<Contacts />} />
-            </Routes>
-          </Router>
-          <Footer />
-          <Copyright />
+      <TelemetryProvider instrumentationKey="INSTRUMENTATION_KEY" after={() => { appInsights = getAppInsights() }}>
+      <Suspense fallback={null}>
+        <div className="is-preload">
+          <div id="wrapper" className="fade-in">
+            <Intro />
+            <Logo />
+            <Router>
+              <Navigation />
+              <Routes>
+                <Route path="/" element={<Overview t={t} />} />
+                <Route path="/details" element={<Details />} />
+                <Route path="/location" element={<Location />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/rsvp" element={<RsvpRequest t={t} />} />
+                <Route path="/contacts" element={<Contacts />} />
+              </Routes>
+            </Router>
+            <Footer />
+            <Copyright />
+          </div>
         </div>
-      </div>
-    </Suspense>
+      </Suspense>
+      </TelemetryProvider>
     </ParallaxProvider>
   )
 }
