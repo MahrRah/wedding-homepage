@@ -12,7 +12,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = { menuOn: false }
-    this.changeLocation = this.changeLocation.bind(this);ç
+    this.changeLocation = this.changeLocation.bind(this);
     this.showNavbarMenu = this.showNavbarMenu.bind(this);
     this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
 
