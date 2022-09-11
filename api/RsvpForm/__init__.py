@@ -2,40 +2,20 @@ import json
 import logging
 import json
 import logging
+import re
 from bson.json_util import dumps
 from jsonmerge import merge
 import os
+from shared.validate import validate_email, validate_food, validate_phonenumber
+from shared.templates import (
+    guest_template,
+    plusOne_template,
+    child_template,
+    hotel,
+    guest_update_template,
+)
 
 import azure.functions as func
-
-
-guest_template = {
-    "_id": "",
-    "rsvpCode": "",
-    "firstname": "",
-    "lastname": "",
-    "attending": "",
-    "food": None,
-    "email": "",
-    "phone": "",
-    "language": "",
-    "hotel": {},
-    "plusOne": [],
-    "child": [],
-    "message": ""
-}
-plusOne_template = {"firstname": "", "lastname": "", "food": None, "attending": ""}
-child_template = {
-    "firstname": "",
-    "lastname": "",
-    "food": None,
-    "age": None,
-    "attending": "",
-}
-hotel = {"rooms": None, "guets": None, "nights": None}
-
-
-guest_update_template = {"attending": "", "food": None, "plusOne": [], "child": []}
 
 
 def get_database():
@@ -52,22 +32,24 @@ def get_database():
 db_client = get_database()
 
 
-def get_rsvp(id):
-    logging.info(id)
-    value = db_client.guests.find_one({"rsvpCode": id})
-    return value
-
-
-def update_rsvp(id, data):
-    rsvp = get_rsvp(id)
-    rsvp["food"] = data["food"]
+# TODO extract all new_* into a new file
+def new_personal_data(rsvp, data):
+    rsvp["food"] = data["food"] if validate_food(data["food"]) else "0"
     rsvp["attending"] = data["attending"]
-    rsvp["email"] = data["email"]
-    rsvp["phone"] = data["phone"]
-    rsvp["hotel"] = data["hotel"]
+    rsvp["email"] = data["email"] if validate_email(data["email"]) else ""
+    rsvp["phone"] = data["phone"]  if validate_phonenumber(data["phone"]) else ""
     rsvp["language"] = data["language"]
     rsvp["message"] = data["message"]
 
+    return rsvp
+
+
+def new_hotel_data(rsvp, data):
+    rsvp["hotel"] = data["hotel"]  # TODO Validate
+    return rsvp
+
+
+def new_plus_one_data(rsvp, data):
     if len(rsvp["plusOne"]) != 0:
 
         rsvp["plusOne"][0]["firstname"] = (
@@ -87,8 +69,11 @@ def update_rsvp(id, data):
         )
         rsvp["plusOne"][0]["attending"] = data["plusOne"][0]["attending"]
 
-    if len(rsvp["child"]) != 0:
+    return rsvp
 
+
+def new_children_data(rsvp, data):
+    if len(rsvp["child"]) != 0:
         for i in range(len(rsvp["child"])):
             print(rsvp["child"])
             print(data["child"])
@@ -96,8 +81,28 @@ def update_rsvp(id, data):
             rsvp["child"][i]["lastname"] = data["child"][i]["lastname"]
             rsvp["child"][i]["age"] = data["child"][i]["age"]
             rsvp["child"][i]["attending"] = data["child"][i]["attending"]
+    return rsvp
 
-    result = db_client.guests.update_one({"rsvpCode": id}, {"$set": rsvp})
+
+def update_rsvp_entery(rsvp, data):
+    rsvp = new_personal_data(rsvp=rsvp, data=data)
+    rsvp = new_hotel_data(rsvp=rsvp, data=data)
+    rsvp = new_plus_one_data(rsvp=rsvp, data=data)
+    rsvp = new_children_data(rsvp=rsvp, data=data)
+    return rsvp
+
+
+def get_rsvp(id):
+    logging.info(id)
+    value = db_client.guests.find_one({"rsvpCode": id})
+    return value
+
+
+def update_rsvp(id, data):
+    rsvp = get_rsvp(id)
+
+    updated_rsvp = update_rsvp_entery(rsvp=rsvp, data=data)
+    result = db_client.guests.update_one({"rsvpCode": id}, {"$set": updated_rsvp})
 
     logging.info(f"{ id } got Updated to: {result}")
     return rsvp
