@@ -204,7 +204,7 @@ ol, ul {
 
 .timeline-item-content .circle {
     background-color: #fff;
-    border: 3px solid var(--gold-fusion);
+    border: 5px solid var(--artichoke);
     border-radius: 50%;
     position: absolute;
     top: calc(50% - 10px);
