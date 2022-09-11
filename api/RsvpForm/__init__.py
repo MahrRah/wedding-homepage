@@ -6,7 +6,7 @@ import re
 from bson.json_util import dumps
 from jsonmerge import merge
 import os
-from shared.validate import validate_email
+from shared.validate import validate_email, validate_food, validate_phonenumber
 from shared.templates import (
     guest_template,
     plusOne_template,
@@ -34,10 +34,10 @@ db_client = get_database()
 
 # TODO extract all new_* into a new file
 def new_personal_data(rsvp, data):
-    rsvp["food"] = data["food"]
+    rsvp["food"] = data["food"] if validate_food(data["food"]) else "0"
     rsvp["attending"] = data["attending"]
-    rsvp["email"] = data["email"]  # TODO Validate
-    rsvp["phone"] = data["phone"]  # TODO Validate
+    rsvp["email"] = data["email"] if validate_email(data["email"]) else ""
+    rsvp["phone"] = data["phone"]  if validate_phonenumber(data["phone"]) else ""
     rsvp["language"] = data["language"]
     rsvp["message"] = data["message"]
 
@@ -86,9 +86,9 @@ def new_children_data(rsvp, data):
 
 def update_rsvp_entery(rsvp, data):
     rsvp = new_personal_data(rsvp=rsvp, data=data)
-    rsvp = new_hotel_data(rsvp, data)
-    rsvp = new_plus_one_data(rsvp, data)
-    rsvp = new_children_data(rsvp, data)
+    rsvp = new_hotel_data(rsvp=rsvp, data=data)
+    rsvp = new_plus_one_data(rsvp=rsvp, data=data)
+    rsvp = new_children_data(rsvp=rsvp, data=data)
     return rsvp
 
 

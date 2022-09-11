@@ -15,12 +15,17 @@ def validate_phonenumber(number: str):
         return True
     return False
 
-def validate_child_age(age: str):
-    if age < 18 and age >0:
-        return True
-    return False
+def validate_child_age(age_str: str):
+    try:
+        age = int(age_str)
+    
+        if age < 18 and age >0:
+            return True
+        return False
+    except:
+        return False
 
 def validate_food(food: str):
-    if food in [0,1,2,3]:
+    if food in ["0","1","2","3"]:
         return True
     return False
