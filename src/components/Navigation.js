@@ -82,7 +82,7 @@ class Navigation extends Component {
                     <li><a onClick={() => this.changeLanguage('de')}><span className="label">DE</span></a></li>
                   </ul>
                 </nav>
-                <a href="#navPanel" class="close" onClick={this.closeNavbarMenu} />
+                <a href="#navPanel" className="close" onClick={this.closeNavbarMenu} />
               </div>
             </body>
           </div>

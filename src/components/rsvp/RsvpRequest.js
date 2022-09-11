@@ -93,7 +93,6 @@ class RsvpRequest extends Component {
     hasError = () => {
 
         const personalError = this.state.email.error || this.state.phone.error
-        console.log("booking" + this.state.booking)
         const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
 
         let childError = false
@@ -102,7 +101,6 @@ class RsvpRequest extends Component {
         })
         const childAgeError = (this.state.bringsChildren === "yes") ? childError : false
         this.setState({ ["error"]: personalError || hotelError || childAgeError })
-        console.log("error state " + this.state.error + " error values " + this.state.email.error)
     }
 
     onChange = (e) => {
@@ -159,8 +157,6 @@ class RsvpRequest extends Component {
         let child = children[idx];
         if (e.target.name == "age") {
             let error = (((e.target.value > 0) && (e.target.value < 18)) || Number.isInteger(e.target.value)) ? false : true;
-
-            console.log(error, e.target.value)
             child[e.target.name] = { "age": e.target.value, error: error }
         }
         else {
@@ -181,18 +177,17 @@ class RsvpRequest extends Component {
     }
 
     loadRsvpDataToState = (data) => {
-        console.log(data)
         if (data) {
             this.setState({
-                rsvpCode: data.rsvpCode,
+                rsvpCode: {error:false, value: data.rsvpCode},
                 lastname: data.lastname,
                 firstname: data.firstname,
-                email: { ...this.state.email, value: data.email },
-                phone: { ...this.state.phone, value: data.phone },
+                email: { error: false, value: data.email },
+                phone: { error: false, value: data.phone },
                 attending: data.attending,
                 language: data.language,
                 food: data.food,
-                hotel: { ...this.state.hotel, nights: { ...this.state.hotel.nights, value: data.hotel.nights }, rooms: { ...this.state.hotel.rooms, value: data.hotel.rooms } },
+                hotel: { ...this.state.hotel, nights: { error: false, value: data.hotel.nights }, rooms: { error: false, value: data.hotel.rooms } },
                 booking: data.hotel.booking,
                 message: data.message, data: data
             })
@@ -216,7 +211,7 @@ class RsvpRequest extends Component {
                     }
                     children.push(child)
                 })
-                console.log(children)
+
                 this.setState({
                     hasChildren: true,
                     bringsChildren: (data.child[0].attending === "") ? "yes" : data.child[0].attending,
@@ -250,7 +245,6 @@ class RsvpRequest extends Component {
                 if (isLoaded) {
                     this.isSubmitted()
                 }
-                console.log(this.state)
             } else {
                 console.log(res.status)
             }
@@ -261,7 +255,6 @@ class RsvpRequest extends Component {
 
     updateRsvp = async (e) => {
         e.preventDefault();
-        console.log(this.state)
         try {
             let updateBody = {
                 "attending": this.state.attending,
@@ -280,13 +273,12 @@ class RsvpRequest extends Component {
                 "language": this.state.language,
                 "message": this.state.message,
             }
-            console.log(updateBody)
 
             updateBody.hotel.booking = this.state.booking;
             if (this.state.booking === "yes") {
-                updateBody.hotel.rooms =  this.state.hotel.rooms.value
-                updateBody.hotel.nights =  this.state.hotel.nights.value
-                updateBody.hotel.guests =  this.state.hotel.guests
+                updateBody.hotel.rooms = this.state.hotel.rooms.value
+                updateBody.hotel.nights = this.state.hotel.nights.value
+                updateBody.hotel.guests = this.state.hotel.guests
             }
 
             if (this.state.hasPlusOne && this.state.bringsPlusOne) {
@@ -300,10 +292,7 @@ class RsvpRequest extends Component {
             }
 
             if (this.state.hasChildren && this.state.bringsChildren) {
-                console.log()
                 this.state.children.forEach((x) => {
-
-                    console.log(x)
                     let child = {
                         "firstname": x.firstname,
                         "lastname": x.lastname,
@@ -314,8 +303,10 @@ class RsvpRequest extends Component {
                 });
 
             }
-            console.log(updateBody)
-            const res = await fetch(` /api/rsvp/${this.state.rsvpCode}`, {
+            console.log(this.state.rsvpCode)
+
+            const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+
                 method: "POST",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -323,7 +314,6 @@ class RsvpRequest extends Component {
                 },
                 body: JSON.stringify(updateBody)
             });
-            console.log(res);
             if (res.status === 200) {
                 this.isUpdated();
 
@@ -347,7 +337,9 @@ class RsvpRequest extends Component {
                     <form method="post" onSubmit={this.handleSubmitCode}>
                         <h2>{t("rsvp:rsvpFormTitel")}</h2>
                         <div className="fields">
-                            <this.InputWithError data={{ "name": "rsvpCode", "type": "text", state: this.state.rsvpCode }} lables={{ "error": "Invalid RSVP Code", "name": t("rsvp:rsvpCode") }} onChange={this.onChangeValidate} />
+                            <this.InputWithError data={{ "name": "rsvpCode", "type": "text", state: this.state.rsvpCode }}
+                                lables={{ "error": t("rsvp:rsvpError"), "name": t("rsvp:rsvpCode") }}
+                                onChange={this.onChangeValidate} />
 
                         </div>
                         <ul className="actions">
@@ -363,14 +355,23 @@ class RsvpRequest extends Component {
                                 lable={[t("rsvp:attending"), t("rsvp:notAttending")]}
                                 onChange={this.onChange} />
                             {this.state.attending == "yes" &&
-                                <><div className="col-6 col-12-xsmall">
-                                    <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
-                                    <label className="input-label">{t("common:firstName")}</label>
-                                </div>
+                                <>
+                                    <div className="col-6 col-12-xsmall">
+                                        <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
+                                        <label className="input-label">{t("common:firstName")}</label>
+                                    </div>
                                     <div className="col-6 col-12-xsmall">
                                         <input readOnly type="text" name="lastname" id="lastname" value={this.state.lastname} />
                                         <label className="input-label">{t("common:lastName")}</label>
-                                    </div><this.InputWithError data={{ "name": "email", "type": "email", state: this.state.email }} lables={{ "error": "error", "name": t("common:email") }} onChange={this.onChangeValidate} /><this.InputWithError data={{ "name": "phone", "type": "text", state: this.state.phone }} lables={{ "error": "error", "name": t("common:phone") }} onChange={this.onChangeValidate} /><this.FoodChoices value={this.state.food} onChange={this.onChange} /></>
+                                    </div>
+                                    <this.InputWithError data={{ "name": "email", "type": "email", state: this.state.email }}
+                                        lables={{ "error": t("common:emailError"), "name": t("common:email") }}
+                                        onChange={this.onChangeValidate} />
+                                    <this.InputWithError data={{ "name": "phone", "type": "text", state: this.state.phone }}
+                                        lables={{ "error": t("common:phoneError"), "name": t("common:phone") }}
+                                        onChange={this.onChangeValidate} />
+                                    <this.FoodChoices value={this.state.food} onChange={this.onChange} />
+                                </>
                             }
                         </div>
                         {this.state.attending == "yes" &&
@@ -386,10 +387,10 @@ class RsvpRequest extends Component {
                                     {this.state.booking == "yes" &&
                                         <>
                                             <this.InputWithError data={{ "name": "rooms", "type": "number", state: this.state.hotel.rooms }}
-                                                lables={{ "error": "error", "name": t("rsvp:rooms") }}
+                                                lables={{ "error":  t("rsvp:roomsError"), "name": t("rsvp:rooms") }}
                                                 onChange={this.onChangeHotel} />
                                             <this.InputWithError data={{ "name": "nights", "type": "number", state: this.state.hotel.nights }}
-                                                lables={{ "error": "error", "name": t("rsvp:nights") }}
+                                                lables={{ "error": t("rsvp:nightsError"), "name": t("rsvp:nights") }}
                                                 onChange={this.onChangeHotel} />
                                         </>
                                     }
@@ -414,8 +415,12 @@ class RsvpRequest extends Component {
                                                 onChange={this.onChange} />
                                             {this.state.bringsPlusOne === "yes" &&
                                                 <>
-                                                    <this.Input data={{ name: "firstname", value: this.state.plusOne.firstname }} lable={t("common:firstName")} onChange={this.onChangePlusOne} />
-                                                    <this.Input data={{ name: "lastname", value: this.state.plusOne.lastname }} lable={t("common:lastName")} onChange={this.onChangePlusOne} />
+                                                    <this.Input data={{ name: "firstname", value: this.state.plusOne.firstname }}
+                                                        lable={t("common:firstName")}
+                                                        onChange={this.onChangePlusOne} />
+                                                    <this.Input data={{ name: "lastname", value: this.state.plusOne.lastname }}
+                                                        lable={t("common:lastName")}
+                                                        onChange={this.onChangePlusOne} />
                                                     <this.FoodChoices value={this.state.plusOne.food} onChange={this.onChangePlusOne} />
 
                                                 </>}
@@ -445,12 +450,8 @@ class RsvpRequest extends Component {
                                                             </div>
 
                                                             <this.InputWithError data={{ "name": "age", "type": "number", state: data.age }}
-                                                                lables={{ "error": "error", "name": t("common:age") }}
+                                                                lables={{ "error": t("common:ageError"), "name": t("common:age") }}
                                                                 onChange={(e) => this.onChangeChild(e, idx)} />
-                                                            {/* <div className="col-6 col-12-small">
-                                                                <input type="text" name="age" id="age" value={data.age} onChange={(e) => this.onChangeChild(e, idx)} />
-                                                                <label className="input-label">{t("common:age")}</label>
-                                                            </div> */}
                                                         </div>
                                                     ))}
                                                 </div>
