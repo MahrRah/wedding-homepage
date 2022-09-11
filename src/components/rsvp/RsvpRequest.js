@@ -306,6 +306,7 @@ class RsvpRequest extends Component {
             console.log(this.state.rsvpCode)
 
             const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+
                 method: "POST",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
