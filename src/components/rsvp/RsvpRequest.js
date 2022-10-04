@@ -3,7 +3,9 @@ import '../../assets/css/main.css'
 import { withTranslation } from 'react-i18next';
 import RsvpSubmission from './RsvpSubmission';
 import { t } from 'i18next';
-
+import { usePromiseTracker } from "react-promise-tracker";
+import { trackPromise } from 'react-promise-tracker';
+import {Oval} from 'react-loader-spinner';
 class RsvpRequest extends Component {
     constructor(props) {
         super(props);
@@ -43,6 +45,25 @@ class RsvpRequest extends Component {
         this.resetData = this.resetData.bind(this);
         this.onChangeValidate = this.onChangeValidate.bind(this);
         this.hasError = this.hasError.bind(this);
+    }
+    LoadingIndicator = (props) => {
+        const { promiseInProgress } = usePromiseTracker();
+        return (
+            promiseInProgress &&
+            <Oval
+                height={80}
+                width={80}
+                color="#4fa94d"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel='oval-loading'
+                secondaryColor="#4fa94d"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+
+            />
+        );
     }
 
     Input = ({ data, lable, onChange }) => {
@@ -179,7 +200,7 @@ class RsvpRequest extends Component {
     loadRsvpDataToState = (data) => {
         if (data) {
             this.setState({
-                rsvpCode: {error:false, value: data.rsvpCode},
+                rsvpCode: { error: false, value: data.rsvpCode },
                 lastname: data.lastname,
                 firstname: data.firstname,
                 email: { error: false, value: data.email },
@@ -236,9 +257,11 @@ class RsvpRequest extends Component {
     handleSubmitCode = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+
+            const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
                 method: "GET",
-            });
+            }))
+
             if (res.status === 200) {
                 let body = await res.json();
                 const isLoaded = this.loadRsvpDataToState(body);
@@ -325,7 +348,6 @@ class RsvpRequest extends Component {
         }
     }
 
-
     render() {
         return (
             <div id="main">
@@ -345,6 +367,7 @@ class RsvpRequest extends Component {
                         <ul className="actions">
                             <li><input type="submit" value={t('rsvp:submitCode')} /></li>
                         </ul>
+                        <this.LoadingIndicator />
                     </form>}
                 {this.state.submitted && !this.state.updated &&
                     <form method="post" onSubmit={this.updateRsvp}>
@@ -387,7 +410,7 @@ class RsvpRequest extends Component {
                                     {this.state.booking == "yes" &&
                                         <>
                                             <this.InputWithError data={{ "name": "rooms", "type": "number", state: this.state.hotel.rooms }}
-                                                lables={{ "error":  t("rsvp:roomsError"), "name": t("rsvp:rooms") }}
+                                                lables={{ "error": t("rsvp:roomsError"), "name": t("rsvp:rooms") }}
                                                 onChange={this.onChangeHotel} />
                                             <this.InputWithError data={{ "name": "nights", "type": "number", state: this.state.hotel.nights }}
                                                 lables={{ "error": t("rsvp:nightsError"), "name": t("rsvp:nights") }}
