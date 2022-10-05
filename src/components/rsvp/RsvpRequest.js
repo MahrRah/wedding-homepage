@@ -5,7 +5,7 @@ import RsvpSubmission from './RsvpSubmission';
 import { t } from 'i18next';
 import { usePromiseTracker } from "react-promise-tracker";
 import { trackPromise } from 'react-promise-tracker';
-import {Oval} from 'react-loader-spinner';
+import { Oval, ThreeDots,ThreeCircles } from 'react-loader-spinner';
 class RsvpRequest extends Component {
     constructor(props) {
         super(props);
@@ -46,22 +46,36 @@ class RsvpRequest extends Component {
         this.onChangeValidate = this.onChangeValidate.bind(this);
         this.hasError = this.hasError.bind(this);
     }
+    SendIndicator = (props) => {
+        const { promiseInProgress } = usePromiseTracker();
+        return (
+            promiseInProgress &&
+            <ThreeCircles
+                height="80"
+                width="80"
+                color="#6b654bff"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="three-circles-rotating"
+                outerCircleColor=""
+                innerCircleColor=""
+                middleCircleColor=""
+            />)
+    }
     LoadingIndicator = (props) => {
         const { promiseInProgress } = usePromiseTracker();
         return (
             promiseInProgress &&
-            <Oval
-                height={80}
-                width={80}
-                color="#4fa94d"
+            <ThreeDots
+                height="50"
+                width="50"
+                radius="9"
+                color="#6b654bff"
+                ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
-                wrapperClass=""
+                wrapperClassName=""
                 visible={true}
-                ariaLabel='oval-loading'
-                secondaryColor="#4fa94d"
-                strokeWidth={2}
-                strokeWidthSecondary={2}
-
             />
         );
     }
@@ -328,7 +342,7 @@ class RsvpRequest extends Component {
             }
             console.log(this.state.rsvpCode)
 
-            const res = await fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise( fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
 
                 method: "POST",
                 headers: {
@@ -336,7 +350,7 @@ class RsvpRequest extends Component {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(updateBody)
-            });
+            }));
             if (res.status === 200) {
                 this.isUpdated();
 
@@ -495,6 +509,7 @@ class RsvpRequest extends Component {
                                 <li><input type="submit" value={t("common:sendMessage")} className="primary" disabled={this.state.error} /></li>
                                 <li><input type="reset" value={t("common:reset")} onClick={this.resetData} /></li>
                             </ul>
+                            <this.SendIndicator></this.SendIndicator>
                         </div>
                     </form>
                 }
