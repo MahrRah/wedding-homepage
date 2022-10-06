@@ -1,30 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { motion, useTransform, useScroll } from "framer-motion";
 import '../assets/css/main.css'
 
 function Intro() {
-    const [show, setShow] = useState(true)
-    
-    const controlIntro = () => {
-        if (window.scrollY < 400) {
-            setShow(false)
-        } else {
-            setShow(true)
-        }
-    }
 
-    useEffect(() => {
-        window.addEventListener('scroll', controlIntro)
-        return () => {
-            window.removeEventListener('scroll', controlIntro)
-        }
-    }, [])
+    const { scrollYProgress } = useScroll();
+
+    const yPostion = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [ 50,400],
+
+    )
+    const opacityTrans = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [1, -4],
+
+    )
     return (
-        <div id="intro" className={`${show && 'hidden'}`}>
-            <h1>Mahra<br />
-                & <br />
-                Valentin</h1>
-        </div>
-
+        <motion.div
+            className="intro"
+            initial={{ opacity: 0, transition: { duration: 1 } }}
+            animate={{ opacity: 1 }}
+            style={{ opacity: opacityTrans, y:yPostion}}
+        >
+            <div id="intro">
+                <h1>Mahra<br />
+                    & <br />
+                    Valentin</h1>
+            </div>
+        </motion.div>
     );
 }
 
