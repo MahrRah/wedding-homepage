@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,19 +23,9 @@ function App() {
 
   const { t } = useTranslation(["story", "common", "overview"]);
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = "assets/js/main.js";
-  //   script.async = true;
-  //   script.type = "text/jsx"
-  //   document.body.appendChild(script);
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   }
-  // }, []);
+
   return (
     <ParallaxProvider>
-    <Suspense fallback={null}>
       <div className="is-preload">
         <div id="wrapper" className="fade-in">
           <Intro />
@@ -55,7 +45,6 @@ function App() {
           <Copyright />
         </div>
       </div>
-    </Suspense>
     </ParallaxProvider>
   )
 }
