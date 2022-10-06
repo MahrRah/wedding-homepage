@@ -17,16 +17,15 @@ import Gallery from './components/gallery/Gallery.js'
 import Contacts from './components/contacts/Contacts.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
 import { useTranslation } from "react-i18next";
-import { ParallaxProvider } from "react-scroll-parallax";
-
+import './assets/css/main.css'
+import './assets/css/noscript.css'
 function App() {
 
   const { t } = useTranslation(["story", "common", "overview"]);
 
 
   return (
-    <ParallaxProvider>
-      <div className="is-preload">
+    <div className="is-preload">
         <div id="wrapper" className="fade-in">
           <Intro />
           <Logo />
@@ -45,7 +44,6 @@ function App() {
           <Copyright />
         </div>
       </div>
-    </ParallaxProvider>
   )
 }
 

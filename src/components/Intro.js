@@ -9,7 +9,7 @@ function Intro() {
     const yPostion = useTransform(
         scrollYProgress,
         [0, 1],
-        [ 50,400],
+        [ 100,500],
 
     )
     const opacityTrans = useTransform(
