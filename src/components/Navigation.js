@@ -14,14 +14,15 @@ class Navigation extends Component {
     this.state = { menuOn: false }
     this.changeLocation = this.changeLocation.bind(this);
     this.showNavbarMenu = this.showNavbarMenu.bind(this);
-    this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
-
+    // this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
     this.wrapperRef = React.createRef();
-    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.closeRef = React.createRef();
+    // this.props.useOutsideAlerter(this.wrapperRef);
   }
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
+    // document.addEventListener('click', this.handleOutsideClick);
   }
 
   componentWillUnmount() {
@@ -42,15 +43,22 @@ class Navigation extends Component {
   closeNavbarMenu = () => {
     this.setState({ menuOn: false });
   }
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-      this.setState({ menuOn: false });
-    }
-  }
+  // handleClickOutside(event) {
+  //   if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+  //     alert('you just clicked outside of box!');
+  //     // this.setState({ meçnuOn: false });
+  //   }
+  //   else if (this.closeRef && !this.closeRef.current.contains(event.target)){
+  //     console.log("dddd")
+  //   //   this.setState({ menuOn: false });
+  //   }
+  // }
+
 
   render() {
+
     return (
-      <><nav id="nav">
+      < ><nav ref={this.wrapperRef}  id="nav">
         <ul className="links">
           <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
           <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('common:details')}</Link></li>
@@ -63,12 +71,12 @@ class Navigation extends Component {
           <li><a onClick={() => this.changeLanguage('de')}><span className="label">DE</span></a></li>
         </ul>
       </nav>
-        <a id='navPanelToggle' onClick={this.showNavbarMenu} >Menu</a>
+        <a ref={this.wrapperRef} id='navPanelToggle' onClick={this.showNavbarMenu} >Menu</a>
         {this.state.menuOn &&
           <div>
 
             <body className="is-navPanel-visible">
-              <div  ref={this.wrapperRef} id="navPanel">
+              <div   id="navPanel">
                 <nav>
                   <ul className="links">
                     <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
@@ -95,6 +103,25 @@ class Navigation extends Component {
 }
 
 export default () => {
+  // const useOutsideAlerter = (ref) => {
+  //   useEffect(() => {
+  //     /**
+  //      * Alert if clicked on outside of element
+  //      */
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //         alert("You clicked outside of me!");
+  //       }
+  //     }
+  //     // Bind the event listener
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //     return () => {
+  //       // Unbind the event listener on clean up
+  //       document.removeEventListener("mousedown", handleClickOutside);
+  //     };
+  //   }, [ref]);
+  // }
+  
   const location = useLocation();
   const { t } = useTranslation(["common"]);
   return (

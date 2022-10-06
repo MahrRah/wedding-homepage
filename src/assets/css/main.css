@@ -178,7 +178,7 @@ ol, ul {
     font-weight: bold;
 }
 
-.timeline-item-content location {
+.timeline-item-content .location {
     color: var(--pine-tree);
     font-size: 12px;
     font-weight: bold;

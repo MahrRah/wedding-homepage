@@ -37,7 +37,7 @@ function Schedule() {
     <div className="timeline-item">
       <div className="timeline-item-content">
         <time>{data.date}</time>
-        <location>{data.location}</location>
+        <div className='location'>{data.location}</div>
         <p>{data.text}</p>
         <span className="circle" />
       </div>
