@@ -340,7 +340,7 @@ class RsvpRequest extends Component {
                 });
 
             }
-            console.log(this.state.rsvpCode)
+            console.log(updateBody)
 
             const res = await trackPromise( fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
 
@@ -355,6 +355,7 @@ class RsvpRequest extends Component {
                 this.isUpdated();
 
             } else {
+                alert("Try again tomorrow")
                 console.log(`this state ${res.status}`);
             }
         } catch (err) {

@@ -75,8 +75,8 @@ def new_plus_one_data(rsvp, data):
 def new_children_data(rsvp, data):
     if len(rsvp["child"]) != 0:
         for i in range(len(rsvp["child"])):
-            print(rsvp["child"])
-            print(data["child"])
+            print(rsvp["child"][i])
+            print(data["child"][i])
             rsvp["child"][i]["firstname"] = data["child"][i]["firstname"]
             rsvp["child"][i]["lastname"] = data["child"][i]["lastname"]
             rsvp["child"][i]["age"] = data["child"][i]["age"]
