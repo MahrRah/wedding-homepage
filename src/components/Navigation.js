@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/css/main.css'
+import '../assets/css/noscript.css'
 import i18n from '../i18n.js';
 
 import {
@@ -14,15 +15,14 @@ class Navigation extends Component {
     this.state = { menuOn: false }
     this.changeLocation = this.changeLocation.bind(this);
     this.showNavbarMenu = this.showNavbarMenu.bind(this);
-    // this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
+    this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
     this.wrapperRef = React.createRef();
     this.closeRef = React.createRef();
-    // this.props.useOutsideAlerter(this.wrapperRef);
   }
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
-    // document.addEventListener('click', this.handleOutsideClick);
   }
 
   componentWillUnmount() {
@@ -43,22 +43,17 @@ class Navigation extends Component {
   closeNavbarMenu = () => {
     this.setState({ menuOn: false });
   }
-  // handleClickOutside(event) {
-  //   if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-  //     alert('you just clicked outside of box!');
-  //     // this.setState({ meçnuOn: false });
-  //   }
-  //   else if (this.closeRef && !this.closeRef.current.contains(event.target)){
-  //     console.log("dddd")
-  //   //   this.setState({ menuOn: false });
-  //   }
-  // }
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      this.setState({ menuOn: false });
+    }
+  }
 
 
   render() {
 
     return (
-      < ><nav ref={this.wrapperRef}  id="nav">
+      < ><nav ref={this.wrapperRef} id="nav">
         <ul className="links">
           <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
           <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('common:details')}</Link></li>
@@ -76,7 +71,7 @@ class Navigation extends Component {
           <div>
 
             <body className="is-navPanel-visible">
-              <div   id="navPanel">
+              <div id="navPanel">
                 <nav>
                   <ul className="links">
                     <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
@@ -121,7 +116,7 @@ export default () => {
   //     };
   //   }, [ref]);
   // }
-  
+
   const location = useLocation();
   const { t } = useTranslation(["common"]);
   return (
