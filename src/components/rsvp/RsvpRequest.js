@@ -270,25 +270,31 @@ class RsvpRequest extends Component {
 
     handleSubmitCode = async (e) => {
         e.preventDefault();
-        try {
+        if (!this.state.rsvpCode.value) {
+            this.setState({ rsvpCode: { value: "", error: true } });
+        }
+        else {
+            try {
 
-            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
-                method: "GET",
-            }))
 
-            if (res.status === 200) {
-                let body = await res.json();
-                const isLoaded = this.loadRsvpDataToState(body);
-                if (isLoaded) {
-                    this.isSubmitted()
+                const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+                    method: "GET",
+                }))
+
+                if (res.status === 200) {
+                    let body = await res.json();
+                    const isLoaded = this.loadRsvpDataToState(body);
+                    if (isLoaded) {
+                        this.isSubmitted()
+                    }
+                } else {
+                    alert("Try again tomorrow")
+                    console.log(res.status)
                 }
-            } else {
-                alert("Try again tomorrow")
-                console.log(res.status)
+            } catch (err) {
+                alert("Something went verryy wrongg")
+                console.log(err);
             }
-        } catch (err) {
-            alert("Something went verryy wrongg")
-            console.log(err);
         }
     };
 
@@ -344,7 +350,7 @@ class RsvpRequest extends Component {
             }
             console.log(updateBody)
 
-            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
 
                 method: "POST",
                 headers: {
