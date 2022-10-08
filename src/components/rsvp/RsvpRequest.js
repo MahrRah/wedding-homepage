@@ -287,6 +287,7 @@ class RsvpRequest extends Component {
                 console.log(res.status)
             }
         } catch (err) {
+            alert("Something went verryy wrongg")
             console.log(err);
         }
     };
@@ -360,6 +361,7 @@ class RsvpRequest extends Component {
                 console.log(`this state ${res.status}`);
             }
         } catch (err) {
+            alert("Something went verryy wrongg")
             console.log(`Endpoint cant be reached: ${err}`);
         }
     }
