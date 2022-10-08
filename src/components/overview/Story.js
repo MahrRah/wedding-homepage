@@ -2,7 +2,7 @@
 import React from 'react';
 import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
-
+import Lukas from '../lukas/Lukas';
 
 function Story() {
   const { t } = useTranslation(["common"]);
@@ -18,16 +18,17 @@ function Story() {
     );
   };
   return (
-    <div id="main">
+      <>
+      <Lukas /><div id="main">
       <section className="posts">
-      <Article date={"TBD TBD, 1996"} titel={"Small Mahra"} image={require("../../images/smallTamara.jpg")} />
-      <Article date={"November 17, 2021"} titel={"Smol Valentin"} image={require("../../images/smolVale.png")} />
-      <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolMahra.jpg")} />
-      <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolVale.png")} />
+        <Article date={"TBD TBD, 1996"} titel={"Small Mahra"} image={require("../../images/smallTamara.jpg")} />
+        <Article date={"November 17, 2021"} titel={"Smol Valentin"} image={require("../../images/smolVale.png")} />
+        <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolMahra.jpg")} />
+        <Article date={"April 18, 2017"} titel={"First day of school"} image={require("../../images/schoolVale.png")} />
       </section>
-      <Article date={"November 17, 2021"} titel={"The day off"}image={require("../../images/dayoff.jpeg")} />
-      <Article date={"November 17, 2021"} titel={"Proposal add on"}image={require("../../images/proposal2.jpeg")} />
-    </div>
+      <Article date={"November 17, 2021"} titel={"The day off"} image={require("../../images/dayoff.jpeg")} />
+      <Article date={"November 17, 2021"} titel={"Proposal add on"} image={require("../../images/proposal2.jpeg")} />
+    </div></>
   );
 }
 
