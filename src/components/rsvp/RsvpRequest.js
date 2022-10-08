@@ -5,7 +5,7 @@ import RsvpSubmission from './RsvpSubmission';
 import { t } from 'i18next';
 import { usePromiseTracker } from "react-promise-tracker";
 import { trackPromise } from 'react-promise-tracker';
-import { Oval, ThreeDots,ThreeCircles } from 'react-loader-spinner';
+import { Oval, ThreeDots, ThreeCircles } from 'react-loader-spinner';
 class RsvpRequest extends Component {
     constructor(props) {
         super(props);
@@ -272,7 +272,7 @@ class RsvpRequest extends Component {
         e.preventDefault();
         try {
 
-            const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
                 method: "GET",
             }))
 
@@ -283,6 +283,7 @@ class RsvpRequest extends Component {
                     this.isSubmitted()
                 }
             } else {
+                alert("Try again tomorrow")
                 console.log(res.status)
             }
         } catch (err) {
@@ -342,7 +343,7 @@ class RsvpRequest extends Component {
             }
             console.log(updateBody)
 
-            const res = await trackPromise( fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
 
                 method: "POST",
                 headers: {
