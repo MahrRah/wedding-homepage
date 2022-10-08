@@ -32,9 +32,9 @@ const CountdownTimer = ({ targetDate, targetMessage }) => {
       <div className="show-counter">
         <DateTimeDisplay value={days} type={t("common:days")} isDanger={days == 0} />
         <p>:</p>
-        <DateTimeDisplay value={hours} type={t("common:hours")} isDanger={hours == 0} />
+        <DateTimeDisplay value={hours} type={t("common:hours")} isDanger={hours == 0 && days == 0} />
         <p>:</p>
-        <DateTimeDisplay value={minutes} type={t("common:minutes")} isDanger={minutes == 0} />
+        <DateTimeDisplay value={minutes} type={t("common:minutes")} isDanger={minutes == 0 && hours == 0} />
         <p>:</p>
         <DateTimeDisplay value={seconds} type={t("common:seconds")} isDanger={seconds == 0 && minutes == 0} />
       </div>
