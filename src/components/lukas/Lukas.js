@@ -11,21 +11,22 @@ function Lukas() {
         position: "absolute",
         textAlign: "center",
         x: 50,
-        y: -1000,
+        y: -700,
         zIndex: 200
       }}
 
       initial={{ scale: 0.1, }}
       animate={{ 
-        scale: 0.1, 
-        rotate: [0, 45, 90, 135, 180, 225, 270, 315, 360, 0], 
-        x: [900, 500, 200, 100, 50, -50, -100, -200, -500, -900], }}
+        scale: 0.3, 
+        // rotate: [...Array(10).keys()].map(x => x*360/10),
+        x: [...Array(30).keys()].map(x => 1500-x*(3000)/30 ), }}
       transition={{
+        duration:5,
         type: "spring",
         stiffness: 260,
         damping: 20
       }}
-      src={require("../../images/luki.png")} alt=""
+      src={require("../../images/vali.png")} alt=""
     />
   );
 }
