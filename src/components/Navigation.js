@@ -53,7 +53,7 @@ class Navigation extends Component {
   render() {
 
     return (
-      < ><nav ref={this.wrapperRef} id="nav">
+      < ><nav id="nav">
         <ul className="links">
           <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
           <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('common:details')}</Link></li>
@@ -66,11 +66,11 @@ class Navigation extends Component {
           <li><a onClick={() => this.changeLanguage('de')}><span className="label">DE</span></a></li>
         </ul>
       </nav>
-        <a ref={this.wrapperRef} id='navPanelToggle' onClick={this.showNavbarMenu} >Menu</a>
+        <a id='navPanelToggle' onClick={this.showNavbarMenu} >Menu</a>
         {this.state.menuOn &&
           <div>
 
-            <body className="is-navPanel-visible">
+            <body ref={this.wrapperRef} className="is-navPanel-visible">
               <div id="navPanel">
                 <nav>
                   <ul className="links">
@@ -98,24 +98,6 @@ class Navigation extends Component {
 }
 
 export default () => {
-  // const useOutsideAlerter = (ref) => {
-  //   useEffect(() => {
-  //     /**
-  //      * Alert if clicked on outside of element
-  //      */
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         alert("You clicked outside of me!");
-  //       }
-  //     }
-  //     // Bind the event listener
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => {
-  //       // Unbind the event listener on clean up
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, [ref]);
-  // }
 
   const location = useLocation();
   const { t } = useTranslation(["common"]);
