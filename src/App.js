@@ -16,6 +16,7 @@ import Overview from './components/overview/Overview.js'
 import Gallery from './components/gallery/Gallery.js'
 import Contacts from './components/contacts/Contacts.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
+import QuestPage from './components/eastereggs/QuestPage';
 import { useTranslation } from "react-i18next";
 import './assets/css/main.css'
 import './assets/css/noscript.css'
@@ -38,6 +39,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/quest" element={<QuestPage />} />
             </Routes>
           </Router>
           <Footer />

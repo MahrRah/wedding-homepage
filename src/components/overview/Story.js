@@ -2,7 +2,7 @@
 import React from 'react';
 import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
-import Lukas from '../lukas/Lukas';
+import Lukas from '../eastereggs/Lukas';
 
 function Story() {
   const { t } = useTranslation(["common"]);
