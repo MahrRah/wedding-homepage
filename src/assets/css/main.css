@@ -10,25 +10,45 @@
 :root {
 --transparent-black:rgba(0, 0, 0, 0.3);
 --black:#000000;
---smoky-black: #12100eff;
---darker-red-grey: rgba(255, 255, 255, 0.075);
---dark-red-grey: rgba(255, 255, 255, 0.175);
---dark-blue-grey:rgba(113, 121, 129, 0.5);
---middle-grey:rgba(255, 255, 255, 0.5);
+--smoky-black: rgb(255, 255, 255,0.9);
+/* --smoky-black: #12100eff; */
+--darker-red-grey: rgba(19, 18, 16, 0.25);
+/* --darker-red-grey: rgba(255, 255, 255, 0.075); */
+--dark-red-grey: rgb(19, 18, 16,0.3);
+/* navebar background */
+/* --dark-red-grey: rgba(255, 255, 255, 0.175); */
+--dark-blue-grey:rgba(113, 129, 123, 0.5);
+/* --dark-blue-grey:rgba(113, 121, 129, 0.5); */
+--middle-grey:rgba(0, 0, 0, 0.3);
+/* underline language */
+/* --middle-grey::rgba(0, 0, 0, 0.3);; */
 
---light-grey:#909498;
---pine-tree: rgb(48, 50, 28);
+--light-grey:rgb(190, 185, 162);
+/* Footnote address */
+/* --light-grey:#909498; */
+--pine-tree: rgb(255, 255, 255,0.9);
+/* text color */
+/* --pine-tree: rgb(48, 50, 28); */
 --transparent-pine-tree:rgba(48, 50, 28, 0.25);
---gold-fusion: #6b654bff;
+--gold-fusion: rgb(126, 122, 103);
+/* --gold-fusion: #6b654bff; */
 --artichoke: #a0a275ff;
 
 --light-artichoke: rgb(161, 163, 109);
 /* --gold-metallic: #e0bc58ff; */
 --transparent-white:rgba(255, 255, 255, 0.875);
---off-white3:#f5f5f5;
---off-white2:#e2e2e2;
---off-white:#eeeeee;
---white:#fff;
+--off-white3:rgba(18, 16, 14, 0.8);
+/* 3 foodnote background color */
+/* --off-white3:#f5f5f5; */
+--off-white2:rgb(37, 38, 21);
+/* 2 foodnote bar color */
+
+
+/* --off-white2:#e2e2e2; */
+--off-white:rgb(48, 48, 35);
+/* --off-white:#eeeeee; */
+--white:rgb(19, 18, 16);
+/* --white:#ffffff; */
 
 
 }
