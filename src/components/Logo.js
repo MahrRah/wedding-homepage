@@ -8,7 +8,7 @@ function Logo() {
     const opacityTrans = useTransform(
         scrollYProgress,
         [0, 1],
-        [-1, 7],
+        [0, 7],
 
 
     )
