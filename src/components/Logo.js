@@ -15,7 +15,7 @@ function Logo() {
     const yPostion = useTransform(
         scrollYProgress,
         [0, 1],
-        [ 0,-50],
+        [ 0,-200],
 
     )
 
