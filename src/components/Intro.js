@@ -9,21 +9,21 @@ function Intro() {
     const yPostion = useTransform(
         scrollYProgress,
         [0, 1],
-        [ 100,500],
+        [100, 500],
 
     )
     const opacityTrans = useTransform(
         scrollYProgress,
         [0, 1],
-        [1, -4],
+        [1, -8],
 
     )
     return (
         <motion.div
             className="intro"
-            initial={{ opacity: 0, transition: { duration: 1 } }}
+            initial={{ opacity: 0, transition: { duration: 5 } }}
             animate={{ opacity: 1 }}
-            style={{ opacity: opacityTrans, y:yPostion}}
+            style={{ opacity: opacityTrans, y: yPostion }}
         >
             <div id="intro">
                 <h1>Mahra<br />

@@ -17,7 +17,7 @@
 --dark-red-grey: rgb(19, 18, 16,0.3);
 /* navebar background */
 /* --dark-red-grey: rgba(255, 255, 255, 0.175); */
---dark-blue-grey:rgba(113, 129, 123, 0.5);
+--dark-blue-grey:rgba(33, 37, 36, 0.5);
 /* --dark-blue-grey:rgba(113, 121, 129, 0.5); */
 --middle-grey:rgba(0, 0, 0, 0.3);
 /* underline language */
@@ -3592,12 +3592,12 @@ input::-webkit-inner-spin-button {
 			}
 
 		#intro strong, #intro b {
-			color: var(--white);
+			color: var(--light-artichoke);
 			color: var(--white);
 		}
 
 		#intro h1, #intro h2, #intro h3, #intro h4, #intro h5, #intro h6 {
-			color: var(--white);
+			color: var(--smoky-black);
 		}
 
 		#intro blockquote {
@@ -3819,17 +3819,18 @@ input::-webkit-inner-spin-button {
 		}
 
 		#header hr {
-			border-bottom-color: var(--white);
+			border-bottom-color: var(--smoky-black);
 		}
 
 		#header .logo {
+			color: var(--smoky-black);
 			-moz-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.5s ease, -moz-transform 0.5s ease, visibility 0.5s;
 			-webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.5s ease, -webkit-transform 0.5s ease, visibility 0.5s;
 			-ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.5s ease, -ms-transform 0.5s ease, visibility 0.5s;
 			transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
 			pointer-events: auto;
 			border-style: solid;
-			border-color: var(--white);
+			border-color: var(--smoky-black);
 			border-width: 5px !important;
 			font-family: "Source Sans Pro", Helvetica, sans-serif;
 			font-size: 2.25rem;
@@ -3913,7 +3914,7 @@ input::-webkit-inner-spin-button {
 		}
 
 		#nav a {
-			color: var(--white);
+			color: var(--smoky-black);
 			border-bottom-color: var(--middle-grey);
 		}
 

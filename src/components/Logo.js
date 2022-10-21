@@ -21,7 +21,7 @@ function Logo() {
 
     return (
         <motion.div
-            initial={{ opacity: 0, transition: { duration: 1 } }}
+            initial={{ opacity: 0, transition: { duration: 5 } }}
             style={{ opacity: opacityTrans, y:yPostion}}
             className="header"
         >
