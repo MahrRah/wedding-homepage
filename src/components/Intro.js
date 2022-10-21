@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, useTransform, useScroll } from "framer-motion";
 import '../assets/css/main.css'
+import '../assets/css/noscript.css'
 
 function Intro() {
 
