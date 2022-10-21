@@ -7,7 +7,7 @@
 */
 
 /* Wrapper */
-@media screen and (min-width: 600px){
+@media screen and (min-width: 1201px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
@@ -22,8 +22,23 @@
 		}
 
 }
+@media screen and (min-width: 901px) and (max-width: 1200px){
+	#wrapper {
+		background-color: rgb(111, 85, 57);
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-medium.jpg");
+		background-size: auto,								auto,														100% auto;
+		background-position: center,								center,														top center;
+		background-repeat: repeat,								no-repeat,													no-repeat;
+		background-attachment: fixed,								fixed,														fixed;
+	}
 
-@media screen and (max-width: 600px){
+		#wrapper.fade-in:before {
+			display: none;
+		}
+
+}
+
+@media screen and (max-width: 900px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-small.jpg");
