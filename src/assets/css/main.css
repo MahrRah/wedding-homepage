@@ -4767,6 +4767,7 @@ input::-webkit-inner-spin-button {
 		top: 0.75rem;
 		right: 0.75rem;
 		border: 0;
+		background-color: var(--smoky-black);
 		color: var(--white);
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 0.9rem;
