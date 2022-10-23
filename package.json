@@ -19,6 +19,8 @@
     "react": "^18.2.0",
     "react-azure-maps": "^0.4.4",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-dropzone-uploader": "^2.11.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.34.2",
     "react-i18next": "^11.17.4",
