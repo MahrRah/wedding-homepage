@@ -63,8 +63,9 @@ function Upload() {
 
     return (
         <section className="post">
-            <h2>Upload own images</h2><div class="box">
-                <p>Do you have immages you would like to share with us? No problem! Just send to us bellow </p>
+            <h2>Upload own images</h2>
+            <p>Do you have immages you would like to share with us? No problem! Just send to us bellow </p>
+            <div class="box">
                 <div>
                     <LightGallery
                         speed={500} >
