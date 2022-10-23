@@ -3,7 +3,7 @@ import React from 'react';
 import '../../assets/css/main.css'
 
 //Components
-// import Map from './Map.js'
+
 import Accommodation from './Accommodation';
 import Venue from './Venue';
 
@@ -21,7 +21,6 @@ function Location() {
         <Venue />
         <Accommodation />
       </section>
-      {/* <Map /> */}
     </div>
   );
 }

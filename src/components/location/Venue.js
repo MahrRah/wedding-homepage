@@ -1,6 +1,12 @@
 import React from 'react';
+import VenueMap from './VenueMap.js'
 import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
+
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
 
 
 function Venue() {
@@ -11,12 +17,16 @@ function Venue() {
     <div>
       <h2>{t('location:venue')}</h2>
       <h3>{t('location:venueName')}</h3>
-      <div><span className="image left"><img src={require("../../images/schupfen-see.jpeg")} alt="" /></span>
+      <div>
+        <LightGallery
+          speed={500} >
+          <img className="image left" src={require("../../images/schupfen-see.jpeg")} alt="" />
+        </LightGallery>
         <p>{t('location:venueText')}</p>
         <p> <b>{t('common:address')}:</b> <a href="https://g.page/GasthausSchupfen?share" target="_blank"><br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /> </a></p>
       </div>
       <h4>{t('location:map')}</h4>
-      <span className="image fit"><img src={require("../../images/schupfen-map.png")} alt="" /></span>
+      <VenueMap />
       <hr />
     </div>
   );

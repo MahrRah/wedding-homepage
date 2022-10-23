@@ -16,6 +16,7 @@
     "i18next-xhr-backend": "^3.2.2",
     "jquery": "^3.6.0",
     "lightgallery": "^2.7.0",
+    "pigeon-maps": "^0.21.3",
     "react": "^18.2.0",
     "react-azure-maps": "^0.4.4",
     "react-dom": "^18.2.0",

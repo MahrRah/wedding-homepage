@@ -45,8 +45,6 @@ class Navigation extends Component {
     this.setState({ menuOn: false });
   }
   handleClickOutside(event) {
-    console.log(this.wrapperRef)
-    console.log(this.wrapperRef.current)
     if (this.wrapperRef && this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)) {
       this.setState({ menuOn: false });
     }
