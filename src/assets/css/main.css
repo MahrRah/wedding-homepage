@@ -25,8 +25,9 @@
 --footer-background:rgba(18, 16, 14, 0.8);
 --footer-lines:rgba(17, 17, 9, 0.697);
 
---timeline-accents: rgb(126, 122, 103);
---timeline-highlights: #a0a275ff;
+--timeline-background:rgb(37, 36, 26);
+--timeline-accents: rgb(100, 99, 94);
+--timeline-highlights: rgb(112, 123, 43);
 
 
 /* No idea what this is */
@@ -121,7 +122,7 @@ ol, ul {
 }
 
 .timeline-container::after {
-    background-color: var(--lines);
+    background-color: var(--timeline-background);
     content: '';
     position: absolute;
     left: calc(50% - 2px);
@@ -149,7 +150,7 @@ ol, ul {
 .timeline-item-content {
     box-shadow: 0 0 7px var(--timeline-highlights);
     border-radius: 5px;
-    background-color: var(--lines);
+    background-color: var(--timeline-background);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -163,7 +164,7 @@ ol, ul {
 
 .timeline-item-content::after {
     content: ' ';
-    background-color: var(--lines);
+    background-color: var(--timeline-background);
     box-shadow: 1px -1px 1px var(--overlay-shadow);
     position: absolute;
     right: -7.5px;
@@ -186,7 +187,7 @@ ol, ul {
 
 .timeline-item-content .tag {
     color: var(--background);
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     top: 5px;
     left: 5px;
@@ -203,26 +204,26 @@ ol, ul {
 
 .timeline-item-content time {
     color:var(--timeline-highlights);
-    font-size: 16px;
+    font-size: 25px;
     font-weight: bold;
 }
 
 .timeline-item-content .location {
     color: var(--text-color);
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 20px;
+    /* font-weight: bold; */
 	font-style: italic;
 }
 
 .timeline-item-content p {
-    font-size: 12px;
+    font-size: 18px;
     line-height: 24px;
     margin: 15px 0;
     max-width: 400px;
 }
 
 .timeline-item-content a {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 }
 
