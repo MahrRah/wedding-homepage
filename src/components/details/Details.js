@@ -24,17 +24,11 @@ function Details() {
         <p>{t("details:eveningContributionText")}</p>
         <blockquote> Contact: Priska und Christian</blockquote>
         <h2>{t("details:dresscode")}</h2>
-        <div><span className="image left"><img src={require("../../images/theme.png")} alt="" /></span>
-          <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            Finally, this is a <a href="#">link</a>.</p>
+        <div>
+          <p>{t("details:dresscodeText")}</p>
+          <span className="image fit">
+            <img src={require("../../images/theme.png")} alt="" />
+          </span>
         </div>
       </section>
     </div>
