@@ -17,6 +17,7 @@ class Navigation extends Component {
     this.showNavbarMenu = this.showNavbarMenu.bind(this);
     this.closeNavbarMenu = this.closeNavbarMenu.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleTab = this.handleTab.bind(this);
     this.wrapperRef = React.createRef();
     this.closeRef = React.createRef();
   }
@@ -51,7 +52,10 @@ class Navigation extends Component {
     }
   }
 
-
+  handleTab(event) {
+    window.scrollTo(0, 500)
+    this.setState({ menuOn: false });
+  }
   render() {
 
     return (
@@ -77,12 +81,12 @@ class Navigation extends Component {
               <div id="navPanel">
                 <nav>
                   <ul className="links">
-                    <li className={this.changeLocation("/")}> <Link to="/">{this.props.t('common:overview')}</Link></li>
-                    <li className={this.changeLocation("/details")}> <Link to="/details">{this.props.t('common:details')}</Link></li>
-                    <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('common:location')}</Link></li>
-                    <li className={this.changeLocation("/rsvp")}> <Link to="/rsvp">{this.props.t('common:rsvp')}</Link></li>
-                    <li className={this.changeLocation("/gallery")}> <Link to="/gallery">{this.props.t('common:gallery')}</Link></li>
-                    <li className={this.changeLocation("/contacts")}> <Link to="/contacts">{this.props.t('common:contacts')}</Link></li>
+                    <li className={this.changeLocation("/")} onClick={() => this.handleTab()}> <Link to="/">{this.props.t('common:overview')}</Link></li>
+                    <li className={this.changeLocation("/details")} onClick={() => this.handleTab()}> <Link to="/details">{this.props.t('common:details')}</Link></li>
+                    <li className={this.changeLocation("/location")} onClick={() => this.handleTab()}> <Link to="/location">{this.props.t('common:location')}</Link></li>
+                    <li className={this.changeLocation("/rsvp")} onClick={() => this.handleTab()}> <Link to="/rsvp">{this.props.t('common:rsvp')}</Link></li>
+                    <li className={this.changeLocation("/gallery")} onClick={() => this.handleTab()}> <Link to="/gallery">{this.props.t('common:gallery')}</Link></li>
+                    <li className={this.changeLocation("/contacts")} onClick={() => this.handleTab()}> <Link to="/contacts">{this.props.t('common:contacts')}</Link></li>
                   </ul>
                   <ul className="icons">
                     <li><a onClick={() => this.changeLanguage('en')}><span className="label">EN</span></a></li>
