@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
-import '../../assets/css/main.css'
+import React, { useState, useEffect } from "react";
 import LightGallery from 'lightgallery/react';
+
+import '../../assets/css/main.css'
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
@@ -17,17 +18,12 @@ function Upload() {
 
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         onDrop: acceptedFiles => {
-            console.log(acceptedFiles)
+
             if (acceptedFiles.length === 0) {
-                console.log(acceptedFiles)
                 setSelectedFile(undefined)
                 return
             }
 
-            // I've kept this example simple by using the first image instead of multiple
-            // setTheArray(oldArray => [...oldArray, newElement]);setSelectedFilesetSelectedFile
-            console.log(acceptedFiles)
-            console.log(selectedFiles)
             setSelectedFiles(() => [...acceptedFiles])
         }
     });
@@ -59,11 +55,9 @@ function Upload() {
 
 
     const deleteFiles = () => {
-        console.log(previews)
         setPreviews([])
         setSelectedFiles([])
         setFiles([])
-        console.log(previews)
     }
 
 
@@ -73,8 +67,7 @@ function Upload() {
                 <p>Do you have immages you would like to share with us? No problem! Just send to us bellow </p>
                 <div>
                     <LightGallery
-                        speed={500}
-                    >
+                        speed={500} >
                         {(previews || []).map((url, i) => (
                             <img style={{ width: "100px", hight: "100px" }} key={i} src={url} alt="..." />
                         ))}
