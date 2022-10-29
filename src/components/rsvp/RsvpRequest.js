@@ -23,7 +23,7 @@ class RsvpRequest extends Component {
             hotel: { rooms: { value: 0, error: false }, guests: 0, nights: { value: 0, error: false }, booking: "" },
             food: "0",
             language: "",
-            plusOne: { firstname: "", lastname: "", food: "0", attending: "" },
+            plusOne: { firstname: { value: "", error: false }, lastname: { value: "", error: false }, food: "0", attending: "" },
             hasPlusOne: false,
             bringsPlusOne: "",
             children: [],
@@ -128,6 +128,7 @@ class RsvpRequest extends Component {
     hasError = () => {
 
         const personalError = this.state.email.error || this.state.phone.error
+        const plusOneError = this.state.plusOne.firstname.error || this.state.plusOne.lastname.error
         const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
 
         let childError = false
@@ -135,7 +136,7 @@ class RsvpRequest extends Component {
             childError ||= x.age.error
         })
         const childAgeError = (this.state.bringsChildren === "yes") ? childError : false
-        this.setState({ ["error"]: personalError || hotelError || childAgeError })
+        this.setState({ ["error"]: personalError || hotelError || childAgeError || plusOneError })
     }
 
     onChange = (e) => {
@@ -163,8 +164,20 @@ class RsvpRequest extends Component {
 
     onChangePlusOne = (e) => {
         let state = this.state.plusOne
-        state[e.target.name] = e.target.value
-        this.setState({ plusOne: state });
+        if ((e.target.name == "lastname") || (e.target.name == "firstname")) {
+            if (this.state.bringsPlusOne) {
+                state[e.target.name].value = e.target.value
+                const regexName = new RegExp('/^[A-Za-z]*$/');
+                state[e.target.name].error = ((e.target.value.length > 0) && !regexName.test(e.target.value.replace(/\s/g, ''))) ? false : true;
+                this.setState({ plusOne: state });
+                console.log(this.state.plusOne)
+            }
+        }
+        else{
+            let state = this.state.plusOne
+            state[e.target.name] = e.target.value
+            this.setState({ plusOne: state });
+        }
     }
 
     onChangeHotel = (e) => {
@@ -231,7 +244,9 @@ class RsvpRequest extends Component {
                 this.setState({
                     hasPlusOne: true,
                     bringsPlusOne: (data.plusOne[0].attending === "") ? "yes" : data.plusOne[0].attending,
-                    plusOne: structuredClone(data.plusOne[0])
+                    plusOne: { firstname: { value: data.plusOne[0].firstname, error: false }, lastname: { value: data.plusOne[0].lastname, error: false }, food: data.plusOne[0].food, attending: data.plusOne[0].attending },
+
+                    // plusOne: {error: false, value: structuredClone(data.plusOne[0])}
                 });
             }
             if (data.child.length > 0) {
@@ -277,7 +292,7 @@ class RsvpRequest extends Component {
             try {
 
 
-                const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+                const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
                     method: "GET",
                 }))
 
@@ -328,9 +343,9 @@ class RsvpRequest extends Component {
 
             if (this.state.hasPlusOne && this.state.bringsPlusOne) {
                 let plusOneBody = {
-                    "firstname": this.state.plusOne.firstname,
-                    "lastname": this.state.plusOne.lastname,
-                    "food": this.state.plusOne.food,
+                    "firstname": this.state.plusOne.value.firstname,
+                    "lastname": this.state.plusOne.value.lastname,
+                    "food": this.state.plusOne.value.food,
                     "attending": this.state.bringsPlusOne
                 }
                 updateBody.plusOne.push(plusOneBody)
@@ -350,7 +365,7 @@ class RsvpRequest extends Component {
             }
             console.log(updateBody)
 
-            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
 
                 method: "POST",
                 headers: {
@@ -462,12 +477,15 @@ class RsvpRequest extends Component {
                                                 onChange={this.onChange} />
                                             {this.state.bringsPlusOne === "yes" &&
                                                 <>
-                                                    <this.Input data={{ name: "firstname", value: this.state.plusOne.firstname }}
-                                                        lable={t("common:firstName")}
+                                                    <this.InputWithError data={{ name: "firstname", type: "string", state: this.state.plusOne.firstname }}
+                                                        lables={{ "error": t("rsvp:nightsError"), "name": t("common:firstName") }}
                                                         onChange={this.onChangePlusOne} />
-                                                    <this.Input data={{ name: "lastname", value: this.state.plusOne.lastname }}
+                                                    <this.InputWithError data={{ name: "lastname", type: "string", state: this.state.plusOne.lastname }}
+                                                        lables={{ "error": t("rsvp:nightsError"), "name": t("common:lastName") }}
+                                                        onChange={this.onChangePlusOne} />
+                                                    {/* <this.Input data={{ name: "lastname", value: this.state.plusOne.value.lastname }}
                                                         lable={t("common:lastName")}
-                                                        onChange={this.onChangePlusOne} />
+                                                        onChange={this.onChangePlusOne} /> */}
                                                     <this.FoodChoices value={this.state.plusOne.food} onChange={this.onChangePlusOne} />
 
                                                 </>}
