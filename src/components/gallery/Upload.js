@@ -9,7 +9,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 import { useDropzone } from 'react-dropzone'
 
 import { useTranslation } from "react-i18next";
-const {google} = require('googleapis');
+// const {google} = require('googleapis');
 
 
 function Upload() {
@@ -28,49 +28,49 @@ function Upload() {
             setSelectedFiles(() => [...acceptedFiles])
         }
     });
-    const auth =() =>{
-        google.uploadToken
-    }
-    const upload = () => {
+    // const auth =() =>{
+    //     google.uploadToken
+    // }
+    // const upload = () => {
 
-        let reqObject = {
-            newMediaItems: [
-                {
-                    description: "Test Image Uploading",
-                    simpleMediaItem: {
-                        uploadToken: body //Body is the upload token received from prev request
-                    }
-                }
-            ]
-        };
-        let reqObjectString = JSON.stringify(reqObject);
-        mimeType = "image/jpeg"
-        let token = ""
-        request({
-            method: 'post',
-            headers: {
+    //     let reqObject = {
+    //         newMediaItems: [
+    //             {
+    //                 description: "Test Image Uploading",
+    //                 simpleMediaItem: {
+    //                     uploadToken: body //Body is the upload token received from prev request
+    //                 }
+    //             }
+    //         ]
+    //     };
+    //     let reqObjectString = JSON.stringify(reqObject);
+    //     mimeType = "image/jpeg"
+    //     let token = ""
+    //     request({
+    //         method: 'post',
+    //         headers: {
 
-                "Authorization": "Bearer oauth2-token",
-                "Content-type": "application/octet-stream",
-                "X-Goog-Upload-Content-Type": mimeType,
-                "X-Goog-Upload-Protocol": "raw",
-            },
-            url: ` https://photoslibrary.googleapis.com/v1/uploads`,
-            rejectUnauthorized: false,
-            body: reqObjectString
-        }, function (err, response, result) {
-            if (err){
-                console.log(err)
-            }
-            else{
+    //             "Authorization": "Bearer oauth2-token",
+    //             "Content-type": "application/octet-stream",
+    //             "X-Goog-Upload-Content-Type": mimeType,
+    //             "X-Goog-Upload-Protocol": "raw",
+    //         },
+    //         url: ` https://photoslibrary.googleapis.com/v1/uploads`,
+    //         rejectUnauthorized: false,
+    //         body: reqObjectString
+    //     }, function (err, response, result) {
+    //         if (err){
+    //             console.log(err)
+    //         }
+    //         else{
 
                 
-                console.log(result);
-                token = response.body
-            }
-        });
-        // create a preview as a side effect, whenever selected file is changed
-    }
+    //             console.log(result);
+    //             token = response.body
+    //         }
+    //     });
+    //     // create a preview as a side effect, whenever selected file is changed
+    // }
     useEffect(() => {
 
         if (!selectedFiles.length === 0) {
