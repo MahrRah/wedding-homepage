@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../assets/css/main.css'
 
-import Upload from './Upload.js'
 import LightGallery from 'lightgallery/react';
 import { useTranslation } from "react-i18next";
 import 'lightgallery/css/lightgallery.css';
@@ -43,7 +42,6 @@ function Gallery() {
                 </LightGallery>
                 </div>
             </section>
-            <Upload></Upload>
         </div>
     );
 }
