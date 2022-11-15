@@ -5,17 +5,21 @@ import '../../assets/css/main.css'
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
+import uploadFileToBlob, { isStorageConfigured } from './azure-storage-blob';
 
 import { useDropzone } from 'react-dropzone'
 
 import { useTranslation } from "react-i18next";
-// const {google} = require('googleapis');
+
+const storageConfigured = isStorageConfigured();
+
 
 
 function Upload() {
     const [selectedFiles, setSelectedFiles] = useState([])
     const [previews, setPreviews] = useState([])
     const [files, setFiles] = useState([])
+    // const [inputKey, setInputKey] = useState(Math.random().toString(36));
 
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         onDrop: acceptedFiles => {
@@ -28,49 +32,24 @@ function Upload() {
             setSelectedFiles(() => [...acceptedFiles])
         }
     });
-    // const auth =() =>{
-    //     google.uploadToken
-    // }
-    // const upload = () => {
+    const onFileUpload = async () => {
+        // prepare UI
+        // setUploading(true);
+        console.log(selectedFiles)
+        // *** UPLOAD TO AZURE STORAGE ***
+        selectedFiles.forEach(async element => {
+            await uploadFileToBlob(element);
+        });
+        
 
-    //     let reqObject = {
-    //         newMediaItems: [
-    //             {
-    //                 description: "Test Image Uploading",
-    //                 simpleMediaItem: {
-    //                     uploadToken: body //Body is the upload token received from prev request
-    //                 }
-    //             }
-    //         ]
-    //     };
-    //     let reqObjectString = JSON.stringify(reqObject);
-    //     mimeType = "image/jpeg"
-    //     let token = ""
-    //     request({
-    //         method: 'post',
-    //         headers: {
+    
+        // reset state/form
+        setSelectedFiles([]);
+        setPreviews([]);
+        // setUploading(false);
+        // setInputKey(Math.random().toString(36));
+      };
 
-    //             "Authorization": "Bearer oauth2-token",
-    //             "Content-type": "application/octet-stream",
-    //             "X-Goog-Upload-Content-Type": mimeType,
-    //             "X-Goog-Upload-Protocol": "raw",
-    //         },
-    //         url: ` https://photoslibrary.googleapis.com/v1/uploads`,
-    //         rejectUnauthorized: false,
-    //         body: reqObjectString
-    //     }, function (err, response, result) {
-    //         if (err){
-    //             console.log(err)
-    //         }
-    //         else{
-
-                
-    //             console.log(result);
-    //             token = response.body
-    //         }
-    //     });
-    //     // create a preview as a side effect, whenever selected file is changed
-    // }
     useEffect(() => {
 
         if (!selectedFiles.length === 0) {
@@ -121,6 +100,7 @@ function Upload() {
                     <p style={{ textAlign: "center" }}> Click to open file browser or Drag 'n' drop some files here.</p>
                 </div>
                 <button style={{marginTop:"20px"}} onClick={() => deleteFiles()}>Delete</button>
+                <button style={{marginTop:"20px",marginLeft:"20px"}} onClick={() => onFileUpload()}>Submit</button>
             </div></section >
     )
 }

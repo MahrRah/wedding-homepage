@@ -15,6 +15,8 @@
 --text-color: rgb(255, 255, 255,0.9);
 --lines:rgb(48, 47, 35);
 --hover-highlight: rgb(163, 148, 109);
+/* --label: rgb(163, 148, 109); */
+--label:rgba(255, 234, 180, 0.367);
 
 --navebar-highlight: rgba(19, 18, 16, 0.9);
 --navebar-background: rgb(19, 18, 16,0.3);
@@ -25,9 +27,11 @@
 --footer-background:rgba(18, 16, 14, 0.8);
 --footer-lines:rgba(17, 17, 9, 0.697);
 
---timeline-background:rgb(37, 36, 26);
+--timeline-background:rgb(32, 35, 25);
 --timeline-accents: rgb(100, 99, 94);
---timeline-highlights: rgb(112, 123, 43);
+--timeline-highlights: rgb(34, 38, 27);
+--timeline-time: rgb(171, 179, 157);
+/* --timeline-highlights: rgb(123, 88, 43); */
 
 
 /* No idea what this is */
@@ -203,20 +207,20 @@ ol, ul {
 }
 
 .timeline-item-content time {
-    color:var(--timeline-highlights);
+    color:var(--timeline-time);
     font-size: 25px;
     font-weight: bold;
 }
 
 .timeline-item-content .location {
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 18px;
     /* font-weight: bold; */
 	font-style: italic;
 }
 
 .timeline-item-content p {
-    font-size: 18px;
+    font-size: 15px;
     line-height: 24px;
     margin: 15px 0;
     max-width: 400px;
@@ -2729,7 +2733,7 @@ input::-webkit-inner-spin-button {
 
 	label {
 		color: var(--text-color);
-		color: var(--overlay-shadow);
+		color: var(--label);
 	}
 
 	input[type="text"],
