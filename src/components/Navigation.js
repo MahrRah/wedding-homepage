@@ -64,7 +64,9 @@ class Navigation extends Component {
           <li className={this.changeLocation("/location")}> <Link to="/location">{this.props.t('common:location')}</Link></li>
           <li className={this.changeLocation("/rsvp")}> <Link to="/rsvp">{this.props.t('common:rsvp')}</Link></li>
           <li className={this.changeLocation("/gallery")}> <Link to="/gallery">{this.props.t('common:gallery')}</Link></li>
-          <li className={this.changeLocation("/contacts")}> <Link to="/contacts">{this.props.t('common:contacts')}</Link></li>
+          <li className={this.changeLocation("/weddingparty")}> <Link to="/weddingparty">{this.props.t('common:weddingparty')}</Link></li>
+          <li className={this.changeLocation("/contact")}> <Link to="/contact">{this.props.t('common:contacts')}</Link></li>
+          <li className={this.changeLocation("/faq")}> <Link to="/faq">FAQ</Link></li>
         </ul>
         <ul className="icons">
           <li><a onClick={() => this.changeLanguage('en')}><span className="label">EN</span></a></li>

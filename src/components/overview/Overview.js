@@ -36,10 +36,6 @@ function Overview() {
                 <h3>{t("overview:countdownTitel")}</h3>
                 <CountdownTimer targetDate={target} targetMessage={t("overview:countdownFinalMessage")} />
             </section>
-            <section className="post">
-                <h2>{t("overview:contact")}</h2>
-                <p>{t("overview:contactText")}</p>
-            </section>
         </div>
     );
 }

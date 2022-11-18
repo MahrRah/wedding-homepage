@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../../assets/css/main.css'
 import Schedule from "./Schedule.js"
 import { useTranslation } from "react-i18next";
@@ -24,12 +25,6 @@ function Details() {
         <p>{t("details:scheduleText")}</p>
         <Schedule />
         <hr />
-        <h2>{t("details:gift")}</h2>
-        <p>{t("details:giftsText")}</p>
-        <hr />
-        <h2>{t("details:eveningContribution")}</h2>
-        <p>{t("details:eveningContributionText")}</p>
-        <blockquote> Contact: Priska und Christian</blockquote>
         <h2>{t("details:dresscode")}</h2>
         <div>
           <p>{t("details:dresscodeText")}</p>
@@ -46,9 +41,15 @@ function Details() {
                 <img src={require("../../images/theme.png")} />
               </figure>
             </LightGallery>
-
           </span>
         </div>
+
+        <h2>{t("details:gift")}</h2>
+        <p>{t("details:giftsText")}</p>
+        <hr />
+        <h2>{t("details:eveningContribution")}</h2>
+        <p>{t("details:eveningContributionText")}</p>
+        <blockquote> <Link to="/contact" preventScrollReset={false}> Contact: Priska und Christian </Link></blockquote>
       </section>
     </div>
   );
