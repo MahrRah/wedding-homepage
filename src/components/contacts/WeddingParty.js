@@ -3,8 +3,9 @@ import React from 'react';
 import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
 import i18n from '../../i18n.js';
-import { Grid } from 'react-loader-spinner';
-function Contact() {
+
+
+function WeddingParty() {
   const { t } = useTranslation(["common"]);
   const Person = ({ side, align, name, text }) => {
     return (
@@ -19,11 +20,10 @@ function Contact() {
     <div id="main">
       <section className="post">
         <header className="major">
-          <h1>{t("common:contacts")}</h1>
+          <h1>{t("common:weddingparty")}</h1>
         </header>
         <h2>Our Best People</h2>
-        <Person side="image left" align='left' name="Christian" text="asds" />
-        <Person side="image right" align='right' name="Priska" text="asds" />
+        <Person side="image left" align='left' name="Christian & Priska Sgier" text={t("contact:sgiers")} />
         <hr />
 
 <h2>The Groomsman</h2>
@@ -38,4 +38,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default WeddingParty;

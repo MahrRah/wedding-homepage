@@ -14,7 +14,9 @@ import Location from './components/location/Location.js'
 import Intro from './components/Intro.js'
 import Overview from './components/overview/Overview.js'
 import Gallery from './components/gallery/Gallery.js'
-import Contacts from './components/contacts/Contacts.js'
+import WeddingParty from './components/contacts/WeddingParty.js'
+import Contact from './components/contacts/Contact.js'
+import Faq from './components/contacts/FAQ.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
 import { useTranslation } from "react-i18next";
 import './assets/css/main.css'
@@ -37,7 +39,9 @@ function App() {
               <Route path="/location" element={<Location />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
-              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/weddingparty" element={<WeddingParty />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/Faq" element={<Faq />} />
             </Routes>
           </Router>
           <Footer />
