@@ -148,8 +148,11 @@ class RsvpRequest extends Component {
         let error = false
         switch (e.target.name) {
             case "phone":
-                const regexPhone = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$');
-                error = !regexPhone.test(e.target.value.replace(/\s/g, ''))
+                const regexPhone = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$$');
+                console.log((e.target.value=="") )
+                console.log(regexPhone.test(e.target.value.replace(/\s/g, '')))
+                error = !((e.target.value=="") || regexPhone.test(e.target.value.replace(/\s/g, '')))
+                console.log(error)
                 break;
             case "email":
                 const regexEmail = new RegExp("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$");

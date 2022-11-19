@@ -9,12 +9,6 @@ import 'lightgallery/css/lg-zoom.css';
 import LightGallery from 'lightgallery/react';
 function Details() {
   const { t } = useTranslation(["common", "details"]);
-  // lightGallery(document.querySelector('.medium-zoom-demo'), {
-  //   // Target all images
-  //   selector: '.blog-images',
-  //   // Add medium zoom plugin
-  //   plugins: [lgMediumZoom],
-  // });
   return (
     <div id="main">
       <section className="post">
@@ -49,7 +43,7 @@ function Details() {
         <hr />
         <h2>{t("details:eveningContribution")}</h2>
         <p>{t("details:eveningContributionText")}</p>
-        <blockquote> <Link to="/contact" preventScrollReset={false}> Contact: Priska und Christian </Link></blockquote>
+        <blockquote> <Link to="/contact" preventScrollReset={false}> Contact </Link></blockquote>
       </section>
     </div>
   );
