@@ -295,7 +295,7 @@ class RsvpRequest extends Component {
             try {
 
 
-                const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+                const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
                     method: "GET",
                 }))
 
@@ -368,7 +368,7 @@ class RsvpRequest extends Component {
             }
             console.log(updateBody)
 
-            const res = await trackPromise(fetch(` http://localhost:7071/api/rsvp/${this.state.rsvpCode.value}`, {
+            const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
 
                 method: "POST",
                 headers: {
