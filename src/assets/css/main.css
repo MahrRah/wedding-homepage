@@ -191,7 +191,7 @@ ol, ul {
 
 .timeline-item-content .tag {
     color: var(--background);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     top: 5px;
     left: 5px;
@@ -208,13 +208,13 @@ ol, ul {
 
 .timeline-item-content time {
     color:var(--timeline-time);
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .timeline-item-content .location {
     color: var(--text-color);
-    font-size: 18px;
+    font-size: 15px;
     /* font-weight: bold; */
 	font-style: italic;
 }

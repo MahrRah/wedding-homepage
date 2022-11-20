@@ -15,6 +15,7 @@ function Details() {
         <header className="major">
           <h1>{t("details:detailsTitel")}</h1>
         </header>
+        <p> SOME INTOR TEXT</p>
         <h2>{t("details:scheduleTitel")}</h2>
         <p>{t("details:scheduleText")}</p>
         <Schedule />
@@ -43,7 +44,8 @@ function Details() {
         <hr />
         <h2>{t("details:eveningContribution")}</h2>
         <p>{t("details:eveningContributionText")}</p>
-        <blockquote> <Link to="/contact" preventScrollReset={false}> Contact </Link></blockquote>
+        <p> If you go to the <Link to="/contact" preventScrollReset={false} style={{ textDecoration: "underline"}}> {t("common:contact")} </Link>  section, you will find our and our best peoples information.</p>
+        {/* <blockquote> <Link to="/contact" preventScrollReset={false}> Contact </Link></blockquote> */}
       </section>
     </div>
   );
