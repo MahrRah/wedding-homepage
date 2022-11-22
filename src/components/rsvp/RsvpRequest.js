@@ -128,9 +128,9 @@ class RsvpRequest extends Component {
     hasError = () => {
 
         const personalError = this.state.email.error || this.state.phone.error
-        const plusOneError = this.state.plusOne.firstname.error || this.state.plusOne.lastname.error
+        const plusOneError = (this.state.bringsPlusOne == "yes") ? this.state.plusOne.firstname.error || this.state.plusOne.lastname.error : false
         const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
-
+        console.log(plusOneError, this.state)
         let childError = false
         this.state.children.forEach((x) => {
             childError ||= x.age.error
@@ -149,10 +149,7 @@ class RsvpRequest extends Component {
         switch (e.target.name) {
             case "phone":
                 const regexPhone = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$$');
-                console.log((e.target.value=="") )
-                console.log(regexPhone.test(e.target.value.replace(/\s/g, '')))
-                error = !((e.target.value=="") || regexPhone.test(e.target.value.replace(/\s/g, '')))
-                console.log(error)
+                error = !((e.target.value == "") || regexPhone.test(e.target.value.replace(/\s/g, '')))
                 break;
             case "email":
                 const regexEmail = new RegExp("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$");
@@ -170,16 +167,18 @@ class RsvpRequest extends Component {
         if ((e.target.name == "lastname") || (e.target.name == "firstname")) {
             if (this.state.bringsPlusOne) {
                 state[e.target.name].value = e.target.value
-                const regexName = new RegExp('/^[A-Za-z]*$/');
-                state[e.target.name].error = ((e.target.value.length > 0) && !regexName.test(e.target.value.replace(/\s/g, ''))) ? false : true;
-                this.setState({ plusOne: state });
-                console.log(this.state.plusOne)
+                state[e.target.name].error = (e.target.value.length == 0) ? true : false
+                this.setState({ plusOne: state }, () => {
+                    this.hasError()
+                });
             }
         }
         else {
             let state = this.state.plusOne
             state[e.target.name] = e.target.value
-            this.setState({ plusOne: state });
+            this.setState({ plusOne: state }, () => {
+                this.hasError()
+            });
         }
     }
 
@@ -346,9 +345,9 @@ class RsvpRequest extends Component {
 
             if (this.state.hasPlusOne && this.state.bringsPlusOne) {
                 let plusOneBody = {
-                    "firstname": this.state.plusOne.value.firstname,
-                    "lastname": this.state.plusOne.value.lastname,
-                    "food": this.state.plusOne.value.food,
+                    "firstname": this.state.plusOne.firstname.value,
+                    "lastname": this.state.plusOne.lastname.value,
+                    "food": this.state.plusOne.food,
                     "attending": this.state.bringsPlusOne
                 }
                 updateBody.plusOne.push(plusOneBody)
@@ -397,10 +396,10 @@ class RsvpRequest extends Component {
                     <header className="major">
                         <h1>{t("rsvp:rsvpTitel")}</h1>
                     </header>
-
                     <div>
                         <p>{t("rsvp:rsvpText")}</p>
                     </div>
+
                     {!this.state.submitted && !this.state.updated &&
                         <form method="post" onSubmit={this.handleSubmitCode}>
                             <h2>{t("rsvp:rsvpFormTitel")}</h2>

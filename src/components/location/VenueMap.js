@@ -13,7 +13,7 @@ const ragdoll = [47.663398, 8.651756];
 function VenueMap() {
   const [anchor, setAnchor] = useState(ragdoll);
   return (
-     <Map height={300} defaultCenter={center} defaultZoom={12} provider={stamenTerrain}>
+     <Map height={300} defaultCenter={center} defaultZoom={11} provider={stamenTerrain}>
       <Marker width={20} color={"black"}  anchor={schupfen} onClick={() => window.location.href = 'https://g.page/GasthausSchupfen?share'} />
       <Marker width={20} color={"black"}  anchor={hotel} onClick={() => window.location.href = 'https://goo.gl/maps/Ku4BhLbeaeHMVsqJ9'} />
       <Overlay anchor={schupfen} offset={[22, 80]}>

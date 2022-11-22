@@ -86,8 +86,8 @@ class Navigation extends Component {
                     <li className={this.changeLocation("/location")} onClick={() => this.handleTab()}> <Link to="/location">{this.props.t('common:location')}</Link></li>
                     <li className={this.changeLocation("/rsvp")} onClick={() => this.handleTab()}> <Link to="/rsvp">{this.props.t('common:rsvp')}</Link></li>
                     <li className={this.changeLocation("/gallery")} onClick={() => this.handleTab()}> <Link to="/gallery">{this.props.t('common:gallery')}</Link></li>
-                    <li className={this.changeLocation("/weddingparty")}> <Link to="/weddingparty">{this.props.t('common:weddingparty')}</Link></li>
-                    <li className={this.changeLocation("/contact")}> <Link to="/contact">{this.props.t('common:contacts')}</Link></li>
+                    <li className={this.changeLocation("/weddingparty")} onClick={() => this.handleTab()}> <Link to="/weddingparty">{this.props.t('common:weddingparty')}</Link></li>
+                    <li className={this.changeLocation("/contact")} onClick={() => this.handleTab()}> <Link to="/contact">{this.props.t('common:contacts')}</Link></li>
                   </ul>
                   <ul className="icons">
                     <li><a onClick={() => this.changeLanguage('en')}><span className="label">EN</span></a></li>
