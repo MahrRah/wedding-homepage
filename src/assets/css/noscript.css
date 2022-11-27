@@ -7,7 +7,7 @@
 */
 
 /* Wrapper */
-@media screen and (min-width: 1201px){
+@media screen and (min-width: 1301px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
@@ -22,10 +22,10 @@
 		}
 
 }
-@media screen and (min-width: 901px) and (max-width: 1200px){
+@media screen and (min-width: 901px) and (max-width: 1300px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
-		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-medium.jpg");
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-2.jpg");
 		background-size: auto,								auto,														100% auto;
 		background-position: center,								center,														top center;
 		background-repeat: repeat,								no-repeat,													no-repeat;
@@ -38,10 +38,26 @@
 
 }
 
+@media screen and (max-width: 1000px){
+	#wrapper {
+		background-color: rgb(111, 85, 57);
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-6.jpg");
+		background-size: auto,								auto,														100% auto;
+		background-position: center,								center,														top center;
+		background-repeat: repeat,								no-repeat,													no-repeat;
+		background-attachment: fixed,								fixed,														fixed;
+	}
+
+		#wrapper.fade-in:before {
+			display: none;
+		}
+	
+}
+	
 @media screen and (max-width: 900px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
-		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-small.jpg");
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-6.jpg");
 		background-size: auto,								auto,														100% auto;
 		background-position: center,								center,														top center;
 		background-repeat: repeat,								no-repeat,													no-repeat;
@@ -53,7 +69,6 @@
 		}
 	
 }
-	
 /* Intro */
 
 	body.is-preload #intro {

@@ -13,6 +13,7 @@ import Logo from './components/Logo.js'
 import Location from './components/location/Location.js'
 import Intro from './components/Intro.js'
 import Overview from './components/overview/Overview.js'
+import Instagram from './components/overview/Instagram.js'
 import Gallery from './components/gallery/Gallery.js'
 import WeddingParty from './components/contacts/WeddingParty.js'
 import Contact from './components/contacts/Contact.js'
@@ -41,7 +42,8 @@ function App() {
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
               <Route path="/weddingparty" element={<WeddingParty />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/Faq" element={<Faq />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/instagram" element={<Instagram />} />
             </Routes>
           </Router>
           <Footer />
