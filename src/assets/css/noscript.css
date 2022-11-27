@@ -7,7 +7,7 @@
 */
 
 /* Wrapper */
-@media screen and (min-width: 1301px){
+@media screen and (min-width: 1501px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
@@ -22,10 +22,11 @@
 		}
 
 }
-@media screen and (min-width: 901px) and (max-width: 1300px){
+
+@media screen and (min-width: 1301px) and (max-width: 1500px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
-		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-2.jpg");
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-1.2.jpg");
 		background-size: auto,								auto,														100% auto;
 		background-position: center,								center,														top center;
 		background-repeat: repeat,								no-repeat,													no-repeat;
@@ -38,7 +39,26 @@
 
 }
 
-@media screen and (max-width: 1000px){
+/* @media screen and (min-width: 1101px) and (max-width: 1300px){
+	#wrapper {
+		background-color: rgb(111, 85, 57);
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-1.1.jpg");
+		background-size: auto,								auto,														100% auto;
+		background-position: center,								center,														top center;
+		background-repeat: repeat,								no-repeat,													no-repeat;
+		background-attachment: fixed,								fixed,														fixed;
+	}
+
+		#wrapper.fade-in:before {
+			display: none;
+		}
+
+} */
+
+
+/* and (max-height:  1000px){ */
+
+@media screen and (max-width: 1300px) {
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-6.jpg");
@@ -57,8 +77,8 @@
 @media screen and (max-width: 900px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
-		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-6.jpg");
-		background-size: auto,								auto,														100% auto;
+		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-7.jpg");
+		background-size: auto,								auto,														100% cover;
 		background-position: center,								center,														top center;
 		background-repeat: repeat,								no-repeat,													no-repeat;
 		background-attachment: fixed,								fixed,														fixed;
