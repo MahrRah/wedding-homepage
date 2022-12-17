@@ -6,10 +6,5 @@
     "map":"Map",
     "accomodation":"Accomodation",
     "mainHotel":"Main Hotel",
-    "otherHotels":"Other Hotels close by ",
-    "mainHotelName":"adasd",
-    "mainHotelText":"This is the largest of our proposed hotels and it is located in central Schaffhausen. Rooms are available from 190.- CHF per night. The wedding venue is reachable from this location by a 15 minute car ride. Parking is available directly next to the hotel. This hotel is also accessible for wheel-chair users.",
-    "city":"city",
-    "distanceVenue":"Disance to the venue",
-    "distanceHotel":"Disance to our hotel"
+    "mainHotelText": "After our big day we will retreat to the <site_anchor>Vienna House zur Bleiche Schaffhausen</site_anchor> for the night. The hotel is right next to the Train station and within 5min walk you will be in the heart of Schaffhausens old town. \n We have arranged special rates for our guests, so make sure when booking to mention our wedding code {{- code}}. The hotel also has public parking next door and accessible for wheelchair.\n We have also organized a shuttle service for all guests to and from the venue to this hotel.\n \n If you choose to stay in this hotel, we would love for you to join us for breakfast the next morning. \n \n <strong>Please make sure to book your room yourself!</strong> \n We will have a blocker in place for a certain number of rooms. You will however still need to book your room yourself."
 }

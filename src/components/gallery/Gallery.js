@@ -2,7 +2,7 @@ import React from 'react';
 import '../../assets/css/main.css'
 
 import LightGallery from 'lightgallery/react';
-import { useTranslation } from "react-i18next";
+import { Trans,useTranslation } from "react-i18next";
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
@@ -17,8 +17,13 @@ function Gallery() {
                 <header className="major">
                     <h1>{t("gallery:galleryTitel")}</h1>
                 </header>
-                <span>{t("gallery:galleryText")} <a style={{ textDecoration: "underline"}}>{t("gallery:hereLink")}</a></span>
-                <div style={{ textAlign: "center"}}>
+                <Trans i18nKey="gallery:galleryText" components={{
+                    gallery_anchor: <a href="/" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
+                }} >
+                    Sneak peak of some of the pictures taken at the wedding. For the complete gallery of all pictures taken please follow the <gallery_anchor>link</gallery_anchor>.
+                </Trans>
+                {/* <span>{t("gallery:galleryText")} <a style={{ textDecoration: "underline" }}>{t("gallery:hereLink")}</a></span> */}
+                <div style={{ textAlign: "center" }}>
 
                     <LightGallery
                         speed={500}
