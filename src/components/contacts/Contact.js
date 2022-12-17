@@ -31,16 +31,16 @@ function Contact() {
 
         </LightGallery>
         <br/>
-        <div class="row">
+        <div className="row">
             <h3>{t("contact:contactInfoTitle")}</h3>
-          <div class="col-6 col-12-small">
+          <div className="col-6 col-12-small">
             <h4>Priska</h4>
             <p>
               <b>{t("common:phone")}</b> 0041 79 434 55 09 <br />
               <b>{t("common:email")}:</b>  email@mail.com<br />
             </p>
           </div>
-          <div class="col-6 col-12-small">
+          <div className="col-6 col-12-small">
           <h4>Christian</h4>
             <p>
               <b>{t("common:phone")}</b> 0041 79 434 55 09 <br />

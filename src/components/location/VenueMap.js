@@ -23,7 +23,9 @@ function VenueMap() {
         <img src={require("../../images/hotel-icon.png")} width={40} height={35} alt='' />
       </Overlay>
       <Draggable  anchor={anchor} onDragEnd={setAnchor}>
+        <a href='/quest2'>
         <img src={require("../../images/ragdoll.png")} width={50} height={90} alt="Pigeon!" />
+        </a>
       </Draggable>
       <ZoomControl style={{ right: 10, top: 10, zIndex: 100 }} buttonStyle={{ background: 'black', color: 'white' }} />
     </Map>

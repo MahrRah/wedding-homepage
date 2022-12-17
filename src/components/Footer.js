@@ -24,7 +24,7 @@ function Footer() {
         </section>
       </section>
       <section className="split contact">
-        <section class="alt">
+        <section className="alt">
           <h3>{t('address')}</h3>
           <p> Tamara Rahimi <br />
             Valentin Grosjean, <br />

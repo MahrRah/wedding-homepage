@@ -8,14 +8,11 @@ function Instagram() {
 
     return (
         <div id="main">
-            <article className="post featured">
-                <header className="major">
-                    <span className="date">{t("overview:date")}</span>
-                    <h2>{t("overview:welcome")}</h2>
-                    <p> {t("overview:introText")}</p>
-                </header>
-                <a href="#" className="image main"><img src={require("../../images/insta.jpg")} alt="" /></a>
-                </article>
+            <section className="post">
+                <span className="image left" style={{ width: 300 }}><img src={require("../../images/insta.jpg")} alt="" /></span>
+                <h3 style={{ textAlign: "left" }}>Wedding Hashtag</h3>
+                <p style={{ height: 300, textAlign: "left" }}>Our wedding hashtag is <b>#thegrosjeans2023</b>. Post anything with that hashtag if you want us to fins it on instagram. To go to the hashtag, just scane the QR code in the image on the left.</p>
+            </section>
         </div>
     );
 }
