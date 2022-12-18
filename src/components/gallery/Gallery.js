@@ -2,7 +2,7 @@ import React from 'react';
 import '../../assets/css/main.css'
 
 import LightGallery from 'lightgallery/react';
-import { Trans,useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
