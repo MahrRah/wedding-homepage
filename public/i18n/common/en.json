@@ -28,5 +28,8 @@
     "days":"days",
     "hours":"hours",
     "minutes":"minutes",
-    "seconds":"seconds"
+    "seconds":"seconds",
+    "no":"No",
+    "yes":"Yes",
+    "sendMessage":"Submit RSVP"
 }

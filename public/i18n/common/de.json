@@ -27,6 +27,9 @@
     "days":"Tage",
     "hours":"Stunden",
     "minutes":"Minuten",
-    "seconds":"Sekunden"
+    "seconds":"Sekunden",
+    "no":"Nein",
+    "yes":"Ja",
+    "sendMessage":"Anmeldung abschicken"
     
 }
