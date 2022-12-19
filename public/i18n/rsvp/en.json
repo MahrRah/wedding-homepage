@@ -21,6 +21,8 @@
     "roomsError":"Invalid number of rooms",
     "nights":"Number of nights",
     "nightsError":"Invalid number of nights",
+    "blockRoomText":"Would you want us to block a room for you? \n Please note, booking still needs to be done by yourself.",
+    "translationText":"The ceremony will be held in German (not Swiss-German). Would you need a translation? \n Please note, we will only be able to provide it for limited number of people.",
     "submittedRsvpText":"Thanks for your RSVP! You should receive an email containing tbd.",
     "personal":"Personal data",
     "plusOne":"Plus-One",

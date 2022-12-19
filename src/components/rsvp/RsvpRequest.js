@@ -446,7 +446,7 @@ class RsvpRequest extends Component {
                                 <>
                                     <hr />
                                     <h3>{t("rsvp:hotel")}</h3>
-                                    <p><i>Would you want us to block you a room?!</i></p>
+                                    <p><i>{t("rsvp:blockRoomText")}</i></p>
                                     <div className="row gtr-uniform">
                                         <this.RadioButtons data={{ value: this.state.booking, name: "booking" }}
                                             value={["yes", "no"]}
@@ -465,7 +465,7 @@ class RsvpRequest extends Component {
                                     </div>
                                     <hr />
                                     <h3>{t("rsvp:language")}</h3>
-                                    <p><i>The ceremony will be held in German (not Swiss-German). Do you need translation?</i></p>
+                                    <p><i>{t("rsvp:translationText")}</i></p>
                                     <div className="row gtr-uniform">
                                         <this.RadioButtons data={{ value: this.state.language, name: "language" }}
                                             value={["de", "en"]}
