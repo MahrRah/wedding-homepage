@@ -15,12 +15,11 @@ function Footer() {
         </section>
         <section>
           <h3>{t('phone')}</h3>
-          <p><a href="tel:0041767024612"> Valentin: 076 702 46 12</a></p>
+          <p><a href="tel:0041767024612"> Valentin: 076 702 46 12</a> <br/> <a href="tel:0041794345509">Mahra: 079 434 55 09</a></p>
         </section>
-
         <section>
-          <h3>{t('phone')}</h3>
-          <p><a href="tel:0041794345509">Mahra: 079 434 55 09</a></p>
+          <h3>IBAN</h3>
+          <p>9234820342u3048304</p>
         </section>
       </section>
       <section className="split contact">

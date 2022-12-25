@@ -27,12 +27,10 @@ function WeddingParty() {
         <hr />
 
 <h2>The Groomsman</h2>
-        <Person side="image left" align='left' name="Moritz" text="asds" />
-        <Person side="image left" align='left' name="TBD" text="asds" />
+        <Person side="image left" align='left' name="Moritz & Juri" text={t("contact:ushers")} />
         
         <h2 style={{textAlign: "right"}}>The Bridesmaids</h2>
-        <Person side="image right" align='right' name="Vanessa" text="asds" />
-        <Person side="image right" align='right' name="Julia" text="asds" />
+        <Person side="image right" align='left' name="Vanessa & Julia" text={t("contact:bridesmaids")} />
       </section >
 </div>
   );

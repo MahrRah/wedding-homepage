@@ -130,7 +130,6 @@ class RsvpRequest extends Component {
         const personalError = this.state.email.error || this.state.phone.error
         const plusOneError = (this.state.bringsPlusOne == "yes") ? this.state.plusOne.firstname.error || this.state.plusOne.lastname.error : false
         const hotelError = (this.state.booking === "yes") ? (this.state.hotel.rooms.error || this.state.hotel.nights.error) : false
-        console.log(plusOneError, this.state)
         let childError = false
         this.state.children.forEach((x) => {
             childError ||= x.age.error
@@ -207,7 +206,7 @@ class RsvpRequest extends Component {
         let child = children[idx];
         if (e.target.name == "age") {
             let error = (((e.target.value > 0) && (e.target.value < 18)) || Number.isInteger(e.target.value)) ? false : true;
-            child[e.target.name] = { "age": e.target.value, error: error }
+            child[e.target.name] = { "value": e.target.value, error: error }
         }
         else {
             child[e.target.name] = e.target.value;
@@ -292,12 +291,9 @@ class RsvpRequest extends Component {
         }
         else {
             try {
-
-
                 const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
                     method: "GET",
                 }))
-
                 if (res.status === 200) {
                     let body = await res.json();
                     const isLoaded = this.loadRsvpDataToState(body);
@@ -355,6 +351,8 @@ class RsvpRequest extends Component {
 
             if (this.state.hasChildren && this.state.bringsChildren) {
                 this.state.children.forEach((x) => {
+                    console.log(x)
+                    console.log(x.age.value)
                     let child = {
                         "firstname": x.firstname,
                         "lastname": x.lastname,
@@ -365,7 +363,7 @@ class RsvpRequest extends Component {
                 });
 
             }
-            console.log(updateBody)
+            // console.log(updateBody)
 
             const res = await trackPromise(fetch(` /api/rsvp/${this.state.rsvpCode.value}`, {
 
@@ -422,7 +420,6 @@ class RsvpRequest extends Component {
                                     value={["yes", "no"]}
                                     lable={[t("rsvp:attending"), t("rsvp:notAttending")]}
                                     onChange={this.onChange} />
-                                {this.state.attending == "yes" &&
                                     <>
                                         <div className="col-6 col-12-xsmall">
                                             <input readOnly type="text" name="firstname" id="firstname" value={this.state.firstname} />
@@ -438,6 +435,9 @@ class RsvpRequest extends Component {
                                         <this.InputWithError data={{ "name": "phone", "type": "text", state: this.state.phone }}
                                             lables={{ "error": t("common:phoneError"), "name": t("common:phone") }}
                                             onChange={this.onChangeValidate} />
+                                    </>
+                                    {this.state.attending == "yes" &&
+                                    <>
                                         <this.FoodChoices value={this.state.food} onChange={this.onChange} />
                                     </>
                                 }
