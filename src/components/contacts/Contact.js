@@ -42,11 +42,11 @@ function Contact() {
             </p>
           </div>
         </div>
-        <LightGallery
+        {/* <LightGallery
           speed={500} >
           <img style={{ width: "90%" }} src={require("../../images/flowchart-wedding.jpg")} alt="" />
 
-        </LightGallery>
+        </LightGallery> */}
       </section>
 
     </div>

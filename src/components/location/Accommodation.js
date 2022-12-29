@@ -5,7 +5,6 @@ import LightGallery from 'lightgallery/react';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
-import { Link } from 'react-router-dom';
 
 function Accommodation() {
 
