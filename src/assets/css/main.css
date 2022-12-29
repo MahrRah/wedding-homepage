@@ -3494,7 +3494,7 @@ input::-webkit-inner-spin-button {
 			width: 100%;
 			height: 100%;
 			background-color: var(--text-color);
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, var(--overlay-shadow), var(--overlay-shadow)), url("../../images/bg.jpg");
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, var(--overlay-shadow), var(--overlay-shadow)), url("../../images/bg-0.jpg");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
