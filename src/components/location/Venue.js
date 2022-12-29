@@ -23,6 +23,8 @@ function Venue() {
           <img className="image left" src={require("../../images/schupfen-see.jpeg")} alt="" />
         </LightGallery>
         <p>{t('location:venueText')}</p>
+        <br/>
+        <br/>
         <p> <b>{t('common:address')}:</b> <a href="https://g.page/GasthausSchupfen?share" target="_blank"><br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /> </a></p>
       </div>
       <h4>{t('location:map')}</h4>
