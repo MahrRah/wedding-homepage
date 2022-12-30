@@ -1,7 +1,7 @@
 
 import React from 'react';
 import '../../assets/css/main.css'
-import { Trans,useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import LightGallery from 'lightgallery/react';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
@@ -9,7 +9,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 
 
 function Contact() {
-  const { t } = useTranslation(["common","overview"]);
+  const { t } = useTranslation(["common", "contact"]);
 
 
   return (
@@ -17,22 +17,16 @@ function Contact() {
       <section className="post">
 
         <header className="major">
-          <h1>{t("overview:contact")}</h1>
+          <h1>{t("contact:contact")}</h1>
         </header>
-        <p>{t("overview:contactText")}</p>
-        <Trans i18nKey="contact:mailBoxText" components={{
-          mail_anchor: <a href="mailto:thegrosjeans.2023@gmail.com" style={{ textDecoration: "underline",fontWeight: "bold"}}/>
-        }} >
-          We have a general mail box for all question: <mail_anchor>thegrosjeans.2023@gmail.com</mail_anchor></Trans>
-        <br/>
-        <LightGallery
-          speed={500} >
-          <img style={{ width: "90%" }} src={require("../../images/flowchart-wedding.jpg")} alt="" />
-
-        </LightGallery>
-        <br/>
+        <Trans i18nKey="contact:contactText" components={{
+          mail_anchor: <a href="mailto:thegrosjeans.2023@gmail.com" style={{ textDecoration: "underline", fontWeight: "bold" }} />
+        }} > If you have any questions regarding the wedding, which this homepage cannot answer, please do not hesitate to contact us, our best people or send a mail to <mail_anchor>thegrosjeans.2023@gmail.com</mail_anchor>. We would politely ask you to not contact us directly on the day of our wedding. Our best man and the maid of honor however will be happy to help you out even then.
+        </Trans>
+        <br />
+        <br />
+        <h3>{t("contact:contactInfoTitle")}</h3>
         <div className="row">
-            <h3>{t("contact:contactInfoTitle")}</h3>
           <div className="col-6 col-12-small">
             <h4>Priska</h4>
             <p>
@@ -41,13 +35,18 @@ function Contact() {
             </p>
           </div>
           <div className="col-6 col-12-small">
-          <h4>Christian</h4>
+            <h4>Christian</h4>
             <p>
               <b>{t("common:phone")}</b> 0041 79 434 55 09 <br />
               <b>{t("common:email")}:</b>  email@mail.com<br />
             </p>
           </div>
         </div>
+        {/* <LightGallery
+          speed={500} >
+          <img style={{ width: "90%" }} src={require("../../images/flowchart-wedding.jpg")} alt="" />
+
+        </LightGallery> */}
       </section>
 
     </div>

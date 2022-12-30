@@ -3,7 +3,7 @@ import os
 
 
 def get_data():
-    with open("../data/guestDB.json") as f:
+    with open("../data/guestDBtest.json") as f:
         data = json.load(f)
     return data
 
