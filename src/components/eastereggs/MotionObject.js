@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from "framer-motion"
 
 
-function Lukas() {
+function MotionObject() {
 
 
   return (
@@ -30,4 +30,4 @@ function Lukas() {
     />
   );
 }
-export default Lukas;
+export default MotionObject;

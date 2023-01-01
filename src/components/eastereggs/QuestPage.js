@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import '../../assets/css/main.css'
-import '../eastereggs/Lukas.js'
+import '../eastereggs/MotionObject.js'
 
 import { useTranslation } from "react-i18next";
-import Lukas from '../eastereggs/Lukas.js';
+import MotionObject from '../eastereggs/MotionObject.js';
 
 
 function QuestPage() {
@@ -29,7 +29,7 @@ function QuestPage() {
                 <span>blu blala</span>
             </section>
             {animation &&
-                <Lukas></Lukas>}
+                <MotionObject></MotionObject>}
         </div>
     )
 }
