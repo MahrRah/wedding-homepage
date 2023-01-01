@@ -28,3 +28,4 @@ yarn-error.log*
 
 #Google keys
 wedding-*.json
+.env

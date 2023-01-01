@@ -17,6 +17,12 @@ from shared.templates import (
 
 import azure.functions as func
 
+NOT_ATTENDING_TEMPLATE_ID = "d-358449b2fb9d458aa3eb5876cff1761f"
+ATTENDING_ALL_TEMPLATE_ID = "d-dba2d2833d484997a5a88a1b8927a467"
+SINGLE_TEMPLATE_ID = "d-c90fecc2f7854f8288d718c1a1efcf2d"
+WITH_PLUSONE_TEMPLATE_ID = "d-7b3edfe3a5c64a4dad165ae1bd62a280"
+WITH_CHILDREN_TEMPLATE_ID = "d-dba2d2833d484997a5a88a1b8927a467"
+
 
 def get_database():
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
@@ -37,7 +43,7 @@ def new_personal_data(rsvp, data):
     rsvp["food"] = data["food"] if validate_food(data["food"]) else "0"
     rsvp["attending"] = data["attending"]
     rsvp["email"] = data["email"] if validate_email(data["email"]) else ""
-    rsvp["phone"] = data["phone"]  if validate_phonenumber(data["phone"]) else ""
+    rsvp["phone"] = data["phone"] if validate_phonenumber(data["phone"]) else ""
     rsvp["language"] = data["language"]
     rsvp["message"] = data["message"]
 
@@ -108,6 +114,93 @@ def update_rsvp(id, data):
     return rsvp
 
 
+def get_child_string(child_arr):
+    child = []
+    for ch in child_arr:
+        name = ch["firstname"]
+        age = ch["age"] if ch["age"] != "" else "-"
+        child.append(f"{name} ({age})")
+
+    return ", ".join(child)
+
+
+def get_food_text(id, lg):
+    if id == "0":
+        return "Not selected" if lg == "en" else "Nicht ausgewählt"
+    elif id == "1":
+        return "No restrictions" if lg == "en" else "Keine einschränkungen"
+    elif id == "2":
+        return "Vegetarian" if lg == "en" else "Vegetarisch"
+    elif id == "3":
+        return "Glutenfree" if lg == "en" else "Glutenfrei"
+    else:
+        return "Could not be loaded" if lg == "en" else "Blu Blu"
+
+
+def create_mail_message(data):
+    body = {"to": [{"email": data["email"]}], "dynamic_template_data": {}}
+    dynamic_template_data = {}
+    if data["attending"] == "yes":
+        print("peronal")
+        personal = {
+            "first_name": data["firstname"],
+            "email": data["email"],
+            "phone": data["phone"],
+            "food": get_food_text(data["food"], data["language"]),
+            "language": data["language"],
+            "message": data["message"],
+        }
+        dynamic_template_data.update(personal)
+
+    if "plusOne" in data and data["plusOne"][0]["attending"] == "yes":
+        print("plusone:")
+        plus_one = {
+            "po_name": " ".join(
+                [
+                    data["plusOne"][0]["firstname"],
+                    data["plusOne"][0]["lastname"],
+                ]
+            ),
+            "po_food": get_food_text(data["food"], data["language"]),
+        }
+        dynamic_template_data.update(plus_one)
+    if "child" in data and data["child"][0]["attending"] == "yes":
+        print("child")
+        child = {"children_list": get_child_string(data["child"])}
+        dynamic_template_data.update(child)
+    if "hotel" in data:
+        hotel = {"h_booking": "do" if data["hotel"]["rooms"] != 0 else "do not"}
+        dynamic_template_data.update(hotel)
+
+    body["dynamic_template_data"] = dynamic_template_data
+    return body
+
+
+def get_template_id(data):
+    if (data["attending"] == "yes"):
+        if ("child" in data
+            and data["child"][0]["attending"] == "yes"
+            and "plusOne" in data
+            and data["plusOne"][0]["attending"] == "yes"
+        ):
+            return ATTENDING_ALL_TEMPLATE_ID
+        elif (
+            "plusOne" in data
+            and data["plusOne"][0]["attending"] == "yes"
+        ):
+            return WITH_PLUSONE_TEMPLATE_ID
+        elif (
+            "child" in data
+            and data["child"][0]["attending"] == "yes"
+        ):
+            return WITH_CHILDREN_TEMPLATE_ID
+        else:
+
+            return WITH_CHILDREN_TEMPLATE_ID
+    else:
+        return NOT_ATTENDING_TEMPLATE_ID
+
+
 def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
     resp = None
@@ -133,40 +226,17 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
             new_data = json.loads(req.get_body())
             logging.info(f"Update RSVP of {rsvp_id} with values {new_data}")
             new_data = update_rsvp(rsvp_id, new_data)
+            personalizations = create_mail_message(new_data)
+            print(personalizations)
             if new_data["email"]:
-                # print(new_data)
                 if len(new_data["plusOne"]) > 0:
                     message = {
                         "from": {"email": "thegrosjeans.2023@gmail.com"},
-                        "personalizations": [
-                            {
-                                "to": [{"email": new_data["email"]}],
-                                "dynamic_template_data": {
-                                    "first_name": new_data["firstname"],
-                                    "email": new_data["email"],
-                                    "phone": new_data["phone"],
-                                    "food": new_data["food"],
-                                    "language": new_data["language"],
-                                    "po_name": " ".join(
-                                        [
-                                            new_data["plusOne"][0]["firstname"],
-                                            new_data["plusOne"][0]["lastname"],
-                                        ]
-                                    ),
-                                    "po_food": new_data["food"],
-                                    "h_booking": "do"
-                                    if new_data["hotel"]["rooms"] != 0
-                                    else "do not",
-                                    "children_list": "child 1 (8), child 2 (12)",
-                                    "message": new_data["message"],
-                                },
-                            }
-                        ],
-                        "template_id": "d-f92adcb1cfcc40049ff5e126a238dc85",
+                        "personalizations": [personalizations],
+                        "template_id": get_template_id(new_data),
                     }
 
                 sendGridMessage.set(json.dumps(message))
-                sendGridMessage
             return func.HttpResponse(
                 headers={
                     "content-type": "application/json",

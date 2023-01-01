@@ -6,9 +6,12 @@
     "submit":"Abschicken",
     "reset":"Zurücksetzen",
     "overview":"Überblick",
+    "rsvp": "Anmeldung",
     "details":"Details",
     "gallery":"Bilder",
     "stroy":"Geschichte",
+    "weddingparty":"Hochzeitsgesellschaft",
+    "contacts":"Kontakte",
     "location":"Örtlichkeit",
     "name":"Name",
     "lastName":"Nachnahme",
@@ -25,6 +28,11 @@
     "days":"Tage",
     "hours":"Stunden",
     "minutes":"Minuten",
-    "seconds":"Sekunden"
+    "seconds":"Sekunden",
+    "no":"Nein",
+    "yes":"Ja",
+    "sendMessage":"Anmeldung abschicken",
+    "instagramText":"Unsere Hochzeit hat natürlich auch einen Hashtag #thegrosjeans2023. Teil eure bilder mit dem Hashtag, so dass wir alle etwas davon haben. Scanned den QR code links im Bild und ihr kommt zu allen Bildern auf Instagram, die damit hochgeladen wurden.",
+    "instagramTitle":"Hochzeitshashtag"
     
 }

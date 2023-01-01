@@ -1,68 +1,42 @@
 import React from 'react';
 import '../../assets/css/main.css'
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
 
 function Accommodation() {
 
   const { t } = useTranslation(["location"]);
 
-  const Hotel = ({ image, text, link, linkText, location, price, distance }) => {
-    return (
-      <div>
-        <span className="image left"><img src={image} alt="" /></span>
-        <p>{text}</p>
-        <br />
-        <div className="row gtr-uniform">
-          <ul>
-            <li><a href={link} target="_blank">{linkText}</a></li>
-            <li><b>{t('location:city')}:</b> {location}</li>
-            <li><b>{t('location:price')}:</b> {price}</li>
-            <li><b>{t('location:distanceVenue')}:</b> {distance}</li>
-          </ul>
-        </div>
-        <hr />
-      </div>
-    );
-  }
+  let images = [require("../../images/hotel1.jpg"), require("../../images/hotel2.jpg"), require("../../images/hotel3.jpg")]
+  const code = "'Hochzeit: Mahra & Valentin'"
+
   return (
     <div>
       <h2>{t('location:accomodation')}</h2>
       <h3>{t('location:mainHotel')}</h3>
-      <Hotel image={require("../../images/vienna-house.jpg")} 
-             text={t('location:mainHotelText')} 
-             link={'https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html'} 
-             linkText={"Vienna House zur Bleiche Schaffhausen"} 
-             location={""} 
-             price={""} 
-             distance={""} />
-      {/* 
-      <hr />
-      <h4>{t('location:otherHotels')}</h4>
-      <div><span className="image right"><img src={require("../../images/rheingold.jpeg")} alt="" /></span>
-        <p> <a href='https://www.hotelrheingold.de/das-hotel/' target="_blank">Hotel Rheingold in Gailingen </a> is a hotel in Gailingen am Hochrhein. Distance to the Veding venue is about XXmin car ride. On average the price of a rooms goes between XX-XX per night.<br /><br /></p>
-        <div className="row gtr-uniform">
-          <ul >
-            <li><a href='https://www.hotelrheingold.de/das-hotel/' target="_blank">Hotel Rheingold in Gailingen </a></li>
-            <li><b>{t('location:city')}:</b> Gailingen am Hochrhein,</li>
-            <li><b>{t('location:price')}:</b> 130 CHF</li>
-            <li><b>{t('location:distanceVenue')}:</b> XXmin</li>
-            <li><b>{t('location:distanceHotel')}:</b> XXmin</li>
-          </ul>
+      <div>
+        <div style={{ textAlign: "center" }}>
+          <LightGallery
+            speed={500} >
+            <img src={images[0]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 1" />
+            <img src={images[1]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 2" />
+            <img src={images[2]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 3" />
+          </LightGallery>
         </div>
+        <br />
+        <Trans i18nKey="location:mainHotelText" components={{
+          code:code,
+          site_anchor: <a href="https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html" target="_blank" style={{ textDecoration: "underline",fontWeight: "bold"}}/>
+        }} >
+          After our big day we will retreat to the <site_anchor>tttt</site_anchor> for the night. The hotel is right next to the Train station and within 5min walk you will be in the heart of Schaffhausens old town.
+          We have arranged special rats for our guests so make sure when booking to mention our wedding code {{ code }}. The hotels also has public parking next door and is wheelchair accessible.
+          For guests staying in this hotel, we have organised shuttels service to and from the venue to the hotel.\n
+        </Trans>
+        <hr />
       </div>
-      <div><span className="image left"><img src={require("../../images/alterheinmuehle.jpeg")} alt="" /></span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br /></p>
-        <div className="row gtr-uniform">
-          <ul>
-            <li><a href='https://alte-rheinmuehle.ch/hotel/' target="_blank">Hotel Alte Rheinmuehle </a></li>
-            <li><b>{t('location:city')}:</b> Büsingen am Hochrhein</li>
-            <li><b>{t('location:price')}:</b> 220 CHF</li>
-            <li><b>{t('location:distanceVenue')}:</b> XXmin</li>
-            <li><b>{t('location:distanceHotel')}:</b> XXmin</li>
-          </ul>
-        </div>
-      </div> 
-      */}
     </div>
 
   );

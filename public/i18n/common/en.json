@@ -8,7 +8,10 @@
     "reset":"Reset",
     "details":"Details",
     "gallery":"Gallery",
+    "rsvp": "RSVP",
     "story":"Story",
+    "weddingparty":"Weddingparty",
+    "contacts":"Contacts",
     "location":"Location",
     "name":"Name",
     "lastName":"Lastname",
@@ -26,5 +29,10 @@
     "days":"days",
     "hours":"hours",
     "minutes":"minutes",
-    "seconds":"seconds"
+    "seconds":"seconds",
+    "no":"No",
+    "yes":"Yes",
+    "sendMessage":"Submit RSVP",
+    "instagramText":"Our wedding hashtag is #thegrosjeans2023. Post anything with that hashtag if you want us to finds it on instagram. To go to the hashtag, just scan the QR code in the image on the left.",
+    "instagramTitle":"Wedding Hashtag"
 }
