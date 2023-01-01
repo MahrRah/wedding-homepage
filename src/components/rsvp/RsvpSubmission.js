@@ -8,9 +8,9 @@ function RsvpSubmission() {
 
   return (
     <div className="row gtr-uniform"> 
+    <div className="col-4"><span className="image fit"><img src={require("../../images/send.gif")} alt="" /></span></div>
     <p>{t("rsvp:submittedRsvpText")}</p>
-    <div className="col-4"><span className="image fit"><img src={require("../../images/sumbitted.png")} alt="" /></span></div>
-                       
+        
     </div>
   );
 }

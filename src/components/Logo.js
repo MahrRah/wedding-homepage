@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { motion, useTransform, useScroll } from "framer-motion";
 import '../assets/css/main.css'
 
 function Logo() {
-    const [show, setShow] = useState(false)
 
-    const controlLogo = () => {
-        if (window.scrollY > 300) {
-            setShow(true)
-        } else {
-            setShow(false)
-        }
-    }
+    const { scrollYProgress } = useScroll();
+    const opacityTrans = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [0, 7],
 
-    useEffect(() => {
-        window.addEventListener('scroll', controlLogo)
-        return () => {
-            window.removeEventListener('scroll', controlLogo)
-        }
-    }, [])
+
+    )
+    const yPostion = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [ 0,-200],
+
+    )
+
     return (
-        <header id="header" className={`${show && 'hidden'}`}>
-            <a href="/" className="logo">The future Grosjeans</a>
-        </header>
-
+        <motion.div
+            initial={{ opacity: 0, transition: { duration: 5 } }}
+            style={{ opacity: opacityTrans, y:yPostion}}
+            className="header"
+        >
+            <header id="header">
+                <a href="/" className="logo">The future Grosjeans</a>
+            </header>
+        </motion.div>
     );
 }
 

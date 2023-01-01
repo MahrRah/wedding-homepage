@@ -1,41 +1,67 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../../assets/css/main.css'
 import Schedule from "./Schedule.js"
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import lgZoom from 'lightgallery/plugins/zoom';
+import 'lightgallery/css/lg-zoom.css';
+import LightGallery from 'lightgallery/react';
 
 function Details() {
-  const { t } = useTranslation(["common", "details"]);
 
+  const DetailSections = ({ side, titel, imageSize, text, image }) => {
+    return (
+      <>
+        <span className={side} style={{ width: imageSize }}>
+          <LightGallery
+            selector='.blog-images'
+            plugins={[lgZoom]}>
+            <figure
+              lg-background-color="rgb(28 62 74)"
+              className="blog-images"
+              data-src={image}
+              data-lg-size="1600-1126"
+            >
+              <img src={image} />
+            </figure>
+          </LightGallery>
+        </span>
+        <h2>{titel}</h2>
+        <p style={{ textAlign: "left", float: side, }}>{text}</p>
+      </>);
+  };
+
+  const textGift = <Trans i18nKey="details:giftsText" components={{
+    location_anchor: <a href="https://www.basecampexplorer.com/kenya/hotels/basecamp-masai-mara/" target="_blank" style={{ textDecoration: "underline",fontWeight: "bold"}}/>
+  }} >The most important thing to us is that you are able to celebrate with us on our wedding day. \n However, if you wish to give a gift, please do not waste your time with overthinking about an adequate gift. You could already make us immensely happy by even a small contribution towards our honeymoon.\n We both were planning on doing something special for this occastion and given our love for animals and nature, we decided to go on a trip to the <location_anchor>wildlife conservation Masai Mara in Kenya</location_anchor>. And maybe, only maybe, the brides dream of seeing her favourite animal in real live will become true!,
+  </Trans>
+
+  const { t } = useTranslation(["common", "details"]);
   return (
     <div id="main">
       <section className="post">
         <header className="major">
           <h1>{t("details:detailsTitel")}</h1>
         </header>
+        <p>{t("details:detailsText")}</p>
         <h2>{t("details:scheduleTitel")}</h2>
         <p>{t("details:scheduleText")}</p>
         <Schedule />
         <hr />
-        <h2>{t("details:gift")}</h2>
-        <p>{t("details:giftsText")}</p>
+        <div>
+          <DetailSections side="image left" titel={t("details:dresscode")} text={t("details:dresscodeText")} image={require("../../images/theme.png")} imageSize="1200" />
+        </div>
+        <div>
+          <DetailSections side="image right" titel={t("details:gift")} text={textGift} image={require("../../images/masai-mara.jpg")} imageSize="100" />
+        </div>
         <hr />
         <h2>{t("details:eveningContribution")}</h2>
-        <p>{t("details:eveningContributionText")}</p>
-        <blockquote> Contact: Priska und Christian</blockquote>
-        <h2>{t("details:dresscode")}</h2>
-        <div><span className="image left"><img src={require("../../images/theme.png")} alt="" /></span>
-          <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code:
-            Finally, this is a <a href="#">link</a>.</p>
-        </div>
+        <Trans i18nKey="details:eveningContributionText" components={{
+          contacts_anchor: <Link to="/contact#top" preventScrollReset={false} style={{ textDecoration: "underline", fontWeight: "bold" }} />
+        }}>
+          If you would wish to contribute with something particular to the evening program, please reach out to our <contacts_anchor>best man or  maid of honor </contacts_anchor>.
+        </Trans>
       </section>
     </div>
   );

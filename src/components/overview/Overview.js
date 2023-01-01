@@ -25,7 +25,7 @@ function Overview() {
                     <h2>{t("overview:welcome")}</h2>
                     <p> {t("overview:introText")}</p>
                 </header>
-                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" alt="" /></a> */}
+                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" "" /></a> */}
                 <ul className="actions special">
                     <li><a className="button large" onClick={handleClick}>{t("story:ourStory")}</a></li>
                 </ul>
@@ -35,10 +35,6 @@ function Overview() {
             <section className="post featured">
                 <h3>{t("overview:countdownTitel")}</h3>
                 <CountdownTimer targetDate={target} targetMessage={t("overview:countdownFinalMessage")} />
-            </section>
-            <section className="post">
-                <h2>{t("overview:contact")}</h2>
-                <p>{t("overview:contactText")}</p>
             </section>
         </div>
     );
