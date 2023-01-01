@@ -1309,7 +1309,7 @@ input::-webkit-inner-spin-button {
 
 		}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			.row {
 				display: flex;
@@ -2417,7 +2417,7 @@ input::-webkit-inner-spin-button {
 			padding: 0 2.75rem;
 		}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			input[type="submit"],
 			input[type="reset"],
@@ -2576,7 +2576,7 @@ input::-webkit-inner-spin-button {
 		margin: 0 0 0.75rem 0;
 	}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			label {
 				font-size: 0.9rem;
@@ -3240,7 +3240,7 @@ input::-webkit-inner-spin-button {
 					right: 0;
 				}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			header br {
 				display: none;
@@ -3293,7 +3293,7 @@ input::-webkit-inner-spin-button {
 			text-transform: uppercase;
 		}
 
-			@media screen and (max-width: 980px) {
+			@media screen and (max-width: 1120px) {
 
 				table th {
 					font-size: 0.9rem;
@@ -3432,7 +3432,7 @@ input::-webkit-inner-spin-button {
 			margin-left: 0.9375em;
 		}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			.pagination a, .pagination span {
 				font-size: 0.9rem;
@@ -3710,7 +3710,7 @@ input::-webkit-inner-spin-button {
 				opacity: 0;
 			}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#intro {
 				padding: 4rem 4rem 2rem 4rem ;
@@ -3843,7 +3843,7 @@ input::-webkit-inner-spin-button {
 				color: var(--hover-highlight) !important;
 			}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#header {
 				height: 14rem;
@@ -4009,7 +4009,7 @@ input::-webkit-inner-spin-button {
 			margin-bottom: 0;
 		}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#nav {
 				display: none;
@@ -4145,7 +4145,7 @@ input::-webkit-inner-spin-button {
 					border-top-width: 0;
 				}
 
-			@media screen and (max-width: 980px) {
+			@media screen and (max-width: 1120px) {
 
 				#main > .posts > * {
 					width: 50%;
@@ -4562,7 +4562,7 @@ input::-webkit-inner-spin-button {
 			font-size: 0.8rem;
 		}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#footer {
 				display: block;
@@ -4800,7 +4800,7 @@ input::-webkit-inner-spin-button {
 				background-color: var(--background);
 			}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#navPanelToggle {
 				display: block;
@@ -4921,7 +4921,7 @@ input::-webkit-inner-spin-button {
 
 			}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 1120px) {
 
 			#navPanel {
 				display: block;
@@ -4937,7 +4937,7 @@ input::-webkit-inner-spin-button {
 
 		}
 
-	@media screen and (max-width: 980px) {
+	@media screen and (max-width: 1120px) {
 
 		body.is-navPanel-visible #wrapper {
 			opacity: 0.5;

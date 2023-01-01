@@ -41,15 +41,15 @@ function App() {
               <Route path="/" element={<Overview t={t} />} />
               <Route path="/details" element={<Details />} />
               <Route path="/location" element={<Location />} />
-              {/* <Route path="/gallery" element={<Gallery />} /> */}
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/rsvp" element={<RsvpRequest t={t} />} />
               <Route path="/weddingparty" element={<WeddingParty />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/faq" element={<Faq />} />
+              {/* <Route path="/faq" element={<Faq />} /> */}
               <Route path="/instagram" element={<Instagram />} />
-              <Route path="/quest" element={<QuestOverview />} />
+              {/* <Route path="/quest" element={<QuestOverview />} />
               <Route path="/quest1" element={<QuestOne />} />
-              <Route path="/quest2" element={<QuestTwo />} />
+              <Route path="/quest2" element={<QuestTwo />} /> */}
             </Routes>
           </Router>
           <Footer />

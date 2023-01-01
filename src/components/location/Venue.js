@@ -20,7 +20,7 @@ function Venue() {
       <div>
         <LightGallery
           speed={500} >
-          <img className="image left" src={require("../../images/schupfen-see.jpeg")} alt="" />
+          <img className="image left" src={require("../../images/schupfen-see.jpeg")} alt="Wedding Venue" />
         </LightGallery>
         <p>{t('location:venueText')}</p>
         <br/>

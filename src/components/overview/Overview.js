@@ -25,7 +25,7 @@ function Overview() {
                     <h2>{t("overview:welcome")}</h2>
                     <p> {t("overview:introText")}</p>
                 </header>
-                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" alt="" /></a> */}
+                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" "" /></a> */}
                 <ul className="actions special">
                     <li><a className="button large" onClick={handleClick}>{t("story:ourStory")}</a></li>
                 </ul>

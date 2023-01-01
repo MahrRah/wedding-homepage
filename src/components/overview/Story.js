@@ -14,7 +14,7 @@ function Story() {
           <p>{titel}</p>
         </header>
         <div  style={{ textAlign: "center"}}>
-        <a className="image fit"><img src={image} alt="" /></a>
+        <a className="image fit"><img src={image} alt="Us" /></a>
         </div>
       </article>
     );
