@@ -2,14 +2,9 @@
     "titel": "Locations",
     "venue":"Venue",
     "venueName":"Rhyschüür at the Gasthaus Schupfen",
-    "venueText":"This will be the location of our wedding ceremony and reception. This newly renovated barn is over 200 years old and located directly on the river bank. Please see below for directions.",
+    "venueText":"One and a half years ago we got engaged in Basel next to the river Rhine, now we are also going to be married next to the same river! Our wedding location is called “Rhyschüür” which translates to “Rhine Barn” and is a beautifully renovated barn, which is over 200 years old. The venue is located close to an inn called “Gasthaus Schupfen” in Diessenhofen. You can find detailed information about the venue as well as how to get there below. Parking is available directly at Gasthaus Schupfen.", 
     "map":"Map",
     "accomodation":"Accomodation",
-    "mainHotel":"Main Hotel",
-    "otherHotels":"Other Hotels close by ",
-    "mainHotelName":"adasd",
-    "mainHotelText":"This is the largest of our proposed hotels and it is located in central Schaffhausen. Rooms are available from 190.- CHF per night. The wedding venue is reachable from this location by a 15 minute car ride. Parking is available directly next to the hotel. This hotel is also accessible for wheel-chair users.",
-    "city":"city",
-    "distanceVenue":"Disance to the venue",
-    "distanceHotel":"Disance to our hotel"
+    "mainHotel":"Where we are staying",
+    "mainHotelText": "After our big day we will retreat to the hotel <site_anchor>Vienna House zur Bleiche in Schaffhausen</site_anchor> for the night. The hotel is located directly next to the main station and within a five minutes walk of the heart of Schaffhausen's old town.\n\n Naturally we have arranged special rates for our guests, so make sure to mention our wedding code {{- code}} , when booking. The hotel has a public parking right next door and is of course also accessible for wheelchairs.\n\n We have also organized a shuttle service for all guests to and from the venue to this hotel.\n\n If you choose to stay in this hotel for the night, we would also love for you to join us for breakfast the next morning. \n\nPlease bear in mind that we only arranged a special price for the hotel. You will still need to make the booking yourself!"
 }
