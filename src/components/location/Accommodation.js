@@ -21,9 +21,9 @@ function Accommodation() {
         <div style={{ textAlign: "center" }}>
           <LightGallery
             speed={500} >
-            <img src={images[0]} style={{ width: "30%", margin: "10px" }} alt="" />
-            <img src={images[1]} style={{ width: "30%", margin: "10px" }} alt="" />
-            <img src={images[2]} style={{ width: "30%", margin: "10px" }} alt="" />
+            <img src={images[0]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 1" />
+            <img src={images[1]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 2" />
+            <img src={images[2]} style={{ width: "30%", margin: "10px" }} alt="Hotel Image 3" />
           </LightGallery>
         </div>
         <br />
