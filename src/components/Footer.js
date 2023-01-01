@@ -36,7 +36,7 @@ function Footer() {
           <ul className="icons alt">
             <li><a href="/instagram" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
             <li><a href="https://github.com/MahrRah/wedding-homepage" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
-            <li><a href="/quest" className="icon alt fa-question"><span className="label">Quest</span></a></li>
+            <li><a  className="icon alt fa-question"><span className="label">Quest</span></a></li>
           </ul>
         </section>
       </section>
