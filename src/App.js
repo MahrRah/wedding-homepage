@@ -47,6 +47,7 @@ function App() {
               <Route path="/weddingparty" element={<WeddingParty />} />
               <Route path="/contact" element={<Contact />} />
               {/* <Route path="/faq" element={<Faq />} /> */}
+              <Route path="/faq" element={<QuestPage />} />
               <Route path="/instagram" element={<Instagram />} />
               {/* <Route path="/quest" element={<QuestOverview />} />
               <Route path="/quest1" element={<QuestOne />} />
