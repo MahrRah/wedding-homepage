@@ -20,9 +20,9 @@ function Story() {
     );
   };
   return (
-    <div id="main">
+      <><div id="main">
       <Article date={"November 2021"} titel={t("overview:ourStoryText")} image={require("../../images/us.JPG")} />
-   </div>
+    </div></>
   );
 }
 

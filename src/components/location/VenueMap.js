@@ -11,6 +11,12 @@ const ragdoll = [47.663398, 8.651756];
 
   
 function VenueMap() {
+
+
+  const onClick = () => {
+    console.log("test:")
+
+  }
   const [anchor, setAnchor] = useState(ragdoll);
   return (
      <Map height={300} defaultCenter={center} defaultZoom={11} provider={stamenTerrain}>
@@ -23,7 +29,7 @@ function VenueMap() {
         <img src={require("../../images/hotel-icon.png")} width={40} height={35} alt='' />
       </Overlay>
       <Draggable  anchor={anchor} onDragEnd={setAnchor}>
-        <img src={require("../../images/ragdoll.png")} width={50} height={90} alt="Pigeon!" />
+        <img src={require("../../images/ragdoll.png")} width={50} height={90} alt="Pigeon!"/>
       </Draggable>
       <ZoomControl style={{ right: 10, top: 10, zIndex: 100 }} buttonStyle={{ background: 'black', color: 'white' }} />
     </Map>

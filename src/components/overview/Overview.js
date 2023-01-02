@@ -31,7 +31,8 @@ function Overview() {
                 </ul>
             </article>
             {isShown &&
-                <Story t={t} />}
+                <Story t={t} />
+            }
             <section className="post featured">
                 <h3>{t("overview:countdownTitel")}</h3>
                 <CountdownTimer targetDate={target} targetMessage={t("overview:countdownFinalMessage")} />

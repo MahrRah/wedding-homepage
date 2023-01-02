@@ -22,6 +22,7 @@ import WeddingParty from './components/contacts/WeddingParty.js'
 import Contact from './components/contacts/Contact.js'
 import Faq from './components/contacts/FAQ.js'
 import RsvpRequest from './components/rsvp/RsvpRequest.js';
+import QuestPage from './components/eastereggs/QuestPage';
 import { useTranslation } from "react-i18next";
 import './assets/css/main.css'
 import './assets/css/noscript.css'
@@ -46,6 +47,7 @@ function App() {
               <Route path="/weddingparty" element={<WeddingParty />} />
               <Route path="/contact" element={<Contact />} />
               {/* <Route path="/faq" element={<Faq />} /> */}
+              <Route path="/faq" element={<QuestPage />} />
               <Route path="/instagram" element={<Instagram />} />
               {/* <Route path="/quest" element={<QuestOverview />} />
               <Route path="/quest1" element={<QuestOne />} />

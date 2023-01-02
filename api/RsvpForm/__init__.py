@@ -17,11 +17,15 @@ from shared.templates import (
 
 import azure.functions as func
 
-NOT_ATTENDING_TEMPLATE_ID = "d-358449b2fb9d458aa3eb5876cff1761f"
-ATTENDING_ALL_TEMPLATE_ID = "d-dba2d2833d484997a5a88a1b8927a467"
-SINGLE_TEMPLATE_ID = "d-c90fecc2f7854f8288d718c1a1efcf2d"
-WITH_PLUSONE_TEMPLATE_ID = "d-7b3edfe3a5c64a4dad165ae1bd62a280"
-WITH_CHILDREN_TEMPLATE_ID = "d-dba2d2833d484997a5a88a1b8927a467"
+NOT_ATTENDING_TEMPLATE_ID ={"de":"d-4d5a6b3c3ee14dc6a2e42dafc6953efd","en":"d-4fd6266ed02e4ad2873049e379f53f15"}
+ATTENDING_ALL_TEMPLATE_ID = {"de":"d-2662ea6dd2cb4ba09cbb6be40c3714de","en":"d-0edfeca99ff448c8ae014c7045a18d18"}
+SINGLE_TEMPLATE_ID = {"de":"d-2dcf5ff09197401cb26026b52ac55ba4","en":"d-f81582ba83df411caf8452e895fbc04e"}
+WITH_PLUSONE_TEMPLATE_ID = {"de":"d-244e10f9b3494ea6b32b16569d52ccaa","en":"d-271179590fc2474c882a87f0e2044693"}
+WITH_CHILDREN_TEMPLATE_ID = {"de":"d-7e0b6ff2aafe4998a25dd84cbf95adf7","en":"d-83a6c53b46ef46b8849e099d16edbf78"}
+
+
+hotel_booker_mail_text_yes= {"de":"","en":"do"}
+hotel_booker_mail_text_no= {"de":" nicht","en":"do not"}
 
 
 def get_database():
@@ -52,6 +56,7 @@ def new_personal_data(rsvp, data):
 
 def new_hotel_data(rsvp, data):
     rsvp["hotel"] = data["hotel"]  # TODO Validate
+    print("mmm",rsvp)
     return rsvp
 
 
@@ -81,8 +86,6 @@ def new_plus_one_data(rsvp, data):
 def new_children_data(rsvp, data):
     if len(rsvp["child"]) != 0:
         for i in range(len(rsvp["child"])):
-            print(rsvp["child"][i])
-            print(data["child"][i])
             rsvp["child"][i]["firstname"] = data["child"][i]["firstname"]
             rsvp["child"][i]["lastname"] = data["child"][i]["lastname"]
             rsvp["child"][i]["age"] = data["child"][i]["age"]
@@ -153,7 +156,6 @@ def create_mail_message(data):
         dynamic_template_data.update(personal)
 
     if "plusOne" in data and data["plusOne"][0]["attending"] == "yes":
-        print("plusone:")
         plus_one = {
             "po_name": " ".join(
                 [
@@ -165,11 +167,10 @@ def create_mail_message(data):
         }
         dynamic_template_data.update(plus_one)
     if "child" in data and data["child"][0]["attending"] == "yes":
-        print("child")
         child = {"children_list": get_child_string(data["child"])}
         dynamic_template_data.update(child)
     if "hotel" in data:
-        hotel = {"h_booking": "do" if data["hotel"]["rooms"] != 0 else "do not"}
+        hotel = {"h_booking": hotel_booker_mail_text_yes[data["language"]] if data["hotel"]["booking"] == "yes" else hotel_booker_mail_text_no[data["language"]]}
         dynamic_template_data.update(hotel)
 
     body["dynamic_template_data"] = dynamic_template_data
@@ -183,22 +184,22 @@ def get_template_id(data):
             and "plusOne" in data
             and data["plusOne"][0]["attending"] == "yes"
         ):
-            return ATTENDING_ALL_TEMPLATE_ID
+            return ATTENDING_ALL_TEMPLATE_ID[data["language"]]
         elif (
             "plusOne" in data
             and data["plusOne"][0]["attending"] == "yes"
         ):
-            return WITH_PLUSONE_TEMPLATE_ID
+            return WITH_PLUSONE_TEMPLATE_ID[data["language"]]
         elif (
             "child" in data
             and data["child"][0]["attending"] == "yes"
         ):
-            return WITH_CHILDREN_TEMPLATE_ID
+            return WITH_CHILDREN_TEMPLATE_ID[data["language"]]
         else:
 
-            return WITH_CHILDREN_TEMPLATE_ID
+            return SINGLE_TEMPLATE_ID[data["language"]]
     else:
-        return NOT_ATTENDING_TEMPLATE_ID
+        return NOT_ATTENDING_TEMPLATE_ID[data["language"]]
 
 
 def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResponse:
@@ -227,7 +228,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
             logging.info(f"Update RSVP of {rsvp_id} with values {new_data}")
             new_data = update_rsvp(rsvp_id, new_data)
             personalizations = create_mail_message(new_data)
-            print(personalizations)
+
             if new_data["email"]:
                 if len(new_data["plusOne"]) > 0:
                     message = {
