@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from "framer-motion"
 
 
-function MotionObject() {
+function ValeFish(image) {
 
 
   return (
@@ -26,8 +26,8 @@ function MotionObject() {
         stiffness: 260,
         damping: 20
       }}
-      src={require("../../images/vali.png")} alt=""
+      src={require("../../images/vali.png")} alt="" //
     />
   );
 }
-export default MotionObject;
+export default ValeFish;

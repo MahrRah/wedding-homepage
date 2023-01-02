@@ -2,7 +2,7 @@
 import React from 'react';
 import '../../assets/css/main.css'
 import { useTranslation } from "react-i18next";
-import MotionObject from '../eastereggs/MotionObject';
+
 
 function Story() {
   const { t } = useTranslation(["common"]);
@@ -20,7 +20,7 @@ function Story() {
     );
   };
   return (
-      <><MotionObject /><div id="main">
+      <><div id="main">
       <Article date={"November 2021"} titel={t("overview:ourStoryText")} image={require("../../images/us.JPG")} />
     </div></>
   );

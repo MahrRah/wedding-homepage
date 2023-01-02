@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React , {useState,useCallback, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import '../../assets/css/main.css'
 import Schedule from "./Schedule.js"
@@ -7,8 +7,22 @@ import { Trans, useTranslation } from "react-i18next";
 import lgZoom from 'lightgallery/plugins/zoom';
 import 'lightgallery/css/lg-zoom.css';
 import LightGallery from 'lightgallery/react';
+import ValeFish from '../eastereggs/ValeFish';
 
 function Details() {
+  const [animation, setAnimation] = useState(false);
+  const handleUserKeyPress = useCallback(event => {
+    const { key, keyCode } = event;
+    if (keyCode === 13 || (keyCode >= 65 && keyCode <= 90)) {
+      setAnimation(() => true);
+    }
+  }, []);
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   const DetailSections = ({ side, titel, imageSize, text, image }) => {
     return (
@@ -33,12 +47,13 @@ function Details() {
   };
 
   const textGift = <Trans i18nKey="details:giftsText" components={{
-    location_anchor: <a href="https://www.basecampexplorer.com/kenya/hotels/basecamp-masai-mara/" target="_blank" style={{ textDecoration: "underline",fontWeight: "bold"}}/>
+    location_anchor: <a href="https://www.basecampexplorer.com/kenya/hotels/basecamp-masai-mara/" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
   }} >The most important thing to us is that you are able to celebrate with us on our wedding day. \n However, if you wish to give a gift, please do not waste your time with overthinking about an adequate gift. You could already make us immensely happy by even a small contribution towards our honeymoon.\n We both were planning on doing something special for this occastion and given our love for animals and nature, we decided to go on a trip to the <location_anchor>wildlife conservation Masai Mara in Kenya</location_anchor>. And maybe, only maybe, the brides dream of seeing her favourite animal in real live will become true!,
   </Trans>
 
   const { t } = useTranslation(["common", "details"]);
-  return (
+  return (<>
+    {animation && <ValeFish />}
     <div id="main">
       <section className="post">
         <header className="major">
@@ -64,6 +79,7 @@ function Details() {
         </Trans>
       </section>
     </div>
+  </>
   );
 }
 

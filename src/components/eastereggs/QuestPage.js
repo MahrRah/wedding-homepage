@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import '../../assets/css/main.css'
-import '../eastereggs/MotionObject.js'
+import './ValeFish.js'
 
 import { useTranslation } from "react-i18next";
-import MotionObject from '../eastereggs/MotionObject.js';
+import MotionObject from './ValeFish.js';
 
 
 function QuestPage() {
