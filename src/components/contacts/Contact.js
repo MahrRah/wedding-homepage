@@ -20,7 +20,7 @@ function Contact() {
         </header>
         <Trans i18nKey="contact:contactText" components={{
           mail_anchor: <a href="mailto:thegrosjeans.2023@gmail.com" style={{ textDecoration: "underline", fontWeight: "bold" }} />
-        }} > If you have any questions regarding the wedding, which this homepage cannot answer, please do not hesitate to contact us, our best people or send a mail to <mail_anchor>thegrosjeans.2023@gmail.com</mail_anchor>. We would politely ask you to not contact us directly on the day of our wedding. Our best man and the maid of honor however will be happy to help you out even then.
+        }} > If you have any questions regarding the wedding, which this homepage cannot answer, please do not hesitate to contact us, our best people or send a mail to <mail_anchor>thegrosjeans.2023@gmail.com</mail_anchor>. We would politely ask you to not contact us directly on the day of our wedding, as both of use will probably be to nervouse to be any help 😊. Our best man and the maid of honor however will be happy to help you out even then.
         </Trans>
         <br />
         <br />

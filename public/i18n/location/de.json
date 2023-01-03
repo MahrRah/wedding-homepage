@@ -2,11 +2,11 @@
     "titel": "Örtlichkeiten",
     "venue":"Das Festlokal",
     "venueName":"Rhyschüür beim Gasthaus Schupfen",
-    "venueText":"Vor anderthalb Jahren haben wir uns in Basel am Rhein verlobt. Jetzt werden wir am selben Fluss auch heiraten! Die Location für unsere Hochzeit ist die “Rhyschüür” des Gasthaus Schupfen in Diessenhofen. Die Scheune ist frisch renoviert, über 200 Jahre alt und steht direkt am Wasser. Detaillierte Informationen zur Anfahrt findet Ihr unten. \n Parkplätze sind vor Ort verfügbar.\n\n",
+    "venueText":"Vor anderthalb Jahren haben wir uns in Basel am Rhein verlobt. Jetzt werden wir am selben Fluss auch heiraten! Die Location für unsere Hochzeit ist die “Rhyschüür” des Gasthaus Schupfen in Diessenhofen. Die Scheune ist frisch renoviert, über 200 Jahre alt und steht direkt am Wasser. Detaillierte Informationen zur Anfahrt findet ihr unten. \n Parkplätze sind vor Ort verfügbar.\n\n",
     "map":"Karte",
     "accomodation":"Unterkunft",
     "mainHotel":"Unser Hotel",
-    "mainHotelText": "Nach unserem grossen Tag werden wir die Nacht sowie den nächsten Morgen im Hotel <site_anchor>Vienna House zur Bleiche Schaffhausen</site_anchor> verbringen. Das Hotel ist natürlich barrierefrei und befindet sich direkt am Schafhauser Bahnhof mit Gehdistanz zur Altstadt.\n Falls Ihr euch dafür entscheiden solltet, in diesem Hotel zu übernachten, würden wir uns auch sehr darüber freuen, wenn Ihr gemeinsam mit uns am nächsten Morgen frühstücken würdet.\n\n Für unsere Gäste haben wir mit dem Hotel natürlich einen Spezialpreis arrangiert. Wenn Ihr eure Hotelunterkunft bucht, vergesst also nicht den Rabattcode {{- code}} zu erwähnen.",
+    "mainHotelText": "Nach unserem grossen Tag werden wir die Nacht sowie den nächsten Morgen im Hotel <site_anchor>Vienna House zur Bleiche Schaffhausen</site_anchor> verbringen. Das Hotel ist natürlich barrierefrei und befindet sich direkt am Schafhauser Bahnhof mit Gehdistanz zur Altstadt.\n Falls ihr euch dafür entscheiden solltet, in diesem Hotel zu übernachten, würden wir uns auch sehr darüber freuen, wenn ihr gemeinsam mit uns am nächsten Morgen frühstücken würdet.\n\n Für unsere Gäste haben wir mit dem Hotel natürlich einen Spezialpreis arrangiert. Wenn ihr eure Hotelunterkunft bucht, vergesst also nicht den Rabattcode {{- code}} zu erwähnen.",
     "shuttel": "Shuttel-Service",
     "shuttelText": "Natürlich haben wir für euch  auch zu und vom Hotel zu unserer Festlocation einen Shuttle-Service organisiert.\n\n Welches Gäste vom Hotel abhollt und mehrmals am Abend auch wieder zurück zum Hotel fährt."
 }
