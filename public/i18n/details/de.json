@@ -1,14 +1,14 @@
 {
     "detailsTitel":"Details zur Zeremonie",
-    "detailsText": "Hier findet Ihr alle Details zu unserem grossen Tag. Informationen zum Tagesplan, dem Dresscode, wie Ihr zum Abendprogramm beitragen könnt oder was Ihr uns schenken könntet, falls Ihr möchtet.",
+    "detailsText": "Hier findet ihr alle Details zu unserem grossen Tag. Informationen zum Tagesplan, dem Dresscode, wie ihr zum Abendprogramm beitragen könnt oder was ihr uns schenken könntet, falls ihr möchtet.",
     "scheduleTitel":"Ablauf",
-    "scheduleText":"Hier findet ihr eine detaillierte Beschreibung des Tagesablaufs mit allen nötigen Informationen. Diese benötigt Ihr, um euch mental und physisch optimal auf das Erlebnis eures Lebens vorzubereiten. Kommt ja nicht zu spät, denn die einzige Person, welche das darf, ist die Braut 😉.",
+    "scheduleText":"Hier findet ihr eine detaillierte Beschreibung des Tagesablaufs mit allen nötigen Informationen. Diese benötigt ihr, um euch mental und physisch optimal auf das Erlebnis eures Lebens vorzubereiten. Kommt ja nicht zu spät, denn die einzige Person, welche das darf, ist die Braut 😉.",
     "programWhen1":"Ab 14:00 Uhr",
     "programWhere1":"Gasthaus Schupfen in Diessenhofen",
     "programWhat1":"Ankunft der Gäste",
     "programWhen2":" 14:15 Uhr",
     "programWhere2":"Vienna House zur Bleiche",
-    "programWhat2":"Gästetransfer zur Rhyschüür beim Gasthaus Schupfen",
+    "programWhat2":"Gästetransfer zur Rhyschüür beim Gasthaus Schupfen vom Hotel Vienna House",
     "programWhen3":"15.00 Uhr",
     "programWhere3":"Rhyschüür beim Gasthaus Schupfen",
     "programWhat3":"Hochzeitszeremonie mit anschliessendem Apéro",
@@ -19,9 +19,8 @@
     "programWhere5":"Rhyschüür beim Gasthaus Schupfen",
     "programWhat5":"Abendprogramm und Dinner",
     "gift":"Geschenke",
-    "giftsText":"Falls Ihr noch auf der Suche nach dem perfekten Hochzeitsgeschenk seid, haben wir die perfekte Idee für euch!\n Es würde uns sehr glücklich machen, wenn Ihr uns einen Zustupf für unsere Hochzeitsreise schenken würdet.\n Für unsere Hochzeitsreise planen wir einen Trip nach <location_anchor>Kenya zum Masai Mara Wildlife Conservation</location_anchor>. Möglicherweise wird bei dieser Gelegenheit auch gleich der nächste Kindheitstraum der Braut, nämlich ihr Lieblingstier in freier Wildbahn zu beobachten, war.",
+    "giftsText":"Falls ihr noch auf der Suche nach dem perfekten Hochzeitsgeschenk seid, haben wir die perfekte Idee für euch!\n Es würde uns sehr glücklich machen, wenn ihr uns einen Zustupf für unsere Hochzeitsreise schenken würdet.\n Für unsere Hochzeitsreise planen wir einen Trip nach <location_anchor>Kenya zum Masai Mara Wildlife Conservation</location_anchor>. Möglicherweise wird bei dieser Gelegenheit auch gleich der nächste Kindheitstraum der Braut, nämlich ihr Lieblingstier in freier Wildbahn zu beobachten, war.",
     "eveningContribution":"Beitrag zum Abendprogramm",
-    "eveningContributionText":"Falls Ihr gerne etwas zu unserem Abendprogramm beitragen wollen würdet, wendet euch bitte an <contacts_anchor>unseren Trauzeugen oder unsere Trauzeugin</contacts_anchor>. Sie helfen euch gerne bei der Organisation und werden das Abendprogramm nach unseren Wünschen organisieren.",
+    "eveningContributionText":"Falls ihr gerne etwas zu unserem Abendprogramm beitragen wollen würdet, wendet euch bitte an <contacts_anchor>unseren Trauzeugen oder unsere Trauzeugin</contacts_anchor>. Sie helfen euch gerne bei der Organisation und sind zuständig für das Abendprogramm.",
     "dresscode":"Dresscode",
-    "dresscodeText":"Nehmt Euren schönsten Zwirn hervor! Wir würden uns freuen, wenn Ihr für die Zeremonie sowie die anschliessende Party unseren Dresscode befolgt und in formaler Kleidung erscheinen würdet. Falls Ihr uns noch glücklicher machen möchtet, könnt Ihr euch mit eurer Kleidung auch gerne am Farbschema unserer Hochzeit (Olivgrün, Schwarz, Gold oder erdige Farbtöne) orientieren. Wir bitten Euch jedoch, auf komplett weisse Kleidung zu verzichten, da dies natürlich die Farbe der Braut ist.\n Das Moodboard unten soll Euch helfen, das angestrebte Farbschema zu visualisieren. Falls Ihr euch ausserdem nicht sicher seid, was wir unter formaler Kleidung verstehen, wird euch hier weitergeholfen."
-}
+    "dresscodeText":"Packt eure Tanzschuhe ein und nehmt euren schönsten Zwirn hervor! Der Dresscode für die Zeremone sowie die anschliessende Party ist nähmlich formale Kleidung. Falls ihr uns noch eine extra Freude machen möchtet, könnt ihr euch mit eurer Kleidung auch gerne am Farbschema unserer Hochzeit (Olivgrün, Schwarz, Gold oder erdige Farbtöne) orientieren."}

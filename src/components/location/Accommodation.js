@@ -28,14 +28,19 @@ function Accommodation() {
         </div>
         <br />
         <Trans i18nKey="location:mainHotelText" components={{
-          code:code,
-          site_anchor: <a href="https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html" target="_blank" style={{ textDecoration: "underline",fontWeight: "bold"}}/>
+          code: code,
+          site_anchor: <a href="https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
         }} >
           After our big day we will retreat to the <site_anchor>tttt</site_anchor> for the night. The hotel is right next to the Train station and within 5min walk you will be in the heart of Schaffhausens old town.
           We have arranged special rats for our guests so make sure when booking to mention our wedding code {{ code }}. The hotels also has public parking next door and is wheelchair accessible.
           For guests staying in this hotel, we have organised shuttels service to and from the venue to the hotel.\n
         </Trans>
         <hr />
+      </div>
+      <div>
+        <span className="image right" style={{ width: "20vw" }}><img src={require("../../images/giphy.gif")} alt="" /></span>
+        <h3>{t('location:shuttel')}</h3>
+        <p style={{ textAlign: "left" }}>{t('location:shuttelText')}</p>
       </div>
     </div>
 

@@ -67,6 +67,7 @@ function Details() {
         <div>
           <DetailSections side="image left" titel={t("details:dresscode")} text={t("details:dresscodeText")} image={require("../../images/theme.png")} imageSize="1200" />
         </div>
+        <hr />
         <div>
           <DetailSections side="image right" titel={t("details:gift")} text={textGift} image={require("../../images/masai-mara.jpg")} imageSize="100" />
         </div>
