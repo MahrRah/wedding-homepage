@@ -15,7 +15,6 @@ function Contact() {
   return (
     <div id="main">
       <section className="post">
-
         <header className="major">
           <h1>{t("contact:contact")}</h1>
         </header>
