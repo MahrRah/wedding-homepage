@@ -16,7 +16,7 @@ function Contact() {
     <div id="main">
       <section className="post">
         <header className="major">
-          <h1>{t("contact:contact")}</h1>
+          <h1>{t("common:contact")}</h1>
         </header>
         <Trans i18nKey="contact:contactText" components={{
           mail_anchor: <a href="mailto:thegrosjeans.2023@gmail.com" style={{ textDecoration: "underline", fontWeight: "bold" }} />
@@ -29,15 +29,15 @@ function Contact() {
           <div className="col-6 col-12-small">
             <h4>Priska</h4>
             <p>
-              <b>{t("common:phone")}</b> 0041 79 434 55 09 <br />
-              <b>{t("common:email")}:</b>  email@mail.com<br />
+              <b>{t("common:phone")}</b> +41 78 903 53 07<br />
+              <b>{t("common:email")}:</b> priska.sgier@gmail.com<br />
             </p>
           </div>
           <div className="col-6 col-12-small">
             <h4>Christian</h4>
             <p>
-              <b>{t("common:phone")}</b> 0041 79 434 55 09 <br />
-              <b>{t("common:email")}:</b>  email@mail.com<br />
+              <b>{t("common:phone")}</b> +41 79 355 43 75<br />
+              <b>{t("common:email")}:</b> chsgier@me.com<br />
             </p>
           </div>
         </div>

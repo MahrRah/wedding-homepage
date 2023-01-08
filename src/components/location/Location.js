@@ -10,13 +10,13 @@ import Venue from './Venue';
 import { useTranslation } from "react-i18next";
 
 function Location() {
-  const { t } = useTranslation(["location"]);
+  const { t } = useTranslation(["location","common"]);
 
   return (
     <div id="main">
       <section className="post">
         <header className="major">
-          <h1>{t('location:titel')}</h1>
+          <h1>{t('common:location')}</h1>
         </header>
         <Venue />
         <Accommodation />

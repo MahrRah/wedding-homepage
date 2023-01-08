@@ -21,7 +21,7 @@ function Story() {
   };
   return (
       <><div id="main">
-      <Article date={"November 2021"} titel={t("overview:ourStoryText")} image={require("../../images/us.JPG")} />
+      <Article date={t("overview:dateStory")} titel={t("overview:ourStoryText")} image={require("../../images/us.JPG")} />
     </div></>
   );
 }
