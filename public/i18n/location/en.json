@@ -1,11 +1,11 @@
 {
     "venue":"Venue",
     "venueName":"Rhyschüür at the Gasthaus Schupfen",
-    "venueText":"One and a half years ago we got engaged in Basel next to the river Rhine, now we are also going to be married next to the same river! Our wedding location is called “Rhyschüür” which translates to “Rhine Barn” and is a beautifully renovated barn, which is over 200 years old. The venue is located close to an inn called “Gasthaus Schupfen” in Diessenhofen. You can find detailed information about the venue as well as how to get there below. Parking is available directly at Gasthaus Schupfen.", 
+    "venueText":"One and a half years ago we got engaged in Basel next to the river Rhine, now we are also going to be married next to the same river! Our wedding location is called “Rhyschüür” which translates to “Rhine Barn” and is a beautifully renovated , over 200 years old barn. The venue is located close to an inn called “Gasthaus Schupfen” in Diessenhofen. You can find detailed information about the venue as well as how to get there below. Parking is available directly at Gasthaus Schupfen.", 
     "map":"Map",
     "accomodation":"Accomodation",
     "mainHotel":"Where we are staying",
-    "mainHotelText": "After our big day we will retreat to the hotel <site_anchor>Vienna House zur Bleiche in Schaffhausen</site_anchor> for the night. The hotel is wheelchairs accessible and  located directly next to the Schaffhausen main train station. The heart of Schaffhausen's old town is also only five minute walk from the hotel.\n If you choose to stay in this hotel for the night, we would also love for you to join us for breakfast the next morning.\n\n Naturally we have arranged special rates for our guests, so make sure to mention our wedding code {{- code}}, when booking.",
+    "mainHotelText": "After our big day, we will retreat to the hotel <site_anchor>Vienna House zur Bleiche in Schaffhausen</site_anchor> for the night. The hotel is wheelchair accessible and located directly next to Schaffhausen's main train station. A five-minute walk from the hotel brings you to the heart of Schaffhausen's old town.\n If you choose to stay in this hotel for the night, we would also love for you to join us for breakfast the next morning.\n\n We have arranged special rates for our guests, so make sure to mention our wedding code {{- code}}, when booking.",
     "shuttel": "Shuttel-Service",
-    "shuttelText": "We have also organized a shuttle service for all guests to and from the venue to this hotel. Which can pick you up at the hotel and will drive back to the hotel a few times during the evening."
+    "shuttelText": "We have also organized a shuttle service for all guests to and from our wedding venue to this hotel. The shuttle can pick you up and drop you off at the hotel at various times during the evening."
 }

@@ -5,7 +5,7 @@
     "map":"Karte",
     "accomodation":"Unterkunft",
     "mainHotel":"Unser Hotel",
-    "mainHotelText": "Nach unserem grossen Tag werden wir die Nacht sowie den nächsten Morgen im Hotel <site_anchor>Vienna House zur Bleiche Schaffhausen</site_anchor> verbringen. Das Hotel ist natürlich barrierefrei und befindet sich direkt am Schaffhauser Bahnhof mit Gehdistanz zur Altstadt.\n Falls ihr euch dafür entscheiden solltet, in diesem Hotel zu übernachten, würden wir uns auch sehr darüber freuen, wenn ihr gemeinsam mit uns am nächsten Morgen frühstücken würdet.\n\n Für unsere Gäste haben wir mit dem Hotel natürlich einen Spezialpreis arrangiert. Wenn ihr eure Hotelunterkunft bucht, vergesst also nicht den Rabattcode {{- code}} zu erwähnen.",
+    "mainHotelText": "Nach unserem grossen Tag werden wir die Nacht sowie den nächsten Morgen im Hotel <site_anchor>Vienna House zur Bleiche Schaffhausen</site_anchor> verbringen. Das Hotel ist natürlich barrierefrei und befindet sich direkt am Schaffhauser Bahnhof in Gehdistanz zur Altstadt.\n Falls ihr euch dafür entscheiden solltet, in diesem Hotel zu übernachten, würden wir uns auch sehr darüber freuen, wenn ihr gemeinsam mit uns am nächsten Morgen frühstücken würdet.\n\n Für unsere Gäste haben wir mit dem Hotel einen Spezialpreis arrangiert. Wenn ihr eure Hotelunterkunft bucht, vergesst also nicht den Rabattcode {{- code}} zu erwähnen.",
     "shuttel": "Shuttel-Service",
     "shuttelText": "Natürlich haben wir für euch  auch zu und vom Hotel zu unserer Festlocation einen Shuttle-Service organisiert.\n\n Dieses holt Gäste vom Hotel ab und fährt sie abends mehrmals wieder zurück."
 }
