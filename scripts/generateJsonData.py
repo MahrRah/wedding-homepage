@@ -60,12 +60,12 @@ print(guest_list)
 
 import json
 
-with open("../data/guestDBtest.json", "w") as f:
+with open("../data/guestDB.json", "w") as f:
     json.dump(guest_list, f)
 
 
 for guest in guest_list:
     rsvp_codes.append(guest["rsvpCode"])
 
-# with open("../data/rsvp_codes.txt", "w") as f:
-#     f.write("\n".join(rsvp_codes))
+with open("../data/rsvp_codes.txt", "w") as f:
+    f.write("\n".join(rsvp_codes))

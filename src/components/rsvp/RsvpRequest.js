@@ -484,10 +484,10 @@ class RsvpRequest extends Component {
                                                 {this.state.bringsPlusOne === "yes" &&
                                                     <>
                                                         <this.InputWithError data={{ name: "firstname", type: "string", state: this.state.plusOne.firstname }}
-                                                            lables={{ "error": t("rsvp:nightsError"), "name": t("common:firstName") }}
+                                                            lables={{ "error": t("rsvp:plusOneError"), "name": t("common:firstName") }}
                                                             onChange={this.onChangePlusOne} />
                                                         <this.InputWithError data={{ name: "lastname", type: "string", state: this.state.plusOne.lastname }}
-                                                            lables={{ "error": t("rsvp:nightsError"), "name": t("common:lastName") }}
+                                                            lables={{ "error": t("rsvp:plusOneError"), "name": t("common:lastName") }}
                                                             onChange={this.onChangePlusOne} />
                                                         {/* <this.Input data={{ name: "lastname", value: this.state.plusOne.value.lastname }}
                                                         lable={t("common:lastName")}

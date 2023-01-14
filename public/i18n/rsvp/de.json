@@ -26,6 +26,7 @@
     "submittedRsvpText":"Danke! Du solltest demnächst eine email mit den details deiner Anmeldung bekommen.",
     "personal":"Persönliche Angaben",
     "plusOne":"Begleitung",
+    "plusOneError":"Ungültiger",
     "children":"Kinder",
     "language":"Sprache",
     "hotel":"Hotel"

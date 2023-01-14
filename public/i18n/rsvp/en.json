@@ -26,6 +26,7 @@
     "submittedRsvpText":"Thanks for your RSVP! You should receive an email containing tbd.",
     "personal":"Personal data",
     "plusOne":"Plus-One",
+    "plusOneError":"Invalid",
     "children":"Children",
     "language":"Language",
     "hotel":"Hotel"
