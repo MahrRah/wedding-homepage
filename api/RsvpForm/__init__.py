@@ -1,7 +1,5 @@
 import json
 import logging
-import json
-import logging
 import re
 from bson.json_util import dumps
 from jsonmerge import merge
@@ -16,6 +14,9 @@ from shared.templates import (
 )
 
 import azure.functions as func
+
+
+logger = logging.getLogger(__name__)
 
 NOT_ATTENDING_TEMPLATE_ID ={"de":"d-4d5a6b3c3ee14dc6a2e42dafc6953efd","en":"d-4fd6266ed02e4ad2873049e379f53f15"}
 ATTENDING_ALL_TEMPLATE_ID = {"de":"d-2662ea6dd2cb4ba09cbb6be40c3714de","en":"d-0edfeca99ff448c8ae014c7045a18d18"}
@@ -56,7 +57,6 @@ def new_personal_data(rsvp, data):
 
 def new_hotel_data(rsvp, data):
     rsvp["hotel"] = data["hotel"]  # TODO Validate
-    print("mmm",rsvp)
     return rsvp
 
 
@@ -79,7 +79,6 @@ def new_plus_one_data(rsvp, data):
             else rsvp["plusOne"][0]["food"]
         )
         rsvp["plusOne"][0]["attending"] = data["plusOne"][0]["attending"]
-
     return rsvp
 
 
@@ -102,7 +101,7 @@ def update_rsvp_entery(rsvp, data):
 
 
 def get_rsvp(id):
-    logging.info(id)
+    logger.info(id)
     value = db_client.guests.find_one({"rsvpCode": id})
     return value
 
@@ -113,7 +112,7 @@ def update_rsvp(id, data):
     updated_rsvp = update_rsvp_entery(rsvp=rsvp, data=data)
     result = db_client.guests.update_one({"rsvpCode": id}, {"$set": updated_rsvp})
 
-    logging.info(f"{ id } got Updated to: {result}")
+    logger.info(f"{ id } got Updated to: {result}")
     return rsvp
 
 
@@ -137,14 +136,14 @@ def get_food_text(id, lg):
     elif id == "3":
         return "Glutenfree" if lg == "en" else "Glutenfrei"
     else:
-        return "Could not be loaded" if lg == "en" else "Blu Blu"
+        return "Could not be loaded" if lg == "en" else "Konnte nicht geladen werden"
 
 
 def create_mail_message(data):
     body = {"to": [{"email": data["email"]}], "dynamic_template_data": {}}
+    
     dynamic_template_data = {}
     if data["attending"] == "yes":
-        print("peronal")
         personal = {
             "first_name": data["firstname"],
             "email": data["email"],
@@ -155,7 +154,7 @@ def create_mail_message(data):
         }
         dynamic_template_data.update(personal)
 
-    if "plusOne" in data and data["plusOne"][0]["attending"] == "yes":
+    if "plusOne" in data and len(data["plusOne"]) !=0 and data["plusOne"][0]["attending"] == "yes":
         plus_one = {
             "po_name": " ".join(
                 [
@@ -166,7 +165,7 @@ def create_mail_message(data):
             "po_food": get_food_text(data["food"], data["language"]),
         }
         dynamic_template_data.update(plus_one)
-    if "child" in data and data["child"][0]["attending"] == "yes":
+    if "child" in data and len(data["child"]) !=0 and data["child"][0]["attending"] == "yes":
         child = {"children_list": get_child_string(data["child"])}
         dynamic_template_data.update(child)
     if "hotel" in data:
@@ -180,18 +179,22 @@ def create_mail_message(data):
 def get_template_id(data):
     if (data["attending"] == "yes"):
         if ("child" in data
+            and len(data["child"]) !=0 
             and data["child"][0]["attending"] == "yes"
             and "plusOne" in data
+            and len(data["plusOne"]) !=0 
             and data["plusOne"][0]["attending"] == "yes"
         ):
             return ATTENDING_ALL_TEMPLATE_ID[data["language"]]
         elif (
             "plusOne" in data
+            and len(data["plusOne"]) !=0 
             and data["plusOne"][0]["attending"] == "yes"
         ):
             return WITH_PLUSONE_TEMPLATE_ID[data["language"]]
         elif (
             "child" in data
+            and len(data["child"]) !=0 
             and data["child"][0]["attending"] == "yes"
         ):
             return WITH_CHILDREN_TEMPLATE_ID[data["language"]]
@@ -203,15 +206,15 @@ def get_template_id(data):
 
 
 def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResponse:
-    logging.info("Python HTTP trigger function processed a request.")
+    logger.info("Python HTTP trigger function processed a request.")
     resp = None
     try:
         rsvp_id = req.route_params.get("id")
     except ValueError:
         pass
-    logging.info(req)
+    logger.info(req)
     if req.method == "GET":
-        logging.info(f"Get RSVP of {rsvp_id}")
+        logger.info(f"Get RSVP of {rsvp_id}")
         resp = get_rsvp(rsvp_id)
         return func.HttpResponse(
             body=dumps(resp),
@@ -225,17 +228,18 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
     elif req.method == "POST":
         try:
             new_data = json.loads(req.get_body())
-            logging.info(f"Update RSVP of {rsvp_id} with values {new_data}")
+            logger.info(f"Update RSVP of {rsvp_id} with values {new_data}")
             new_data = update_rsvp(rsvp_id, new_data)
             personalizations = create_mail_message(new_data)
 
+            logging.info(f"email new datat {new_data}")
             if new_data["email"]:
-                if len(new_data["plusOne"]) > 0:
-                    message = {
-                        "from": {"email": "thegrosjeans.2023@gmail.com"},
-                        "personalizations": [personalizations],
-                        "template_id": get_template_id(new_data),
-                    }
+                logging.info(f"email new data2 {new_data}")
+                message = {
+                    "from": {"email": "thegrosjeans.2023@gmail.com"},
+                    "personalizations": [personalizations],
+                    "template_id": get_template_id(new_data),
+                }
 
                 sendGridMessage.set(json.dumps(message))
             return func.HttpResponse(
@@ -247,7 +251,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
             )
 
         except Exception as ex:
-            logging.error(f"Error {ex}")
+            logger.error(f"Error {ex}")
             return func.HttpResponse(
                 headers={
                     "content-type": "application/json",
