@@ -1,5 +1,5 @@
 
-import React , {useState,useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import '../../assets/css/main.css'
 import Schedule from "./Schedule.js"
@@ -51,6 +51,9 @@ function Details() {
   }} >The most important thing to us is that you are able to celebrate with us on our wedding day. \n However, if you wish to give a gift, please do not waste your time with overthinking about an adequate gift. You could already make us immensely happy by even a small contribution towards our honeymoon.\n We both were planning on doing something special for this occastion and given our love for animals and nature, we decided to go on a trip to the <location_anchor>wildlife conservation Masai Mara in Kenya</location_anchor>. And maybe, only maybe, the brides dream of seeing her favourite animal in real live will become true!,
   </Trans>
 
+  const dresscodeText = <Trans i18nKey="details:dresscodeText" components={{
+    link_anchor: <a href="https://www.brides.com/thmb/lEmwNM-ynLFKyZqh6HLtwi19pdM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/wedding-dress-code-explained-v2-d929658adb614430be36ee20caaea7fe.png" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
+  }} >Pack your dancing shoes and be ready to take out your nicest suits and gowns! The dress code of the reception is <link_anchor>formal</link_anchor>.\n If you want to make us extra happy, following our color theme of the day (olive, black, gold or earthy tones) would definitely do that.</Trans>
   const { t } = useTranslation(["common", "details"]);
   return (<>
     {animation && <ValeFish />}
@@ -65,7 +68,7 @@ function Details() {
         <Schedule />
         <hr />
         <div>
-          <DetailSections side="image left" titel={t("details:dresscode")} text={t("details:dresscodeText")} image={require("../../images/theme.png")} imageSize="1200" />
+          <DetailSections side="image left" titel={t("details:dresscode")} text={dresscodeText} image={require("../../images/theme.png")} imageSize="1200" />
         </div>
         <hr />
         <div>

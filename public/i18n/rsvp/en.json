@@ -1,7 +1,7 @@
 {
     "rsvpTitel": "RSVP",
     "rsvpFormTitel": "RSVP Form",
-    "rsvpText": "Please let us know before April 30th 2023 if you will be able to attend. To do so just type in the personal RSVP code you have received in your invitation below and fill out the form accordingly.\n We are very much looking forward to seeing you there!",
+    "rsvpText": "Please let us know before April 30, 2023 if you will be able to attend. To do so just type in the personal RSVP code you have received in your invitation below and fill out the form accordingly.\n We are very much looking forward to seeing you there!",
     "rsvpCode": "Personal RSVP-Code",
     "rsvpError":"Invalid RSVP Code",
     "submitCode":"Submit Code",
