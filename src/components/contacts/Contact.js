@@ -29,15 +29,15 @@ function Contact() {
           <div className="col-6 col-12-small">
             <h4>Priska</h4>
             <p>
-              <b>{t("common:phone")}</b> +41 78 903 53 07<br />
-              <b>{t("common:email")}:</b> priska.sgier@gmail.com<br />
+              <b>{t("common:phone")}</b> <a href="tel:0041789035307">+41 78 903 53 07 </a><br />
+              <b>{t("common:email")}:</b> <a href="mailto:priska.sgier@gmail.com">priska.sgier@gmail.com</a><br />
             </p>
           </div>
           <div className="col-6 col-12-small">
             <h4>Christian</h4>
             <p>
-              <b>{t("common:phone")}</b> +41 79 355 43 75<br />
-              <b>{t("common:email")}:</b> chsgier@me.com<br />
+              <b>{t("common:phone")}</b> <a href="tel:0041793554375">+41 79 355 43 75</a><br />
+              <b>{t("common:email")}:</b><a href="mailto:chsgier@me.com"> chsgier@me.com </a><br />
             </p>
           </div>
         </div>
