@@ -26,7 +26,7 @@ function WeddingParty() {
           <h2>{t("contact:bestpeople")}</h2>
           <>
             <span className="image left" style={{ width: "20vw" }}><img src={require("../../images/wedding-party/PriskaChristian.jpg")} alt="" /></span>
-            <h3 style={{ textAlign: "left" }}>Christian & Priska Sgier</h3>
+            <h3 style={{ textAlign: "left" }}>Priska & Christian Sgier</h3>
             <p style={{ textAlign: "left" }}>{t("contact:sgiers")}</p>
           </>
         </div>

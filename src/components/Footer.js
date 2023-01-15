@@ -26,7 +26,7 @@ function Footer() {
           </section>
           <section>
             <h3>IBAN</h3>
-            <p>CH XXXXXXXXXXXXXX</p>
+            <p>CH89 0900 0000 1605 4916 1</p>
           </section>
         </section>
         <section className="split contact">

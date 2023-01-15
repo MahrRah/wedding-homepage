@@ -18,14 +18,16 @@ function Venue() {
       <h2>{t('location:venue')}</h2>
       <h3>{t('location:venueName')}</h3>
       <div>
+        <div>
+
         <LightGallery
           speed={500} >
-          <img className="image left" src={require("../../images/schupfen-see.jpeg")} alt="Wedding Venue" />
+          <img className="image left" style={{ width: "35%", marginLeft: "20px" }} src={require("../../images/schupfen-see.jpeg")} alt="Wedding Venue" />
         </LightGallery>
-        <p>{t('location:venueText')}</p>
+        <p > {t('location:venueText')}</p>
+          </div>
         <br/>
-        <br/>
-        <p> <b>{t('common:address')}:</b> <a href="https://g.page/GasthausSchupfen?share" target="_blank"><br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /> </a></p>
+        <p style={{overflow: "hidden"}}> <b>{t('common:address')}:</b> <a href="https://g.page/GasthausSchupfen?share" target="_blank"><br /> Gasthaus Schupfen <br /> Steinerstrasse 501 <br /> 8253 Diessenhofen <br /><br /> </a></p>
       </div>
       <h4>{t('location:map')}</h4>
       <VenueMap />
