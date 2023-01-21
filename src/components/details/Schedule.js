@@ -35,10 +35,10 @@ function Schedule() {
 
   const TimelineItem = ({ data }) => (
     <div className="timeline-item">
-      <div className="timeline-item-content">
+      <div className="timeline-item-content" >
         <time>{data.date}</time>
         <div className='location'>{data.location}</div>
-        <p>{data.text}</p>
+        <p style={{textAlign:"left",textJustify: "unset"}}>{data.text}</p>
         <span className="circle" />
       </div>
     </div>
