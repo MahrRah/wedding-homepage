@@ -130,7 +130,7 @@ def get_food_text(id, lg):
     if id == "0":
         return "Not selected" if lg == "en" else "Nicht ausgewählt"
     elif id == "1":
-        return "No restrictions" if lg == "en" else "Keine einschränkungen"
+        return "No restrictions" if lg == "en" else "Keine Einschränkungen"
     elif id == "2":
         return "Vegetarian" if lg == "en" else "Vegetarisch"
     elif id == "3":
