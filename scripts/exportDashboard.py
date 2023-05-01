@@ -2,7 +2,6 @@ import json
 
 import csv
 import os
-import json
 
 def get_database_data():
     from pymongo import MongoClient
@@ -17,20 +16,23 @@ def get_database_data():
         file.write('[')
         for document in cursor:
             file.write(json.dumps(document))
-            file.write(',')
+            if cursor.alive:
+                file.write(',')
+        
         file.write(']')
 
 get_database_data()
-with open("../data/guestDB.json", newline="") as jsonfile:
+with open("../data/DBexport.json") as jsonfile:
     comosbd = json.load(jsonfile)
 
 with open("../data/excelExportHotel.csv", "w") as csvfileHotel:
-    fieldnamesHotel = ["rsvpCode", "hotel", "rooms", "guests", "nights"]
+    fieldnamesHotel = ["rsvpCode","lastname", "hotel", "rooms", "guests", "nights"]
     writerHotel = csv.DictWriter(csvfileHotel, fieldnames=fieldnamesHotel)
     writerHotel.writeheader()
     for line in comosbd:
         hotel = {
             "rsvpCode": line["rsvpCode"],
+            "lastname": line["lastname"],
             "hotel":line["hotel"]["booking"],
             "rooms": line["hotel"]["rooms"],
             "guests": line["hotel"]["guests"],
@@ -52,20 +54,23 @@ with open("../data/excelExportGuests.csv", "w") as csvfileGuests:
         "plusOne",
         "child",
         "age",
+        "message"
     ]
     writerGuests = csv.DictWriter(csvfileGuests, fieldnames=fieldnamesGuests)
 
     writerGuests.writeheader()
     for line in comosbd:
+        # print(line)
         person = {
             "rsvpCode": line["rsvpCode"],
             "firstname": line["firstname"],
             "lastname": line["lastname"],
             "email": line["email"],
             "phone": line["phone"],
-            "attending": line["attending"],
+            "attending": line["attending"] if line["attending"]=="yes"or line["attending"]=="no" else "pending",
             "food": line["food"],
             "language": line["language"],
+            "message": line["message"],
             "plusOne": "0",
             "child": "0",
             "age": "",
@@ -79,7 +84,7 @@ with open("../data/excelExportGuests.csv", "w") as csvfileGuests:
                 "lastname": line["plusOne"][0]["lastname"],
                 "email": "",
                 "phone": "",
-                "attending": line["plusOne"][0]["attending"],
+                "attending": line["plusOne"][0]["attending"]  if line["plusOne"][0]["attending"] =="yes"or line["plusOne"][0]["attending"] =="no" else "pending",
                 "food": line["plusOne"][0]["food"],
                 "language": line["language"],
                 "plusOne": "1",
@@ -96,7 +101,7 @@ with open("../data/excelExportGuests.csv", "w") as csvfileGuests:
                     "lastname": child["lastname"],
                     "email": "",
                     "phone": "",
-                    "attending": child["attending"],
+                    "attending": child["attending"] if child["attending"] =="yes" or child["attending"] =="no" else "pending",
                     "food": child["food"],
                     "language": line["language"],
                     "plusOne": "0",
