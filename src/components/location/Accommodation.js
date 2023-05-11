@@ -29,7 +29,7 @@ function Accommodation() {
         <br />
         <Trans i18nKey="location:mainHotelText" components={{
           code: code,
-          site_anchor: <a href="https://www.viennahouse.com/en/zur-bleiche-schaffhausen/the-hotel/overview.html" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
+          site_anchor: <a href="https://www.wyndhamhotels.com/vienna-house/schaffhausen-switzerland/vienna-house-zur-bleiche-schaffhausen/overview" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
         }} >
           After our big day we will retreat to the <site_anchor>tttt</site_anchor> for the night. The hotel is right next to the Train station and within 5min walk you will be in the heart of Schaffhausens old town.
           We have arranged special rats for our guests so make sure when booking to mention our wedding code {{ code }}. The hotels also has public parking next door and is wheelchair accessible.
