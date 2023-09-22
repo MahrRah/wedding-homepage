@@ -60,53 +60,53 @@ with open("../data/excelExportGuests.csv", "w") as csvfileGuests:
 
     writerGuests.writeheader()
     for line in comosbd:
-        # print(line)
-        person = {
-            "rsvpCode": line["rsvpCode"],
-            "firstname": line["firstname"],
-            "lastname": line["lastname"],
-            "email": line["email"],
-            "phone": line["phone"],
-            "attending": line["attending"] if line["attending"]=="yes"or line["attending"]=="no" else "pending",
-            "food": line["food"],
-            "language": line["language"],
-            "message": line["message"],
-            "plusOne": "0",
-            "child": "0",
-            "age": "",
-        }
-        print(person)
-        writerGuests.writerow(person)
-        if len(line["plusOne"]) > 0:
-            pluOne = {
+       if(line["rsvpCode"] not in ["2222","1111"]):
+            person = {
                 "rsvpCode": line["rsvpCode"],
-                "firstname": line["plusOne"][0]["firstname"],
-                "lastname": line["plusOne"][0]["lastname"],
-                "email": "",
-                "phone": "",
-                "attending": line["plusOne"][0]["attending"]  if line["plusOne"][0]["attending"] =="yes"or line["plusOne"][0]["attending"] =="no" else "pending",
-                "food": line["plusOne"][0]["food"],
+                "firstname": line["firstname"],
+                "lastname": line["lastname"],
+                "email": line["email"],
+                "phone": line["phone"],
+                "attending": line["attending"] if line["attending"]=="yes"or line["attending"]=="no" else "pending",
+                "food": line["food"],
                 "language": line["language"],
-                "plusOne": "1",
+                "message": line["message"],
+                "plusOne": "0",
                 "child": "0",
                 "age": "",
             }
-            print(pluOne)
-            writerGuests.writerow(pluOne)
-        if len(line["child"]) > 0:
-            for child in line["child"]:
-                child = {
+            print(person)
+            writerGuests.writerow(person)
+            if len(line["plusOne"]) > 0:
+                pluOne = {
                     "rsvpCode": line["rsvpCode"],
-                    "firstname": child["firstname"],
-                    "lastname": child["lastname"],
+                    "firstname": line["plusOne"][0]["firstname"],
+                    "lastname": line["plusOne"][0]["lastname"],
                     "email": "",
                     "phone": "",
-                    "attending": child["attending"] if child["attending"] =="yes" or child["attending"] =="no" else "pending",
-                    "food": child["food"],
+                    "attending": line["plusOne"][0]["attending"]  if line["plusOne"][0]["attending"] =="yes"or line["plusOne"][0]["attending"] =="no" else "pending",
+                    "food": line["plusOne"][0]["food"],
                     "language": line["language"],
-                    "plusOne": "0",
-                    "child": "1",
-                    "age": child["age"],
+                    "plusOne": "1",
+                    "child": "0",
+                    "age": "",
                 }
-                print(child)
-                writerGuests.writerow(child)
+                print(pluOne)
+                writerGuests.writerow(pluOne)
+            if len(line["child"]) > 0:
+                for child in line["child"]:
+                    child = {
+                        "rsvpCode": line["rsvpCode"],
+                        "firstname": child["firstname"],
+                        "lastname": child["lastname"],
+                        "email": "",
+                        "phone": "",
+                        "attending": child["attending"] if child["attending"] =="yes" or child["attending"] =="no" else "pending",
+                        "food": child["food"],
+                        "language": line["language"],
+                        "plusOne": "0",
+                        "child": "1",
+                        "age": child["age"],
+                    }
+                    print(child)
+                    writerGuests.writerow(child)

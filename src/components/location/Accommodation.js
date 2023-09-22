@@ -40,7 +40,7 @@ function Accommodation() {
       <div>
         <span className="image right" style={{ width: "20vw" }}><img src={require("../../images/giphy.gif")} alt="" /></span>
         <h3>{t('location:shuttel')}</h3>
-        <p style={{ textAlign: "left" }}>{t('location:shuttelText')}</p>
+        <Trans i18nKey="location:shuttelText" />
       </div>
     </div>
 
