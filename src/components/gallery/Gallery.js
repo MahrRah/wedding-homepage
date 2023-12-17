@@ -17,34 +17,35 @@ function Gallery() {
                 <header className="major">
                     <h1>{t("gallery:galleryTitel")}</h1>
                 </header>
-                {/* <Trans i18nKey="gallery:galleryText" components={{
-                    gallery_anchor: <a href="/" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
-                }} >
-                    Sneak peak of some of the pictures taken at the wedding. For the complete gallery of all pictures taken please follow the <gallery_anchor>link</gallery_anchor>.
-                </Trans> */}
-                <div style={{ textAlign: "center" }}>
 
+                <div style={{ textAlign: "center" }}>
+                    <Trans i18nKey="gallery:galleryText" components={{
+                        gallery_anchor: <a href="https://cubuphotographybycueneytbudakoglu.pic-time.com/yb9E6L0vynvCE" target="_blank" style={{ textDecoration: "underline", fontWeight: "bold" }} />
+                    }} >
+                        Sneak peak of some of the pictures taken at the wedding. For the complete gallery of all pictures taken please follow the <gallery_anchor>link</gallery_anchor>.
+                    </Trans>
                     <LightGallery
                         speed={500}
                     >
                         <a href={require("../../images/gallery/us_1.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 1" src={require("../../images/gallery/us_1_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 1" src={require("../../images/gallery/us_1.jpg")} />
                         </a>
                         <a href={require("../../images/gallery/us_2.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 2" src={require("../../images/gallery/us_2_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 2" src={require("../../images/gallery/us_2.jpg")} />
                         </a>
                         <a href={require("../../images/gallery/us_3.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 3" src={require("../../images/gallery/us_3_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 3" src={require("../../images/gallery/us_3.jpg")} />
                         </a>
                         <a href={require("../../images/gallery/us_4.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 4" src={require("../../images/gallery/us_4_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 4" src={require("../../images/gallery/us_4.jpg")} />
                         </a>
                         <a href={require("../../images/gallery/us_5.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 5" src={require("../../images/gallery/us_5_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 5" src={require("../../images/gallery/us_5.jpg")} />
                         </a>
                         <a href={require("../../images/gallery/us_6.jpg")}>
-                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 6" src={require("../../images/gallery/us_6_tn.jpg")} />
+                            <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 6" src={require("../../images/gallery/us_6.jpg")} />
                         </a>
+                        {/* 
                         <a href={require("../../images/gallery/us_7.jpg")}>
                             <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 7" src={require("../../images/gallery/us_7_tn.jpg")} />
                         </a>
@@ -89,8 +90,8 @@ function Gallery() {
                         </a>
                         <a href={require("../../images/gallery/us_21.jpg")}>
                             <img style={{ width: "30%", margin: "14px", display: "inline-block" }} alt="Engagement Shooting 21" src={require("../../images/gallery/us_21_tn.jpg")} />
-                        </a>
-                       
+                        </a> */}
+
                     </LightGallery>
                 </div>
             </section>
