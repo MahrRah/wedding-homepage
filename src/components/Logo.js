@@ -26,7 +26,7 @@ function Logo() {
             className="header"
         >
             <header id="header">
-                <a href="/" className="logo">The future Grosjeans</a>
+                <a href="/" className="logo">The Grosjeans</a>
             </header>
         </motion.div>
     );

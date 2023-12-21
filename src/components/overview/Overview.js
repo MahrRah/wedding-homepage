@@ -22,21 +22,25 @@ function Overview() {
             <article className="post featured">
                 <header className="major">
                     <span className="date">{t("overview:date")}</span>
-                    <h2>{t("overview:welcome")}</h2>
-                    <p> {t("overview:introText")}</p>
+                    <h2>{t("overview:thanks")}</h2>
+                    <p> {t("overview:thanksText")}</p>
+                    {/* <h2>{t("overview:welcome")}</h2>
+                    <p> {t("overview:introText")}</p> */}
                 </header>
-                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" "" /></a> */}
+                {/* <a href="#" className="image main"><img src="../images/pic01.jpg" "" /></a>
                 <ul className="actions special">
                     <li><a className="button large" onClick={handleClick}>{t("story:ourStory")}</a></li>
                 </ul>
+                */}
             </article>
+            {/* 
             {isShown &&
                 <Story t={t} />
             }
             <section className="post featured">
                 <h3>{t("overview:countdownTitel")}</h3>
                 <CountdownTimer targetDate={target} targetMessage={t("overview:countdownFinalMessage")} />
-            </section>
+            </section> */}
         </div>
     );
 }

@@ -7,7 +7,7 @@
 */
 
 /* Wrapper */
-@media screen and (min-width: 2001px){
+@media screen and (min-width: 2201px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-0.jpg");
@@ -22,7 +22,7 @@
 		}
 
 }
-@media screen and (min-width: 1501px) and (max-width: 2000px){
+@media screen and (min-width: 1801px) and (max-width: 2200px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-1.jpg");
@@ -38,7 +38,7 @@
 
 }
 
-@media screen and (min-width: 1301px) and (max-width: 1500px){
+@media screen and (min-width: 1501px) and (max-width: 1800px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-2.jpg");
@@ -54,7 +54,7 @@
 
 }
 
-@media screen and (min-width: 1201px) and (max-width: 1300px){
+@media screen and (min-width: 1351px) and (max-width: 1500px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-3.jpg");
@@ -70,9 +70,8 @@
 
 }
 
-
-
-@media screen and (min-width: 1001px) and (max-width: 1200px)  {
+	
+@media screen and (min-width: 1001px) and (max-width: 1350px)  {
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-4.jpg");
@@ -87,8 +86,8 @@
 		}
 	
 }
-	
-@media screen and (min-width: 901px) and (max-width: 1000px)  {
+
+@media screen and (min-width: 851px) and (max-width: 1000px)  {
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-5.jpg");
@@ -103,7 +102,8 @@
 		}
 	
 }
-@media screen and (max-width: 900px){
+
+@media screen and (max-width: 850px){
 	#wrapper {
 		background-color: rgb(111, 85, 57);
 		background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg-7.jpg");
